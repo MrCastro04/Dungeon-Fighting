@@ -11,7 +11,6 @@ namespace Character
         private AIChaseState _chaseState = new();
         private AIAttackState _attackState = new();
 
-        [field: SerializeField] public float ChaseRange { get; private set; }
         [field: SerializeField] public float AttackRange { get; private set; }
 
         public AIChaseState ChaseState => _chaseState;
@@ -69,7 +68,7 @@ namespace Character
         {
             Gizmos.color = Color.blue;
 
-            Gizmos.DrawSphere(transform.position, ChaseRange);
+            Gizmos.DrawSphere(transform.position, AttackRange);
         }
     }
 }

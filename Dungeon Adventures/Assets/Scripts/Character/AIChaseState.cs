@@ -6,7 +6,7 @@ namespace Character
     {
         public override void EnterState(EnemyController enemy)
         {
-           enemy.MovementCmp.MoveAgentByDestination(enemy.Player.transform.position);
+
         }
 
         public override void UpdateState(EnemyController enemy)
@@ -16,6 +16,8 @@ namespace Character
                 enemy.SwitchState(enemy.AttackState);
                 return;
             }
+
+            enemy.MovementCmp.MoveAgentByDestination(enemy.Player.transform.position);
 
             Vector3 forwardVector = enemy.Player.transform.position - enemy.transform.position;
 
