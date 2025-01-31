@@ -9,7 +9,13 @@ namespace Character
 
         public override void UpdateState(EnemyController enemy)
         {
+            if (enemy.DistanceFromPlayer <= enemy.ChaseRange)
+            {
+                enemy.SwitchState(enemy.ChaseState);
+                return;
+            }
 
+            
         }
     }
 }

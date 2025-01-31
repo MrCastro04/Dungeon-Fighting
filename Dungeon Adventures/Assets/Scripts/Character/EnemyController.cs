@@ -1,3 +1,4 @@
+using Uitility;
 using UnityEngine;
 
 namespace Character
@@ -6,16 +7,19 @@ namespace Character
 
     public class EnemyController : MonoBehaviour
     {
-        [field: SerializeField] public float ChaseRange { get; private set; }
-
         private AIBaseState _currentState;
         private AIReturnState _returnState = new();
         private AIChaseState _chaseState = new();
 
+        [field: SerializeField] public float ChaseRange { get; private set; }
+
+        public AIReturnState ReturnState => _returnState;
+        public AIChaseState ChaseState => _chaseState;
+        public GameObject Player { get; private set; }
         public Movement MovementCmp { get; private set; }
         public Vector3 OriginalPosition { get; private set; }
         public Vector3 OriginalRotation { get; private set; }
-
+        public float DistanceFromPlayer { get; private set; }
 
         private void Awake()
         {
@@ -24,6 +28,8 @@ namespace Character
             OriginalPosition = transform.position;
 
             OriginalRotation = transform.forward;
+
+            Player = GameObject.FindWithTag(Constants.PLAYER_TAG);
 
             MovementCmp = GetComponent<Movement>();
         }
@@ -35,6 +41,8 @@ namespace Character
 
         private void Update()
         {
+            CalculateDistanceFromPlayer();
+
             _currentState.UpdateState(this);
         }
 
@@ -43,6 +51,17 @@ namespace Character
             _currentState = newState;
 
             _currentState.EnterState(this);
+        }
+
+        private void CalculateDistanceFromPlayer()
+        {
+            if(Player == null) return;
+
+            Vector3 enemyPosition = transform.position;
+
+            Vector3 playerPosition = Player.transform.position;
+
+            DistanceFromPlayer = Vector3.Distance(enemyPosition, playerPosition);
         }
     }
 }
