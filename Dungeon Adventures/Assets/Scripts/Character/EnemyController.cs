@@ -8,13 +8,14 @@ namespace Character
     public class EnemyController : MonoBehaviour
     {
         private AIBaseState _currentState;
-        private AIReturnState _returnState = new();
         private AIChaseState _chaseState = new();
+        private AIAttackState _attackState = new();
 
         [field: SerializeField] public float ChaseRange { get; private set; }
+        [field: SerializeField] public float AttackRange { get; private set; }
 
-        public AIReturnState ReturnState => _returnState;
         public AIChaseState ChaseState => _chaseState;
+        public AIAttackState AttackState => _attackState;
         public GameObject Player { get; private set; }
         public Movement MovementCmp { get; private set; }
         public Vector3 OriginalPosition { get; private set; }
@@ -23,7 +24,7 @@ namespace Character
 
         private void Awake()
         {
-            _currentState = _returnState;
+            _currentState = _chaseState;
 
             OriginalPosition = transform.position;
 
