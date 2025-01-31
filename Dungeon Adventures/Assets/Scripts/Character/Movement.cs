@@ -1,3 +1,4 @@
+using Uitility;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -19,6 +20,11 @@ namespace Character
         private void Update()
         {
             MovePlayer();
+
+            if (CompareTag(Constants.PLAYER_TAG))
+            {
+                RotateAgentByOffset(_moveVector);
+            }
         }
 
         public void HandleMove(InputAction.CallbackContext context)
@@ -36,6 +42,19 @@ namespace Character
         public void MoveAgentByDestination(Vector3 destination)
         {
             _agent.SetDestination(destination);
+        }
+
+        public void RotateAgentByOffset(Vector3 offset)
+        {
+            if (offset == Vector3.zero) return;
+
+            var normal = Time.deltaTime * _agent.angularSpeed;
+
+            Quaternion startQuaternion = transform.rotation;
+
+            Quaternion endQuaternion = Quaternion.LookRotation(offset);
+
+            transform.rotation = Quaternion.Lerp(startQuaternion,endQuaternion, normal);
         }
 
         public bool ReachedDestination()
