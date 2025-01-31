@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Character
@@ -11,9 +10,16 @@ namespace Character
         private AIReturnState _returnState = new();
         private AIChaseState _chaseState = new ();
 
+        private Vector3 _originalPosition;
+        private Quaternion _originalRotation;
+
         private void Awake()
         {
             _currentState = _returnState;
+
+            _originalPosition = transform.position;
+
+            _originalRotation = transform.rotation;
         }
 
         private void Start()
