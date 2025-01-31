@@ -12,7 +12,7 @@ namespace Character
         private NavMeshAgent _agent;
         private Vector3 _moveVector;
         private float _agentSpeed;
-        private bool _isMoving;
+        private bool _isMoving = false;
 
         private void Awake()
         {
@@ -35,6 +35,16 @@ namespace Character
 
         public void HandleMove(InputAction.CallbackContext context)
         {
+            if (context.performed)
+            {
+                _isMoving = true;
+            }
+
+            if (context.canceled)
+            {
+                _isMoving = false;
+            }
+            
             Vector2 input = context.ReadValue<Vector2>();
 
             _moveVector = new Vector3(input.x, 0f, input.y);
