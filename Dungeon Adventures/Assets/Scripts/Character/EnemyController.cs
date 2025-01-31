@@ -63,5 +63,12 @@ namespace Character
 
             DistanceFromPlayer = Vector3.Distance(enemyPosition, playerPosition);
         }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.blue;
+
+            Gizmos.DrawSphere(transform.position, ChaseRange);
+        }
     }
 }
