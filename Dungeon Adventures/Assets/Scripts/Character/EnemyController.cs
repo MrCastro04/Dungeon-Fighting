@@ -13,6 +13,9 @@ namespace Character
         private Vector3 _originalPosition;
         private Quaternion _originalRotation;
 
+        public Vector3 OriginalPosition => _originalPosition;
+        public Quaternion OriginalRotation => _originalRotation;
+
         private void Awake()
         {
             _currentState = _returnState;
