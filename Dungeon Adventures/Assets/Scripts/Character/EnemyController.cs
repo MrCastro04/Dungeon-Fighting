@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Character
@@ -12,7 +11,7 @@ namespace Character
 
         private void Awake()
         {
-         
+
         }
     }
 }
