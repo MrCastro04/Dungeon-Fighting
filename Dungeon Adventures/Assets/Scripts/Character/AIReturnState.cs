@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Character
 {
     public class AIReturnState : AIBaseState
@@ -15,7 +17,15 @@ namespace Character
                 return;
             }
 
-            
+            if (enemy.MovementCmp.ReachedDestination())
+            {
+                enemy.MovementCmp.RotateAgentByOffset(enemy.OriginalRotation);
+                return;
+            }
+
+            Vector3 forwardVector = enemy.OriginalPosition - enemy.transform.position;
+
+            enemy.MovementCmp.RotateAgentByOffset(forwardVector);
         }
     }
 }
