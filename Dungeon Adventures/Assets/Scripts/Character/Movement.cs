@@ -44,7 +44,7 @@ namespace Character
             {
                 _isMoving = false;
             }
-            
+
             Vector2 input = context.ReadValue<Vector2>();
 
             _moveVector = new Vector3(input.x, 0f, input.y);
