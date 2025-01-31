@@ -25,6 +25,8 @@ namespace Character
 
             Vector3 forwardVector = enemy.OriginalPosition - enemy.transform.position;
 
+            forwardVector.y = 0f;
+
             enemy.MovementCmp.RotateAgentByOffset(forwardVector);
         }
     }
