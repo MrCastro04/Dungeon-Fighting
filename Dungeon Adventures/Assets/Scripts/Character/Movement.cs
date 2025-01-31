@@ -11,6 +11,7 @@ namespace Character
         private NavMeshAgent _agent;
         private Vector3 _moveVector;
         private float _agentSpeed;
+        private bool _isMoving;
 
         private void Awake()
         {
@@ -25,6 +26,8 @@ namespace Character
             {
                 RotateAgentByOffset(_moveVector);
             }
+
+            
         }
 
         public void HandleMove(InputAction.CallbackContext context)
@@ -37,16 +40,22 @@ namespace Character
         public void MoveAgentByOffset(Vector3 offset)
         {
             _agent.Move(offset);
+
+            _isMoving = true;
         }
 
         public void MoveAgentByDestination(Vector3 destination)
         {
             _agent.SetDestination(destination);
+
+            _isMoving = true;
         }
 
         public void StopAgentMoving()
         {
             _agent.ResetPath();
+
+            _isMoving = false;
         }
 
         public void RotateAgentByOffset(Vector3 offset)
