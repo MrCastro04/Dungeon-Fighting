@@ -106,14 +106,14 @@ namespace Character
         {
             float speed = _animator.GetFloat(Constants.SPEED_ANIMATOR_PARAM);
 
-            float smooth = Time.deltaTime;
+            float smooth = Time.deltaTime * _agent.acceleration;
 
             if (_isMoving)
             {
                 speed += smooth;
             }
 
-            else if (_isMoving == false)
+            else
             {
                 speed -= smooth;
             }
