@@ -6,15 +6,16 @@ namespace Character
 
     public class EnemyController : MonoBehaviour
     {
-        [SerializeField] private float _chaseRange;
+        [field: SerializeField] public float ChaseRange { get; private set; }
 
         private AIBaseState _currentState;
         private AIReturnState _returnState = new();
         private AIChaseState _chaseState = new();
 
-        public Movement Movement { get; private set; }
+        public Movement MovementCmp { get; private set; }
         public Vector3 OriginalPosition { get; private set; }
-        public Quaternion OriginalRotation { get; private set; }
+        public Vector3 OriginalRotation { get; private set; }
+
 
         private void Awake()
         {
@@ -22,9 +23,9 @@ namespace Character
 
             OriginalPosition = transform.position;
 
-            OriginalRotation = transform.rotation;
+            OriginalRotation = transform.forward;
 
-            Movement = GetComponent<Movement>();
+            MovementCmp = GetComponent<Movement>();
         }
 
         private void Start()
