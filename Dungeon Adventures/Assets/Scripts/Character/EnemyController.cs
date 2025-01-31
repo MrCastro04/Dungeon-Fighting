@@ -2,27 +2,29 @@ using UnityEngine;
 
 namespace Character
 {
+    [RequireComponent(typeof(Movement))]
+
     public class EnemyController : MonoBehaviour
     {
         [SerializeField] private float _chaseRange;
 
         private AIBaseState _currentState;
         private AIReturnState _returnState = new();
-        private AIChaseState _chaseState = new ();
+        private AIChaseState _chaseState = new();
 
-        private Vector3 _originalPosition;
-        private Quaternion _originalRotation;
-
-        public Vector3 OriginalPosition => _originalPosition;
-        public Quaternion OriginalRotation => _originalRotation;
+        public Movement Movement { get; private set; }
+        public Vector3 OriginalPosition { get; private set; }
+        public Quaternion OriginalRotation { get; private set; }
 
         private void Awake()
         {
             _currentState = _returnState;
 
-            _originalPosition = transform.position;
+            OriginalPosition = transform.position;
 
-            _originalRotation = transform.rotation;
+            OriginalRotation = transform.rotation;
+
+            Movement = GetComponent<Movement>();
         }
 
         private void Start()

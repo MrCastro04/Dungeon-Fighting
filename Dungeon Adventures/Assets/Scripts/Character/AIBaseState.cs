@@ -2,8 +2,8 @@ namespace Character
 {
     public abstract class AIBaseState
     {
-        public abstract void EnterState(EnemyController controller);
+        public abstract void EnterState(EnemyController enemy);
 
-        public abstract void UpdateState(EnemyController controller);
+        public abstract void UpdateState(EnemyController enemy);
     }
 }
