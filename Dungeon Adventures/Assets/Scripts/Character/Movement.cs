@@ -8,6 +8,7 @@ namespace Character
     [RequireComponent(typeof(NavMeshAgent))]
     public class Movement : MonoBehaviour
     {
+        private Animator _animator;
         private NavMeshAgent _agent;
         private Vector3 _moveVector;
         private float _agentSpeed;
@@ -16,18 +17,20 @@ namespace Character
         private void Awake()
         {
             _agent = GetComponent<NavMeshAgent>();
+
+            _animator = GetComponentInChildren<Animator>();
         }
 
         private void Update()
         {
             MovePlayer();
 
+            UpdateAnimations();
+
             if (CompareTag(Constants.PLAYER_TAG))
             {
                 RotateAgentByOffset(_moveVector);
             }
-
-            
         }
 
         public void HandleMove(InputAction.CallbackContext context)
@@ -97,6 +100,27 @@ namespace Character
             var offset = _moveVector * (Time.deltaTime * _agent.speed);
 
             _agent.Move(offset);
+        }
+
+        private void UpdateAnimations()
+        {
+            float speed = _animator.GetFloat(Constants.SPEED_ANIMATOR_PARAM);
+
+            float smooth = Time.deltaTime;
+
+            if (_isMoving)
+            {
+                speed += smooth;
+            }
+
+            else if (_isMoving == false)
+            {
+                speed -= smooth;
+            }
+
+            speed = Mathf.Clamp01(speed);
+
+            _animator.SetFloat(Constants.SPEED_ANIMATOR_PARAM, speed);
         }
     }
 }
