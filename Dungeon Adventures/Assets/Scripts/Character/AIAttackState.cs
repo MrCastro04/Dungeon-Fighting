@@ -1,12 +1,10 @@
-using UnityEngine;
-
 namespace Character
 {
     public class AIAttackState : AIBaseState
     {
         public override void EnterState(EnemyController enemy)
         {
-            Debug.Log("аавіаовіаоівлао");
+            enemy.MovementCmp.StopAgentMoving();
         }
 
         public override void UpdateState(EnemyController enemy)

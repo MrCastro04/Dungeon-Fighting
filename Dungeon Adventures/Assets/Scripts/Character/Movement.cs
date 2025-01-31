@@ -44,6 +44,11 @@ namespace Character
             _agent.SetDestination(destination);
         }
 
+        public void StopAgentMoving()
+        {
+            _agent.ResetPath();
+        }
+
         public void RotateAgentByOffset(Vector3 offset)
         {
             if (offset == Vector3.zero) return;
