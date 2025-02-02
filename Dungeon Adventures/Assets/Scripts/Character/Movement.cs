@@ -1,4 +1,3 @@
-using System;
 using Uitility;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,6 +14,7 @@ namespace Character
         private Vector3 _moveVector;
         private float _originAgentSpeed;
         private bool _isMoving = false;
+        private bool _canRotate = true;
 
         private void Awake()
         {
@@ -91,7 +91,7 @@ namespace Character
 
         public void RotateAgentByOffset(Vector3 offset)
         {
-            if (offset == Vector3.zero) return;
+            if ( _canRotate == false || offset == Vector3.zero) return;
 
             var normal = Time.deltaTime * _agent.angularSpeed;
 
@@ -154,11 +154,15 @@ namespace Character
         private void HandleBubbleStartAttack()
         {
             _agent.speed = 0f;
+
+            _canRotate = false;
         }
 
         private void HandleBubbleEndAttack()
         {
             _agent.speed = _originAgentSpeed;
+
+            _canRotate = true;
         }
     }
 }
