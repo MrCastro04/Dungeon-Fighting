@@ -9,5 +9,19 @@ namespace Uitility
         public event UnityAction OnBubbleEndAttack;
         public event UnityAction OnBubblHitAttack;
 
+        public void HandleBubbleStartAttack()
+        {
+            OnBubbleStartAttack?.Invoke();
+        }
+
+        public void HandleBubbleEndAttack()
+        {
+            OnBubbleEndAttack?.Invoke();
+        }
+
+        public void HandleBubblHitAttack()
+        {
+            OnBubblHitAttack?.Invoke();
+        }
     }
 }

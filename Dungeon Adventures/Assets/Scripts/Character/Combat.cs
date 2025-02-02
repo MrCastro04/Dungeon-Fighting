@@ -1,103 +1,106 @@
 using Uitility;
-using Character;
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Combat : MonoBehaviour
+namespace Character
 {
-   [NonSerialized] public float damage;
-   [NonSerialized] public bool isAttacking = false;
+    public class Combat : MonoBehaviour
+    {
+        private BubbleEvent _bubbleEvent;
+        private Animator _animator;
+        private float _damage;
+        private bool _isAttacking = false;
 
-   private BubbleEvent _bubbleEvent;
-   private Animator _animator;
+        public float Damage => _damage;
+        public bool IsAttacking => _isAttacking;
 
-   private void OnEnable()
-   {
-      _bubbleEvent.OnBubbleStartAttack += HandleBubbleStartAttack;
+        private void Awake()
+        {
+            _animator = GetComponentInChildren<Animator>();
 
-      _bubbleEvent.OnBubbleEndAttack += HandleBubbleEndAttack;
+            _bubbleEvent = GetComponentInChildren<BubbleEvent>();
+        }
 
-      _bubbleEvent.OnBubblHitAttack += HandleBubbleHitAttack;
-   }
+        private void OnEnable()
+        {
+            _bubbleEvent.OnBubbleStartAttack += HandleBubbleStartAttack;
 
-   private void OnDisable()
-   {
-      _bubbleEvent.OnBubbleStartAttack -= HandleBubbleStartAttack;
+            _bubbleEvent.OnBubbleEndAttack += HandleBubbleEndAttack;
 
-      _bubbleEvent.OnBubbleEndAttack -= HandleBubbleEndAttack;
+            _bubbleEvent.OnBubblHitAttack += HandleBubbleHitAttack;
+        }
 
-      _bubbleEvent.OnBubblHitAttack -= HandleBubbleHitAttack;
-   }
+        private void OnDisable()
+        {
+            _bubbleEvent.OnBubbleStartAttack -= HandleBubbleStartAttack;
 
-   private void Awake()
-   {
-      _animator = GetComponentInChildren<Animator>();
+            _bubbleEvent.OnBubbleEndAttack -= HandleBubbleEndAttack;
 
-      _bubbleEvent = GetComponentInChildren<BubbleEvent>();
-   }
+            _bubbleEvent.OnBubblHitAttack -= HandleBubbleHitAttack;
+        }
 
-   public void HandleAttack(InputAction.CallbackContext context)
-   {
-      if(context.performed == false) return;
+        public void HandleAttack(InputAction.CallbackContext context)
+        {
+            if (context.performed == false) return;
 
-      StartAttack();
-   }
+            StartAttack();
+        }
 
-   private void StartAttack()
-   {
-     if(isAttacking) return;
+        private void StartAttack()
+        {
+            if (_isAttacking) return;
 
-    _animator.SetFloat(Constants.SPEED_ANIMATOR_PARAM, 0f);
+            _animator.SetFloat(Constants.SPEED_ANIMATOR_PARAM, 0f);
 
-    _animator.SetTrigger(Constants.ATTACK_ANIMATOR_PARAM);
-   }
+            _animator.SetTrigger(Constants.ATTACK_ANIMATOR_PARAM);
+        }
 
-   private void CancelAttack()
-   {
-      _animator.ResetTrigger(Constants.ATTACK_ANIMATOR_PARAM);
-   }
+        private void CancelAttack()
+        {
+            _animator.ResetTrigger(Constants.ATTACK_ANIMATOR_PARAM);
+        }
 
-   private void HandleBubbleStartAttack()
-   {
-      isAttacking = true;
-   }
+        private void HandleBubbleStartAttack()
+        {
+            _isAttacking = true;
 
-   private void HandleBubbleEndAttack()
-   {
-      isAttacking = false;
-   }
 
-   private void HandleBubbleHitAttack()
-   {
-      RaycastHit[] targets = Physics.BoxCastAll(
+        }
 
-         transform.position + transform.forward,
+        private void HandleBubbleEndAttack()
+        {
+            _isAttacking = false;
+        }
 
-         transform.forward / 2,
+        private void HandleBubbleHitAttack()
+        {
+            RaycastHit[] targets = Physics.BoxCastAll(
+                transform.position + transform.forward,
 
-         transform.forward,
+                transform.forward / 2,
 
-         transform.rotation,
+                transform.forward,
 
-         1f);
+                transform.rotation,
 
-      foreach (var target in targets)
-      {
-         if (CompareTag(gameObject.tag))
-         {
-            continue;
-         }
+                1f);
 
-         Health health = target.transform.gameObject.GetComponent<Health>();
+            foreach (var target in targets)
+            {
+                if (CompareTag(gameObject.tag))
+                {
+                    continue;
+                }
 
-         if (health == null)
-         {
-            continue;
-         }
+                Health health = target.transform.gameObject.GetComponent<Health>();
 
-         health.TakeDamage(damage);
-      }
-   }
+                if (health == null)
+                {
+                    continue;
+                }
+
+                health.TakeDamage(_damage);
+            }
+        }
+    }
 }
-

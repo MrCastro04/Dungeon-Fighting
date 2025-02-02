@@ -1,3 +1,4 @@
+using System;
 using Uitility;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,10 +9,11 @@ namespace Character
     [RequireComponent(typeof(NavMeshAgent))]
     public class Movement : MonoBehaviour
     {
+        private BubbleEvent _bubbleEvent;
         private Animator _animator;
         private NavMeshAgent _agent;
         private Vector3 _moveVector;
-        private float _agentSpeed;
+        private float _originAgentSpeed;
         private bool _isMoving = false;
 
         private void Awake()
@@ -19,6 +21,22 @@ namespace Character
             _agent = GetComponent<NavMeshAgent>();
 
             _animator = GetComponentInChildren<Animator>();
+
+            _bubbleEvent = GetComponentInChildren<BubbleEvent>();
+
+            _originAgentSpeed = _agent.speed;
+        }
+
+        private void OnEnable()
+        {
+            _bubbleEvent.OnBubbleStartAttack += HandleBubbleStartAttack;
+            _bubbleEvent.OnBubbleEndAttack += HandleBubbleEndAttack;
+        }
+
+        private void OnDisable()
+        {
+            _bubbleEvent.OnBubbleStartAttack -= HandleBubbleStartAttack;
+            _bubbleEvent.OnBubbleEndAttack -= HandleBubbleEndAttack;
         }
 
         private void Update()
@@ -131,6 +149,16 @@ namespace Character
             speed = Mathf.Clamp01(speed);
 
             _animator.SetFloat(Constants.SPEED_ANIMATOR_PARAM, speed);
+        }
+
+        private void HandleBubbleStartAttack()
+        {
+            _agent.speed = 0f;
+        }
+
+        private void HandleBubbleEndAttack()
+        {
+            _agent.speed = _originAgentSpeed;
         }
     }
 }

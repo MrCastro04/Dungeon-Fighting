@@ -5306,6 +5306,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a8f0255c6b218bc4ebceb5592abfa7e9, type: 3}
   m_PrefabInstance: {fileID: 1487615386}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1493848544 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2003016062652449898, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
+  m_PrefabInstance: {fileID: 1561496909}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4a7eaadd983edb4a8184eb4cee9858d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1498735953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8133,7 +8144,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3582010697834803819, guid: 09ebdd9af7d9c224f8b271b1d223f0eb, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582010697834803819, guid: 09ebdd9af7d9c224f8b271b1d223f0eb, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582010697834803819, guid: 09ebdd9af7d9c224f8b271b1d223f0eb, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3582010697834803819, guid: 09ebdd9af7d9c224f8b271b1d223f0eb, type: 3}
@@ -8141,7 +8160,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1294792975}
     - target: {fileID: 3582010697834803819, guid: 09ebdd9af7d9c224f8b271b1d223f0eb, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1493848544}
+    - target: {fileID: 3582010697834803819, guid: 09ebdd9af7d9c224f8b271b1d223f0eb, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582010697834803819, guid: 09ebdd9af7d9c224f8b271b1d223f0eb, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3582010697834803819, guid: 09ebdd9af7d9c224f8b271b1d223f0eb, type: 3}
@@ -8149,11 +8176,23 @@ PrefabInstance:
       value: HandleMove
       objectReference: {fileID: 0}
     - target: {fileID: 3582010697834803819, guid: 09ebdd9af7d9c224f8b271b1d223f0eb, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582010697834803819, guid: 09ebdd9af7d9c224f8b271b1d223f0eb, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Character.Movement, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3582010697834803819, guid: 09ebdd9af7d9c224f8b271b1d223f0eb, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Combat, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582010697834803819, guid: 09ebdd9af7d9c224f8b271b1d223f0eb, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582010697834803819, guid: 09ebdd9af7d9c224f8b271b1d223f0eb, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4813487569523994283, guid: 09ebdd9af7d9c224f8b271b1d223f0eb, type: 3}
