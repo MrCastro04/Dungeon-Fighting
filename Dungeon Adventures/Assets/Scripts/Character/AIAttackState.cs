@@ -15,7 +15,11 @@ namespace Character
                 return;
             }
 
+            enemy.CombatCmp.CancelAttack();
+
             enemy.transform.LookAt(enemy.Player.transform.position);
+
+            enemy.CombatCmp.StartAttack();
         }
     }
 }

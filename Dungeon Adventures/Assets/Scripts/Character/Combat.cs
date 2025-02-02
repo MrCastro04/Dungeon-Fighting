@@ -46,7 +46,7 @@ namespace Character
             StartAttack();
         }
 
-        private void StartAttack()
+        public void StartAttack()
         {
             if (_isAttacking) return;
 
@@ -55,7 +55,7 @@ namespace Character
             _animator.SetTrigger(Constants.ATTACK_ANIMATOR_PARAM);
         }
 
-        private void CancelAttack()
+        public void CancelAttack()
         {
             _animator.ResetTrigger(Constants.ATTACK_ANIMATOR_PARAM);
         }
