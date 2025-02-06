@@ -16,6 +16,8 @@ namespace Character
         private bool _isMoving = false;
         private bool _canRotate = true;
 
+        public NavMeshAgent NavMeshAgent => _agent;
+
         private void Awake()
         {
             _agent = GetComponent<NavMeshAgent>();
@@ -66,13 +68,6 @@ namespace Character
             Vector2 input = context.ReadValue<Vector2>();
 
             _moveVector = new Vector3(input.x, 0f, input.y);
-        }
-
-        public void MoveAgentByOffset(Vector3 offset)
-        {
-            _agent.Move(offset);
-
-            _isMoving = true;
         }
 
         public void MoveAgentByDestination(Vector3 destination)

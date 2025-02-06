@@ -1,3 +1,4 @@
+using Character_Stats;
 using Uitility;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ namespace Character
 
     public class EnemyController : MonoBehaviour
     {
+        [SerializeField] private CharacterStatsSO _enemyStats;
+
         private AIBaseState _currentState;
         private AIChaseState _chaseState = new();
         private AIAttackState _attackState = new();
@@ -42,6 +45,14 @@ namespace Character
 
         private void Start()
         {
+            HealthCmp.HeathPoints = _enemyStats.healthPoints;
+
+            CombatCmp.Damage = _enemyStats.damage;
+
+            MovementCmp.NavMeshAgent.speed = _enemyStats.speed;
+
+            Debug.Log(MovementCmp.NavMeshAgent.speed);
+
             _currentState.EnterState(this);
         }
 
