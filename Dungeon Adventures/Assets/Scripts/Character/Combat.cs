@@ -63,8 +63,6 @@ namespace Character
         private void HandleBubbleStartAttack()
         {
             _isAttacking = true;
-
-
         }
 
         private void HandleBubbleEndAttack()

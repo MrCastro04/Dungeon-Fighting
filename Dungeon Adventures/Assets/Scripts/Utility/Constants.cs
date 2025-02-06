@@ -11,7 +11,7 @@ namespace Uitility
         // ANIMATOR
         public const string SPEED_ANIMATOR_PARAM = "Speed";
         public const string ATTACK_ANIMATOR_PARAM = "Attack";
-
+        public const string DEFEAT_ANIMATOR_PARAM = "Defeat";
 
     }
 }
