@@ -17,6 +17,7 @@ namespace Character
         public AIAttackState AttackState => _attackState;
         public GameObject Player { get; private set; }
         public Movement MovementCmp { get; private set; }
+        public Health HealthCmp { get; private set; }
         public Combat CombatCmp { get; private set; }
         public Vector3 OriginalPosition { get; private set; }
         public Vector3 OriginalRotation { get; private set; }
@@ -33,6 +34,8 @@ namespace Character
             Player = GameObject.FindWithTag(Constants.PLAYER_TAG);
 
             MovementCmp = GetComponent<Movement>();
+
+            HealthCmp = GetComponent<Health>();
 
             CombatCmp = GetComponent<Combat>();
         }
