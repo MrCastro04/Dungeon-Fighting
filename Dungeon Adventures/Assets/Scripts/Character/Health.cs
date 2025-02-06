@@ -6,7 +6,7 @@ namespace Character
     {
         private float _heathPoints;
 
-        public float HeathPoints => _heathPoints;
+        public float HeathPoints { get; set; }
 
         public void TakeDamage(float damageAmount)
         {

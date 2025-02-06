@@ -11,7 +11,7 @@ namespace Character
         private float _damage;
         private bool _isAttacking = false;
 
-        public float Damage => _damage;
+        public float Damage { get; set; }
         public bool IsAttacking => _isAttacking;
 
         private void Awake()
