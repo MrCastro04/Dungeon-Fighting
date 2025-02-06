@@ -15,7 +15,7 @@ namespace Character
         private Combat _combatCmp;
         private NavMeshAgent _agentCmp;
 
-        private void Awake()
+       private void Awake()
         {
             _healthCmp = GetComponent<Health>();
 
