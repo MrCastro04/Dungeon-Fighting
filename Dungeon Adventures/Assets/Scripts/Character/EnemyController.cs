@@ -5,6 +5,7 @@ using UnityEngine;
 namespace Character
 {
     [RequireComponent(typeof(Movement))]
+    [RequireComponent(typeof(BoxCollider))]
 
     public class EnemyController : MonoBehaviour
     {

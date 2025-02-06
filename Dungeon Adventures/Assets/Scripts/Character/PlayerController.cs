@@ -7,9 +7,10 @@ namespace Character
     [RequireComponent(typeof(Health))]
     [RequireComponent(typeof(Combat))]
     [RequireComponent(typeof(NavMeshAgent))]
+    [RequireComponent(typeof(BoxCollider))]
     public class PlayerController : MonoBehaviour
     {
-       [SerializeField] private CharacterStatsSO _playerStats;
+        [SerializeField] private CharacterStatsSO _playerStats;
 
         private Health _healthCmp;
         private Combat _combatCmp;

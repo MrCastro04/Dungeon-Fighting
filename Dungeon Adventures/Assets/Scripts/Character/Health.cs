@@ -1,4 +1,3 @@
-using System;
 using Uitility;
 using UnityEngine;
 
@@ -6,6 +5,7 @@ namespace Character
 {
     public class Health : MonoBehaviour
     {
+        private BubbleEvent _bubbleEventCmp;
         private Animator _animatorCmp;
         private float _heathPoints;
 
@@ -14,6 +14,18 @@ namespace Character
         private void Awake()
         {
             _animatorCmp = GetComponentInChildren<Animator>();
+
+            _bubbleEventCmp = GetComponentInChildren<BubbleEvent>();
+        }
+
+        private void OnEnable()
+        {
+            _bubbleEventCmp.OnDefeat += HandleOnDefeat;
+        }
+
+        private void OnDisable()
+        {
+            _bubbleEventCmp.OnDefeat -= HandleOnDefeat;
         }
 
         public void TakeDamage(float damageAmount)
@@ -29,6 +41,11 @@ namespace Character
         private void PlayDefeatAnimation()
         {
             _animatorCmp.SetTrigger(Constants.DEFEAT_ANIMATOR_PARAM);
+        }
+
+        private void HandleOnDefeat()
+        {
+            Destroy(gameObject);
         }
     }
 }

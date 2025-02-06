@@ -1,7 +1,8 @@
+
+
 namespace Core
 {
-    public class EventManager
+    public static class EventManager
     {
-        
     }
 }
