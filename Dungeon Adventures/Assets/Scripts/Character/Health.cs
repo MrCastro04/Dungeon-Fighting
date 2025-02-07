@@ -14,7 +14,17 @@ namespace Character
 
         public event Action OnStartEnemyDefeated;
 
-        public float HeathPoints { get; set; }
+        public float HeathPoints
+        {
+            get
+            {
+                return _heathPoints;
+            }
+            set
+            {
+                _heathPoints = value;
+            }
+        }
 
         private void Awake()
         {
@@ -25,12 +35,12 @@ namespace Character
 
         private void OnEnable()
         {
-            _bubbleEventCmp.OnDefeat += HandleOnDefeat;
+            _bubbleEventCmp.OnBubbleDefeat += HandleOnDefeat;
         }
 
         private void OnDisable()
         {
-            _bubbleEventCmp.OnDefeat -= HandleOnDefeat;
+            _bubbleEventCmp.OnBubbleDefeat -= HandleOnDefeat;
         }
 
         public void TakeDamage(float damageAmount)
@@ -57,9 +67,9 @@ namespace Character
                 OnStartEnemyDefeated?.Invoke();
             }
 
-            _animatorCmp.SetTrigger(Constants.DEFEAT_ANIMATOR_PARAM);
-
             _isDefeated = true;
+
+            _animatorCmp.SetTrigger(Constants.DEFEAT_ANIMATOR_PARAM);
         }
 
         private void HandleOnDefeat()

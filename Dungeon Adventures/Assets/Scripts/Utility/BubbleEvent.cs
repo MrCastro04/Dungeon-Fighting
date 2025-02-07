@@ -5,29 +5,29 @@ namespace Uitility
 {
     public class BubbleEvent : MonoBehaviour
     {
-        public event UnityAction OnBubbleStartAttack;
-        public event UnityAction OnBubbleEndAttack;
-        public event UnityAction OnBubblHitAttack;
-        public event UnityAction OnDefeat;
+        public event UnityAction OnBubbleStartAttack = () => {};
+        public event UnityAction OnBubbleEndAttack = () => {};
+        public event UnityAction OnBubbleHitAttack = () => {};
+        public event UnityAction OnBubbleDefeat = () => {};
 
-        public void HandleBubbleStartAttack()
+        private void OnStartAttack()
         {
             OnBubbleStartAttack?.Invoke();
         }
 
-        public void HandleBubbleEndAttack()
+        private void OnEndAttack()
         {
             OnBubbleEndAttack?.Invoke();
         }
 
-        public void HandleBubblHitAttack()
+        private void OnHitAttack()
         {
-            OnBubblHitAttack?.Invoke();
+            OnBubbleHitAttack?.Invoke();
         }
 
-        public void HandleOnDefeat()
+        private void OnDefeat()
         {
-            OnDefeat?.Invoke();
+            OnBubbleDefeat?.Invoke();
         }
     }
 }

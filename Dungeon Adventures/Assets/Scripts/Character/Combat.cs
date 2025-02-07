@@ -11,7 +11,14 @@ namespace Character
         private float _damage;
         private bool _isAttacking = false;
 
-        public float Damage { get; set; }
+        public float Damage
+        {
+            set
+            {
+                _damage = value;
+            }
+        }
+
         public bool IsAttacking => _isAttacking;
 
         private void Awake()
@@ -27,7 +34,7 @@ namespace Character
 
             _bubbleEvent.OnBubbleEndAttack += HandleBubbleEndAttack;
 
-            _bubbleEvent.OnBubblHitAttack += HandleBubbleHitAttack;
+            _bubbleEvent.OnBubbleHitAttack += HandleBubbleHitAttack;
         }
 
         private void OnDisable()
@@ -36,7 +43,7 @@ namespace Character
 
             _bubbleEvent.OnBubbleEndAttack -= HandleBubbleEndAttack;
 
-            _bubbleEvent.OnBubblHitAttack -= HandleBubbleHitAttack;
+            _bubbleEvent.OnBubbleHitAttack -= HandleBubbleHitAttack;
         }
 
         public void HandleAttack(InputAction.CallbackContext context)
@@ -72,7 +79,6 @@ namespace Character
 
         private void HandleBubbleHitAttack()
         {
-
             RaycastHit[] targets = Physics.BoxCastAll(
                 transform.position + transform.forward,
 

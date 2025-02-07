@@ -31,14 +31,20 @@ namespace Character
 
         private void OnEnable()
         {
-            _bubbleEvent.OnBubbleStartAttack += HandleBubbleStartAttack;
-            _bubbleEvent.OnBubbleEndAttack += HandleBubbleEndAttack;
+            if (CompareTag(Constants.PLAYER_TAG))
+            {
+                _bubbleEvent.OnBubbleStartAttack += HandleBubbleStartAttack;
+                _bubbleEvent.OnBubbleEndAttack += HandleBubbleEndAttack;
+            }
         }
 
         private void OnDisable()
         {
-            _bubbleEvent.OnBubbleStartAttack -= HandleBubbleStartAttack;
-            _bubbleEvent.OnBubbleEndAttack -= HandleBubbleEndAttack;
+            if (CompareTag(Constants.PLAYER_TAG))
+            {
+                _bubbleEvent.OnBubbleStartAttack -= HandleBubbleStartAttack;
+                _bubbleEvent.OnBubbleEndAttack -= HandleBubbleEndAttack;
+            }
         }
 
         private void Update()

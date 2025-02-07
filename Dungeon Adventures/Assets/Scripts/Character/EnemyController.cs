@@ -6,7 +6,8 @@ namespace Character
 {
     [RequireComponent(typeof(Movement))]
     [RequireComponent(typeof(BoxCollider))]
-
+    [RequireComponent(typeof(Combat))]
+    [RequireComponent(typeof(Health))]
     public class EnemyController : MonoBehaviour
     {
         [SerializeField] private CharacterStatsSO _enemyStats;
@@ -57,13 +58,13 @@ namespace Character
 
         private void Start()
         {
+            _currentState.EnterState(this);
+
             HealthCmp.HeathPoints = _enemyStats.healthPoints;
 
             CombatCmp.Damage = _enemyStats.damage;
 
             MovementCmp.NavMeshAgent.speed = _enemyStats.speed;
-
-            _currentState.EnterState(this);
         }
 
         private void Update()
