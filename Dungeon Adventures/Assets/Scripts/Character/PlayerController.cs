@@ -1,4 +1,5 @@
 using Character_Stats;
+using Core;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -32,6 +33,8 @@ namespace Character
             _combatCmp.Damage = _playerStats.damage;
 
             _agentCmp.speed = _playerStats.speed;
+
+            EventManager.RaiseChangePlayerHealth(_healthCmp.HeathPoints);
         }
     }
 }

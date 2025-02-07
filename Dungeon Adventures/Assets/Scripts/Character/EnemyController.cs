@@ -14,6 +14,7 @@ namespace Character
         private AIBaseState _currentState;
         private AIChaseState _chaseState = new();
         private AIAttackState _attackState = new();
+        private AIDefeatState _defeatState = new();
 
         [field: SerializeField] public float AttackRange { get; private set; }
 
@@ -44,6 +45,16 @@ namespace Character
             CombatCmp = GetComponent<Combat>();
         }
 
+        private void OnEnable()
+        {
+            HealthCmp.OnStartEnemyDefeated += HandleStartEnemyDefeated;
+        }
+
+        private void OnDisable()
+        {
+            HealthCmp.OnStartEnemyDefeated -= HandleStartEnemyDefeated;
+        }
+
         private void Start()
         {
             HealthCmp.HeathPoints = _enemyStats.healthPoints;
@@ -51,8 +62,6 @@ namespace Character
             CombatCmp.Damage = _enemyStats.damage;
 
             MovementCmp.NavMeshAgent.speed = _enemyStats.speed;
-
-            Debug.Log(MovementCmp.NavMeshAgent.speed);
 
             _currentState.EnterState(this);
         }
@@ -80,6 +89,13 @@ namespace Character
             Vector3 playerPosition = Player.transform.position;
 
             DistanceFromPlayer = Vector3.Distance(enemyPosition, playerPosition);
+        }
+
+        private void HandleStartEnemyDefeated()
+        {
+           SwitchState(_defeatState);
+
+           _currentState.EnterState(this);
         }
     }
 }

@@ -11,6 +11,11 @@ namespace Character
 
         public override void UpdateState(EnemyController enemy)
         {
+            if (enemy.Player == null)
+            {
+                return;
+            }
+
             if (enemy.DistanceFromPlayer < enemy.AttackRange)
             {
                 enemy.SwitchState(enemy.AttackState);

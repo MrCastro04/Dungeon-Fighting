@@ -9,13 +9,21 @@ namespace Character
 
         public override void UpdateState(EnemyController enemy)
         {
-            if (enemy.DistanceFromPlayer > enemy.AttackRange)
+            if (enemy.Player == null)
             {
-                enemy.SwitchState(enemy.ChaseState);
+                enemy.CombatCmp.CancelAttack();
+
                 return;
             }
 
-            enemy.CombatCmp.CancelAttack();
+            if (enemy.DistanceFromPlayer > enemy.AttackRange)
+            {
+                enemy.CombatCmp.CancelAttack();
+
+                enemy.SwitchState(enemy.ChaseState);
+
+                return;
+            }
 
             enemy.transform.LookAt(enemy.Player.transform.position);
 

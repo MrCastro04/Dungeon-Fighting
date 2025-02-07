@@ -72,6 +72,7 @@ namespace Character
 
         private void HandleBubbleHitAttack()
         {
+
             RaycastHit[] targets = Physics.BoxCastAll(
                 transform.position + transform.forward,
 
@@ -85,7 +86,7 @@ namespace Character
 
             foreach (var target in targets)
             {
-                if (CompareTag(gameObject.tag))
+                if (CompareTag(target.transform.tag))
                 {
                     continue;
                 }

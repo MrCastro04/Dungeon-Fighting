@@ -1,3 +1,5 @@
+using System;
+using Core;
 using Uitility;
 using UnityEngine;
 
@@ -8,6 +10,9 @@ namespace Character
         private BubbleEvent _bubbleEventCmp;
         private Animator _animatorCmp;
         private float _heathPoints;
+        private bool _isDefeated = false;
+
+        public event Action OnStartEnemyDefeated;
 
         public float HeathPoints { get; set; }
 
@@ -32,15 +37,29 @@ namespace Character
         {
             _heathPoints = Mathf.Max(_heathPoints - damageAmount, 0f);
 
+            if (CompareTag(Constants.PLAYER_TAG))
+            {
+                EventManager.RaiseChangePlayerHealth(_heathPoints);
+            }
+
             if (_heathPoints == 0)
             {
-               PlayDefeatAnimation();
+               Defeat();
             }
         }
 
-        private void PlayDefeatAnimation()
+        private void Defeat()
         {
+            if(_isDefeated) return;
+
+            if (CompareTag(Constants.ENEMY_TAG))
+            {
+                OnStartEnemyDefeated?.Invoke();
+            }
+
             _animatorCmp.SetTrigger(Constants.DEFEAT_ANIMATOR_PARAM);
+
+            _isDefeated = true;
         }
 
         private void HandleOnDefeat()

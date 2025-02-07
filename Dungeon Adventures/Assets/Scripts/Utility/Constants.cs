@@ -6,6 +6,7 @@ namespace Uitility
         public const string CHARACTER_SO_FILE_NAME = "Character Stats";
         public const string CHARACTER_SO_MENU_NAME = "Scriptable Objects/Character Stats";
         public const string PLAYER_TAG = "Player";
+        public const string ENEMY_TAG = "Enemy";
 
 
         // ANIMATOR
