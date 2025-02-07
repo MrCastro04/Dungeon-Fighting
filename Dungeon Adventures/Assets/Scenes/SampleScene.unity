@@ -5448,6 +5448,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6521183323804836573, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6950866285948992951, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.96985036
@@ -5487,6 +5491,14 @@ PrefabInstance:
     - target: {fileID: 6950866285948992951, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7374292502743227794, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 963194227}
+    - target: {fileID: 7374292502743227794, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
+      propertyPath: m_PlaneDistance
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

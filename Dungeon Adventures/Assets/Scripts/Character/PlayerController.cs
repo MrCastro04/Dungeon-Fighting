@@ -9,6 +9,7 @@ namespace Character
     [RequireComponent(typeof(Combat))]
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(BoxCollider))]
+
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private CharacterStatsSO _playerStats;
