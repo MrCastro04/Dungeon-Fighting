@@ -14,5 +14,7 @@ namespace Uitility
         public const string ATTACK_ANIMATOR_PARAM = "Attack";
         public const string DEFEAT_ANIMATOR_PARAM = "Defeat";
 
+        // UI
+        public const string PLAYER_HEALTH_BAR = "HealthBar";
     }
 }
