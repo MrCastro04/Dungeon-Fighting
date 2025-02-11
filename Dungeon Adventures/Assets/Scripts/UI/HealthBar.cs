@@ -1,7 +1,6 @@
 using System;
 using Core;
 using TMPro;
-using Uitility;
 using UnityEngine;
 
 public class HealthBar : MonoBehaviour

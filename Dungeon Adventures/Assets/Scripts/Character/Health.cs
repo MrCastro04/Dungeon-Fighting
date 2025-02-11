@@ -2,11 +2,14 @@ using System;
 using Core;
 using Uitility;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Character
 {
     public class Health : MonoBehaviour
     {
+        [NonSerialized] public Slider SliderCmp;
+
         private BubbleEvent _bubbleEventCmp;
         private Animator _animatorCmp;
         private float _heathPoints;
@@ -31,6 +34,8 @@ namespace Character
             _animatorCmp = GetComponentInChildren<Animator>();
 
             _bubbleEventCmp = GetComponentInChildren<BubbleEvent>();
+
+            SliderCmp = GetComponentInChildren<Slider>();
         }
 
         private void OnEnable()
@@ -50,6 +55,11 @@ namespace Character
             if (CompareTag(Constants.PLAYER_TAG))
             {
                 EventManager.RaiseChangePlayerHealth(_heathPoints);
+            }
+
+            if (SliderCmp != null)
+            {
+                SliderCmp.value -= damageAmount;
             }
 
             if (_heathPoints == 0)

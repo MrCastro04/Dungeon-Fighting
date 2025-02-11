@@ -1,5 +1,6 @@
 using Character_Stats;
 using Uitility;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 namespace Character
@@ -65,6 +66,10 @@ namespace Character
             CombatCmp.Damage = _enemyStats.damage;
 
             MovementCmp.NavMeshAgent.speed = _enemyStats.speed;
+
+            HealthCmp.SliderCmp.maxValue = HealthCmp.HeathPoints;
+
+            HealthCmp.SliderCmp.value = HealthCmp.HeathPoints;
         }
 
         private void Update()
