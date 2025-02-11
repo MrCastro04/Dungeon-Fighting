@@ -1,19 +1,23 @@
 using Uitility;
 using UnityEngine;
 
-public class Billboard : MonoBehaviour
+namespace UI
 {
-    private GameObject _camera;
-
-    private void Awake()
+    public class Billboard : MonoBehaviour
     {
-        _camera = GameObject.FindGameObjectWithTag(Constants.CAMERA_TAG);
-    }
+        private Camera _cameraCmp;
 
-    private void LateUpdate()
-    {
-        Vector3 cameraDirection = transform.position + _camera.transform.forward;
+        private void Awake()
+        {
+            _cameraCmp = GameObject.FindGameObjectWithTag(Constants.CAMERA_TAG)
+                .GetComponent<Camera>();
+        }
 
-        transform.LookAt(cameraDirection);
+        private void LateUpdate()
+        {
+            Vector3 directionOffset = transform.position + _cameraCmp.transform.forward;
+
+            transform.LookAt(directionOffset);
+        }
     }
 }
