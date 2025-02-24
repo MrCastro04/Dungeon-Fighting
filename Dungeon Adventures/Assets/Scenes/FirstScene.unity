@@ -2569,6 +2569,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
+<<<<<<< Updated upstream:Dungeon Adventures/Assets/Scenes/SampleScene.unity
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7cf4dde99589b54694947cb504e32ea, type: 3}
 --- !u!4 &603452081 stripped
@@ -2576,6 +2577,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b7cf4dde99589b54694947cb504e32ea, type: 3}
   m_PrefabInstance: {fileID: 603452080}
   m_PrefabAsset: {fileID: 0}
+=======
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 99c3401b4d726fb4c91594a22814b096, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1971657645}
+  m_SourcePrefab: {fileID: 100100000, guid: 99c3401b4d726fb4c91594a22814b096, type: 3}
+>>>>>>> Stashed changes:Dungeon Adventures/Assets/Scenes/FirstScene.unity
 --- !u!1 &629073209
 GameObject:
   m_ObjectHideFlags: 0
@@ -2987,7 +2995,7 @@ GameObject:
   - component: {fileID: 755981544}
   - component: {fileID: 755981543}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4223,6 +4231,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Dungeon Adventures/Assets/Scenes/SampleScene.unity
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1143161624}
@@ -4294,6 +4303,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+--- !u!1 &1168933025 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 99c3401b4d726fb4c91594a22814b096, type: 3}
+  m_PrefabInstance: {fileID: 585532702}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> Stashed changes:Dungeon Adventures/Assets/Scenes/FirstScene.unity
 --- !u!1001 &1184788014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7302,6 +7318,35 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 26d7efd706c78714b90a0be2730a9396, type: 3}
   m_PrefabInstance: {fileID: 1968043851}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Dungeon Adventures/Assets/Scenes/SampleScene.unity
+=======
+--- !u!4 &1971657642 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 99c3401b4d726fb4c91594a22814b096, type: 3}
+  m_PrefabInstance: {fileID: 585532702}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1971657645
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168933025}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.2499244, y: 1.2662684, z: 6.491914}
+  m_Center: {x: 0.6065569, y: 0.63313395, z: 0.12654662}
+>>>>>>> Stashed changes:Dungeon Adventures/Assets/Scenes/FirstScene.unity
 --- !u!1001 &1992484636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8281,6 +8326,70 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09ebdd9af7d9c224f8b271b1d223f0eb, type: 3}
+<<<<<<< Updated upstream:Dungeon Adventures/Assets/Scenes/SampleScene.unity
+=======
+--- !u!1001 &7382013184203683588
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6019617866777291976, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 882376299}
+    - target: {fileID: 6158945417782962245, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158945417782962245, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158945417782962245, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158945417782962245, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158945417782962245, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158945417782962245, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158945417782962245, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158945417782962245, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158945417782962245, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158945417782962245, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7065844949863027887, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
+      propertyPath: m_Name
+      value: Cameras
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
+>>>>>>> Stashed changes:Dungeon Adventures/Assets/Scenes/FirstScene.unity
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -8288,8 +8397,12 @@ SceneRoots:
   - {fileID: 2483010070011132853}
   - {fileID: 705507995}
   - {fileID: 755981544}
+<<<<<<< Updated upstream:Dungeon Adventures/Assets/Scenes/SampleScene.unity
   - {fileID: 629073211}
   - {fileID: 1243319134}
   - {fileID: 1561496909}
   - {fileID: 708088017}
   - {fileID: 1143161624}
+=======
+  - {fileID: 7382013184203683588}
+>>>>>>> Stashed changes:Dungeon Adventures/Assets/Scenes/FirstScene.unity
