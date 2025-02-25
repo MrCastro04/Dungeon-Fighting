@@ -8,26 +8,15 @@ namespace Character
 {
     public class Health : MonoBehaviour
     {
+        public event Action OnStartEnemyDefeated;
+
         [NonSerialized] public Slider SliderCmp;
+
+        public float HealthPoints;
 
         private BubbleEvent _bubbleEventCmp;
         private Animator _animatorCmp;
-        private float _heathPoints;
         private bool _isDefeated = false;
-
-        public event Action OnStartEnemyDefeated;
-
-        public float HeathPoints
-        {
-            get
-            {
-                return _heathPoints;
-            }
-            set
-            {
-                _heathPoints = value;
-            }
-        }
 
         private void Awake()
         {
@@ -50,11 +39,11 @@ namespace Character
 
         public void TakeDamage(float damageAmount)
         {
-            _heathPoints = Mathf.Max(_heathPoints - damageAmount, 0f);
+            HealthPoints = Mathf.Max(HealthPoints - damageAmount, 0f);
 
-            if (CompareTag(Constants.PLAYER_TAG))
+            if (CompareTag(Constants.TAG_PLAYER))
             {
-                EventManager.RaiseChangePlayerHealth(_heathPoints);
+                EventManager.RaiseChangePlayerHealth(HealthPoints);
             }
 
             if (SliderCmp != null)
@@ -62,7 +51,7 @@ namespace Character
                 SliderCmp.value -= damageAmount;
             }
 
-            if (_heathPoints == 0)
+            if (HealthPoints == 0)
             {
                Defeat();
             }
@@ -72,14 +61,14 @@ namespace Character
         {
             if(_isDefeated) return;
 
-            if (CompareTag(Constants.ENEMY_TAG))
+            if (CompareTag(Constants.TAG_ENEMY))
             {
                 OnStartEnemyDefeated?.Invoke();
             }
 
             _isDefeated = true;
 
-            _animatorCmp.SetTrigger(Constants.DEFEAT_ANIMATOR_PARAM);
+            _animatorCmp.SetTrigger(Constants.ANIMATOR_DEFEAT_PARAM);
         }
 
         private void HandleOnDefeat()

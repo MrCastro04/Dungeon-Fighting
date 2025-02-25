@@ -10,7 +10,7 @@ namespace UI
 
         private void Awake()
         {
-            _cameraCmp = GameObject.FindGameObjectWithTag(Constants.)
+            _cameraCmp = GameObject.FindGameObjectWithTag(Constants.TAG_MAIN_CAMERA)
                 .GetComponent<Camera>();
         }
 

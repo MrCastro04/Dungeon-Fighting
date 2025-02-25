@@ -61,15 +61,15 @@ namespace Character
         {
             _currentState.EnterState(this);
 
-            HealthCmp.HeathPoints = _enemyStats.healthPoints;
+            HealthCmp.HealthPoints = _enemyStats.healthPoints;
 
             CombatCmp.Damage = _enemyStats.damage;
 
             MovementCmp.NavMeshAgent.speed = _enemyStats.speed;
 
-            HealthCmp.SliderCmp.maxValue = HealthCmp.HeathPoints;
+            HealthCmp.SliderCmp.maxValue = HealthCmp.HealthPoints;
 
-            HealthCmp.SliderCmp.value = HealthCmp.HeathPoints;
+            HealthCmp.SliderCmp.value = HealthCmp.HealthPoints;
         }
 
         private void Update()

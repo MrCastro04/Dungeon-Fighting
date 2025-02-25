@@ -9,10 +9,13 @@ namespace Uitility
 
         // TAGS
         public const string TAG_PLAYER = "Player";
+        public const string TAG_ENEMY = "Enemy";
+        public const string TAG_MAIN_CAMERA = "MainCamera";
 
 
         // ANIMATOR
         public const string ANIMATOR_SPEED_PARAM = "Speed";
         public const string ANIMATOR_ATTACK_PARAM = "Attack";
+        public const string ANIMATOR_DEFEAT_PARAM = "Defeat";
     }
 }

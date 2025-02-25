@@ -31,7 +31,7 @@ namespace Character
 
         private void OnEnable()
         {
-            if (CompareTag(Constants.PLAYER_TAG))
+            if (CompareTag(Constants.TAG_PLAYER))
             {
                 _bubbleEvent.OnBubbleStartAttack += HandleBubbleStartAttack;
                 _bubbleEvent.OnBubbleEndAttack += HandleBubbleEndAttack;
@@ -40,7 +40,7 @@ namespace Character
 
         private void OnDisable()
         {
-            if (CompareTag(Constants.PLAYER_TAG))
+            if (CompareTag(Constants.TAG_PLAYER))
             {
                 _bubbleEvent.OnBubbleStartAttack -= HandleBubbleStartAttack;
                 _bubbleEvent.OnBubbleEndAttack -= HandleBubbleEndAttack;
@@ -122,7 +122,6 @@ namespace Character
 
             return true;
         }
-
 
         private void MovePlayer()
         {
