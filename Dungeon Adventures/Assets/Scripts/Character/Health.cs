@@ -11,9 +11,10 @@ namespace Character
     {
         public event Action OnStartEnemyDefeated;
 
+        [NonSerialized] public float HealthPoints;
         [NonSerialized] public Slider SliderCmp;
 
-        public float HealthPoints;
+        public float HealAmount;
         public int PotionCount;
 
         private BubbleEvent _bubbleEventCmp;
@@ -41,11 +42,9 @@ namespace Character
 
         public void HandleInteract(InputAction.CallbackContext context)
         {
-            if (context.performed == false && PotionCount == 0) return;
+            if (context.performed == false || PotionCount <= 0) return;
 
-            
-
-
+            UsePotion();
         }
 
         public void TakeDamage(float damageAmount)
@@ -85,6 +84,19 @@ namespace Character
         private void HandleOnDefeat()
         {
             Destroy(gameObject);
+        }
+
+        private void UsePotion()
+        {
+            HealthPoints += HealAmount;
+
+            PotionCount--;
+
+            PotionCount = Mathf.Max(PotionCount, 0);
+
+            EventManager.RaiseChangePlayerHealth(HealthPoints);
+
+            EventManager.RaiseChangePlayerPotionCount(PotionCount);
         }
     }
 }
