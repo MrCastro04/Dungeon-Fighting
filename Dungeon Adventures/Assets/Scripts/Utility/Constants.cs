@@ -5,6 +5,8 @@ namespace Uitility
         // SCRIPTABLE OBJECTS
         public const string SO_CHARACTER_STATS_FILE_NAME = "Character Stats";
         public const string SO_CHARACTER_STATS_MENU_NAME = "Scriptable Objects/Character Stats";
+        public const string SO_ITEM_FILE_NAME = "Item";
+        public const string SO_ITEM_MENU_NAME = "Scriptable Objects/Item";
 
 
         // TAGS
