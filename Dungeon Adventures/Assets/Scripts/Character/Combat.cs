@@ -57,14 +57,14 @@ namespace Character
         {
             if (_isAttacking) return;
 
-            _animator.SetFloat(Constants.SPEED_ANIMATOR_PARAM, 0f);
+            _animator.SetFloat(Constants.ANIMATOR_SPEED_PARAM, 0f);
 
-            _animator.SetTrigger(Constants.ATTACK_ANIMATOR_PARAM);
+            _animator.SetTrigger(Constants.ANIMATOR_ATTACK_PARAM);
         }
 
         public void CancelAttack()
         {
-            _animator.ResetTrigger(Constants.ATTACK_ANIMATOR_PARAM);
+            _animator.ResetTrigger(Constants.ANIMATOR_ATTACK_PARAM);
         }
 
         private void HandleBubbleStartAttack()

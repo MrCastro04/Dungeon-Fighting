@@ -53,7 +53,7 @@ namespace Character
 
             UpdateAnimations();
 
-            if (CompareTag(Constants.PLAYER_TAG))
+            if (CompareTag(Constants.TAG_PLAYER))
             {
                 RotateAgentByOffset(_moveVector);
             }
@@ -133,7 +133,7 @@ namespace Character
 
         private void UpdateAnimations()
         {
-            float speed = _animator.GetFloat(Constants.SPEED_ANIMATOR_PARAM);
+            float speed = _animator.GetFloat(Constants.ANIMATOR_SPEED_PARAM);
 
             float smooth = Time.deltaTime * _agent.acceleration;
 
@@ -149,7 +149,7 @@ namespace Character
 
             speed = Mathf.Clamp01(speed);
 
-            _animator.SetFloat(Constants.SPEED_ANIMATOR_PARAM, speed);
+            _animator.SetFloat(Constants.ANIMATOR_SPEED_PARAM, speed);
         }
 
         private void HandleBubbleStartAttack()

@@ -5,11 +5,12 @@ namespace UI
 {
     public class Billboard : MonoBehaviour
     {
+
         private Camera _cameraCmp;
 
         private void Awake()
         {
-            _cameraCmp = GameObject.FindGameObjectWithTag(Constants.CAMERA_TAG)
+            _cameraCmp = GameObject.FindGameObjectWithTag(Constants.)
                 .GetComponent<Camera>();
         }
 
