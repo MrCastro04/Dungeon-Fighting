@@ -13,6 +13,7 @@ namespace Uitility
         public const string TAG_PLAYER = "Player";
         public const string TAG_ENEMY = "Enemy";
         public const string TAG_MAIN_CAMERA = "MainCamera";
+        public const string TAG_KEY_IMAGE = "KeyImage";
 
 
         // ANIMATOR

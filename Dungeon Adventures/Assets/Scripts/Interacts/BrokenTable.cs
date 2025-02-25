@@ -1,18 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
+using Core;
+using ScriptableObjects;
+using Uitility;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class BrokenTable : MonoBehaviour
+namespace Interacts
 {
-    // Start is called before the first frame update
-    void Start()
+    public class BrokenTable : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private ItemSO _item;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private Canvas _canvasCmp;
+
+        private void Awake()
+        {
+            _canvasCmp = GetComponentInChildren<Canvas>();
+        }
+
+        public void HandlerInteract(InputAction.CallbackContext context)
+        {
+            if(context.performed == false && _canvasCmp.enabled) return;
+
+            EventManager.RaisePlayerGetItem(_item);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.CompareTag(Constants.TAG_ENEMY)) return;
+
+            _canvasCmp.enabled = true;
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if(other.CompareTag(Constants.TAG_ENEMY)) return;
+
+            _canvasCmp.enabled = false;
+        }
     }
 }
