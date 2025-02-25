@@ -31,7 +31,7 @@ namespace Character
 
             OriginalRotation = transform.forward;
 
-            Player = GameObject.FindWithTag(Constants.PLAYER_TAG);
+            Player = GameObject.FindWithTag(Constants.TAG_PLAYER);
 
             MovementCmp = GetComponent<Movement>();
 

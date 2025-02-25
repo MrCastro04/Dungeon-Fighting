@@ -5,8 +5,8 @@ namespace Character_Stats
 {
     [CreateAssetMenu(
         order = 0,
-        fileName = Constants.CHARACTER_SO_FILE_NAME,
-        menuName = Constants.CHARACTER_SO_MENU_NAME)]
+        fileName = Constants.SO_CHARACTER_STATS_FILE_NAME,
+        menuName = Constants.SO_CHARACTER_STATS_MENU_NAME)]
 
     public class CharacterStatsSO : ScriptableObject
     {
