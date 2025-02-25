@@ -20,5 +20,10 @@ namespace Uitility
         public const string ANIMATOR_SPEED_PARAM = "Speed";
         public const string ANIMATOR_ATTACK_PARAM = "Attack";
         public const string ANIMATOR_DEFEAT_PARAM = "Defeat";
+
+
+        // UI TOOLKIT
+        public const string UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_INFO_CONTAINER = "player-info-container";
+        public const string UI_TOOLKIT_LABEL_HEALTH_AMOUNT = "health-amount";
     }
 }
