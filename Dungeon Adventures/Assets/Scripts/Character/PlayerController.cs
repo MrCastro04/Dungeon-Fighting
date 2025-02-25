@@ -36,6 +36,8 @@ namespace Character
             _agentCmp.speed = _playerStats.speed;
 
             EventManager.RaiseChangePlayerHealth(_healthCmp.HealthPoints);
+
+            EventManager.RaiseChangePlayerPotionCount(_healthCmp.PotionCount);
         }
     }
 }

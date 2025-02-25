@@ -6834,10 +6834,6 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6788220008502961800, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
-      propertyPath: near clip plane
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6788220008502961800, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
       propertyPath: m_BackGroundColor.b
       value: 0.16981131
       objectReference: {fileID: 0}
@@ -6883,15 +6879,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7073331159522310519, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 20.42
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7073331159522310519, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -1.23
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7073331159522310519, guid: af09fc1c43c14f145bbab2a383d969c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.057
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

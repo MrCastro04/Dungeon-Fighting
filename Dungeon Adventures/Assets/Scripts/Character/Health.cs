@@ -2,6 +2,7 @@ using System;
 using Core;
 using Uitility;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Character
@@ -13,6 +14,7 @@ namespace Character
         [NonSerialized] public Slider SliderCmp;
 
         public float HealthPoints;
+        public int PotionCount;
 
         private BubbleEvent _bubbleEventCmp;
         private Animator _animatorCmp;
@@ -35,6 +37,15 @@ namespace Character
         private void OnDisable()
         {
             _bubbleEventCmp.OnBubbleDefeat -= HandleOnDefeat;
+        }
+
+        public void HandleInteract(InputAction.CallbackContext context)
+        {
+            if (context.performed == false && PotionCount == 0) return;
+
+            
+
+
         }
 
         public void TakeDamage(float damageAmount)
