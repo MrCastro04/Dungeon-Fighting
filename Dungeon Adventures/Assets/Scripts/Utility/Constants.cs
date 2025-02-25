@@ -25,5 +25,6 @@ namespace Uitility
         // UI TOOLKIT
         public const string UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_INFO_CONTAINER = "player-info-container";
         public const string UI_TOOLKIT_LABEL_HEALTH_AMOUNT = "health-amount";
+        public const string UI_TOOLKIT_LABEL_POTIONS_COUNT = "potions-count";
     }
 }
