@@ -1,5 +1,6 @@
 using Uitility;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ScriptableObjects
 {
@@ -12,5 +13,6 @@ namespace ScriptableObjects
     public class ItemSO : ScriptableObject
     {
         public string Name;
+        public Sprite Image;
     }
 }

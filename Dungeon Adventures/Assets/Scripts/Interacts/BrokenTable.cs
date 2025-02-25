@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Character;
 using Core;
 using ScriptableObjects;
 using Uitility;
@@ -19,7 +21,7 @@ namespace Interacts
 
         public void HandlerInteract(InputAction.CallbackContext context)
         {
-            if(context.performed == false && _canvasCmp.enabled) return;
+            if(context.performed == false || _canvasCmp.enabled == false) return;
 
             EventManager.RaisePlayerGetItem(_item);
         }
@@ -28,7 +30,28 @@ namespace Interacts
         {
             if(other.CompareTag(Constants.TAG_ENEMY)) return;
 
-            _canvasCmp.enabled = true;
+            bool playerHasKey = false;
+
+            List<ItemSO> playerInventory = other.GetComponent<PlayerController>().Items;
+
+           playerInventory.ForEach((ItemSO playerItem) =>
+           {
+               if (playerItem.Name == _item.Name)
+               {
+                   playerHasKey = true;
+                   return;
+               }
+
+               playerHasKey = false;
+           });
+
+           if (playerHasKey)
+           {
+               _canvasCmp.enabled = false;
+               return;
+           }
+
+           _canvasCmp.enabled = true;
         }
 
         private void OnTriggerExit(Collider other)

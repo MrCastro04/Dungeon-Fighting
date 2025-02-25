@@ -7,5 +7,6 @@
         <ui:VisualElement name="healthbar" style="flex-grow: 1; flex-wrap: nowrap; height: 101px; width: 52px;">
             <ui:Label tabindex="-1" text="health-amount" parse-escape-sequences="true" display-tooltip-when-elided="true" name="health-amount" style="background-color: rgb(55, 255, 0); height: 95px; width: 493px; -unity-text-align: middle-center; font-size: 50px; -unity-font-style: bold;" />
         </ui:VisualElement>
+        <ui:VisualElement name="key" style="flex-grow: 1; left: -465px; height: 93px; width: 34px;" />
     </ui:VisualElement>
 </ui:UXML>

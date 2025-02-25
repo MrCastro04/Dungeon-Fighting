@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Core;
 using ScriptableObjects;
 using UnityEngine;
@@ -14,17 +16,29 @@ namespace Character
     {
         [SerializeField] private CharacterStatsSO _playerStats;
 
+        [NonSerialized] public List<ItemSO> Items = new List<ItemSO>();
+
         private Health _healthCmp;
         private Combat _combatCmp;
         private NavMeshAgent _agentCmp;
 
-       private void Awake()
+        private void Awake()
         {
             _healthCmp = GetComponent<Health>();
 
             _combatCmp = GetComponent<Combat>();
 
             _agentCmp = GetComponent<NavMeshAgent>();
+        }
+
+        private void OnEnable()
+        {
+            EventManager.OnPlayerGetItem += HandlerPlayerGetItem;
+        }
+
+        private void OnDisable()
+        {
+            EventManager.OnPlayerGetItem -= HandlerPlayerGetItem;
         }
 
         private void Start()
@@ -38,6 +52,11 @@ namespace Character
             EventManager.RaiseChangePlayerHealth(_healthCmp.HealthPoints);
 
             EventManager.RaiseChangePlayerPotionCount(_healthCmp.PotionCount);
+        }
+
+        private void HandlerPlayerGetItem(ItemSO item)
+        {
+            Items.Add(item);
         }
     }
 }

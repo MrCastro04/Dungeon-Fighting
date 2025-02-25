@@ -1,5 +1,6 @@
 using Core;
 using DefaultNamespace;
+using ScriptableObjects;
 using Uitility;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -13,6 +14,7 @@ namespace UI
         public VisualElement RootVisualElement;
         public VisualElement PlayerInfoContainer;
 
+        private VisualElement _keyItem;
         private UIBaseState _currentState;
         private UIDocument _uiDocumentCmp;
         private Label _healthAmount;
@@ -32,18 +34,23 @@ namespace UI
 
             _potionsCount = PlayerInfoContainer.Q<Label>
             (Constants.UI_TOOLKIT_LABEL_POTIONS_COUNT);
+
+            _keyItem = PlayerInfoContainer.Q<VisualElement>
+                (Constants.UI_TOOLKIT_VISUAL_ELEMENT_KEY_IMAGE);
         }
 
         private void OnEnable()
         {
             EventManager.OnChangePlayerHealth += HandlerChangePlayerHealth;
             EventManager.OnChangePlayerPotionCount += HandlerChangePlayerPotionCount;
+            EventManager.OnPlayerGetItem += HandlerPlayerGetItem;
         }
 
         private void OnDisable()
         {
             EventManager.OnChangePlayerHealth -= HandlerChangePlayerHealth;
             EventManager.OnChangePlayerPotionCount -= HandlerChangePlayerPotionCount;
+            EventManager.OnPlayerGetItem -= HandlerPlayerGetItem;
         }
 
         private void HandlerChangePlayerHealth(float newAmount)
@@ -54,6 +61,13 @@ namespace UI
         private void HandlerChangePlayerPotionCount(int newCount)
         {
             _potionsCount.text = newCount.ToString();
+        }
+
+        private void HandlerPlayerGetItem(ItemSO item)
+        {
+            _keyItem.style.backgroundImage = new StyleBackground(item.Image);
+
+            _keyItem.style.display = DisplayStyle.Flex;
         }
     }
 }
