@@ -1,7 +1,7 @@
 using Uitility;
 using UnityEngine;
 
-namespace Character_Stats
+namespace ScriptableObjects
 {
     [CreateAssetMenu(
         order = 0,

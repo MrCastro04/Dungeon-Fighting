@@ -1,4 +1,4 @@
-using Character_Stats;
+using ScriptableObjects;
 using Uitility;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;

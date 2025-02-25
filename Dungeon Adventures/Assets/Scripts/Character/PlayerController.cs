@@ -1,5 +1,5 @@
-using Character_Stats;
 using Core;
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.AI;
 
