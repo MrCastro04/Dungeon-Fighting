@@ -22,7 +22,7 @@ namespace Core
 
             _colliderCmp.enabled = false;
 
-            EventManager.RaiseOnPortalEnter(other, _nextScene);
+            EventManager.RaisePortalEnter(other, _nextScene);
 
             SceneTransition.Initiate(_nextScene);
         }

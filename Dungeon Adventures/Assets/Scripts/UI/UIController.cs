@@ -13,8 +13,10 @@ namespace UI
     {
         public VisualElement RootVisualElement;
         public VisualElement PlayerInfoContainer;
+        public VisualElement PlayerAbilityContainer;
 
         private VisualElement _keyItem;
+        private VisualElement _playerAbilityIcon;
         private UIBaseState _currentState;
         private UIDocument _uiDocumentCmp;
         private Label _healthAmount;
@@ -29,6 +31,9 @@ namespace UI
             PlayerInfoContainer = RootVisualElement.Q<VisualElement>
                 (Constants.UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_INFO_CONTAINER);
 
+            PlayerAbilityContainer = RootVisualElement.Q<VisualElement>
+            (Constants.UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_ABILITY_CONTAINER);
+
             _healthAmount = PlayerInfoContainer.Q<Label>
                 (Constants.UI_TOOLKIT_LABEL_HEALTH_AMOUNT);
 
@@ -37,6 +42,9 @@ namespace UI
 
             _keyItem = PlayerInfoContainer.Q<VisualElement>
                 (Constants.UI_TOOLKIT_VISUAL_ELEMENT_KEY_IMAGE);
+
+            _playerAbilityIcon = PlayerAbilityContainer.Q<VisualElement>
+                (Constants.UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_ABILITY_ICON);
         }
 
         private void OnEnable()
@@ -44,6 +52,7 @@ namespace UI
             EventManager.OnChangePlayerHealth += HandlerChangePlayerHealth;
             EventManager.OnChangePlayerPotionCount += HandlerChangePlayerPotionCount;
             EventManager.OnPlayerGetItem += HandlerPlayerGetItem;
+            EventManager.OnAbilityClick += HandlerAbilityClick;
         }
 
         private void OnDisable()
@@ -51,6 +60,7 @@ namespace UI
             EventManager.OnChangePlayerHealth -= HandlerChangePlayerHealth;
             EventManager.OnChangePlayerPotionCount -= HandlerChangePlayerPotionCount;
             EventManager.OnPlayerGetItem -= HandlerPlayerGetItem;
+            EventManager.OnAbilityClick -= HandlerAbilityClick;
         }
 
         private void HandlerChangePlayerHealth(float newAmount)
@@ -68,6 +78,11 @@ namespace UI
             _keyItem.style.backgroundImage = new StyleBackground(item.Image);
 
             _keyItem.style.display = DisplayStyle.Flex;
+        }
+
+        private void HandlerAbilityClick()
+        {
+            _playerAbilityIcon.AddToClassList(Constants.UI_TOOLKIT_CLASS_STYLE_LOW_TINT);
         }
     }
 }

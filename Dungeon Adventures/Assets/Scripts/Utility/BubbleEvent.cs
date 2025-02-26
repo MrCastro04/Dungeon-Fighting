@@ -8,8 +8,8 @@ namespace Uitility
         public event UnityAction OnBubbleStartAttack = () => {};
         public event UnityAction OnBubbleEndAttack = () => {};
         public event UnityAction OnBubbleHitAttack = () => {};
-        public event UnityAction OnBubbleAbilityStart = () => { };
-        public event UnityAction OnBubbleAbilityEnd = () => { };
+        public event UnityAction OnBubbleAbilityStart = () => {};
+        public event UnityAction OnBubbleAbilityEnd = () => {};
         public event UnityAction OnBubbleDefeat = () => {};
 
         private void OnStartAttack()

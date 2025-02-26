@@ -1,3 +1,5 @@
+using System.Security.Cryptography.X509Certificates;
+
 namespace Uitility
 {
     public static class Constants
@@ -25,8 +27,11 @@ namespace Uitility
 
         // UI TOOLKIT
         public const string UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_INFO_CONTAINER = "player-info-container";
+        public const string UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_ABILITY_CONTAINER = "player-ability-container";
+        public const string UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_ABILITY_ICON = "player-ability-icon";
         public const string UI_TOOLKIT_VISUAL_ELEMENT_KEY_IMAGE = "key";
         public const string UI_TOOLKIT_LABEL_HEALTH_AMOUNT = "health-amount";
         public const string UI_TOOLKIT_LABEL_POTIONS_COUNT = "potions-count";
+        public const string UI_TOOLKIT_CLASS_STYLE_LOW_TINT = "low-tint";
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using Core;
 using Uitility;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -80,6 +81,8 @@ namespace Character
         {
             if (_isAbilityActive) return;
 
+            EventManager.RaiseAbilityClick();
+
             _animator.SetBool(Constants.ANIMATOR_ABILITY_TOKEN, true);
         }
 
@@ -130,7 +133,7 @@ namespace Character
             }
         }
 
-        private IEnumerator ResetAbility( float abilityTime )
+        private IEnumerator ResetAbility(float abilityTime)
         {
             yield return new WaitForSeconds( abilityTime );
 
