@@ -10,6 +10,7 @@ namespace Uitility
         public event UnityAction OnBubbleHitAttack = () => {};
         public event UnityAction OnBubbleAbilityStart = () => {};
         public event UnityAction OnBubbleAbilityEnd = () => {};
+        public event UnityAction OnBubbleHitAbilityAttack = () => {};
         public event UnityAction OnBubbleDefeat = () => {};
 
         private void OnStartAttack()
@@ -35,6 +36,11 @@ namespace Uitility
         private void OnAbilityStart()
         {
             OnBubbleAbilityStart?.Invoke();
+        }
+
+        private void OnHitAbility()
+        {
+            OnBubbleHitAbilityAttack?.Invoke();
         }
 
         private void OnAbilityEnd()

@@ -52,7 +52,6 @@ namespace UI
             EventManager.OnChangePlayerHealth += HandlerChangePlayerHealth;
             EventManager.OnChangePlayerPotionCount += HandlerChangePlayerPotionCount;
             EventManager.OnPlayerGetItem += HandlerPlayerGetItem;
-            EventManager.OnAbilityClick += HandlerAbilityClick;
         }
 
         private void OnDisable()
@@ -60,7 +59,6 @@ namespace UI
             EventManager.OnChangePlayerHealth -= HandlerChangePlayerHealth;
             EventManager.OnChangePlayerPotionCount -= HandlerChangePlayerPotionCount;
             EventManager.OnPlayerGetItem -= HandlerPlayerGetItem;
-            EventManager.OnAbilityClick -= HandlerAbilityClick;
         }
 
         private void HandlerChangePlayerHealth(float newAmount)
@@ -83,6 +81,11 @@ namespace UI
         private void HandlerAbilityClick()
         {
             _playerAbilityIcon.AddToClassList(Constants.UI_TOOLKIT_CLASS_STYLE_LOW_TINT);
+        }
+
+        private void HandlerAbilityCooldownEnd()
+        {
+            _playerAbilityIcon.RemoveFromClassList(Constants.UI_TOOLKIT_CLASS_STYLE_LOW_TINT);
         }
     }
 }
