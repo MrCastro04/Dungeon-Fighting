@@ -16,7 +16,7 @@
                 },
                 {
                     "name": "Interact",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "09b4854b-f7e9-4b71-ac97-86a529033ef0",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -36,6 +36,15 @@
                     "name": "Heal",
                     "type": "Button",
                     "id": "58b22899-7b95-481f-857e-e4281164554d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ability",
+                    "type": "Button",
+                    "id": "25c03138-500b-4062-8bd3-28e2cb3213c9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -101,7 +110,7 @@
                 {
                     "name": "",
                     "id": "8f60c678-dff6-42e0-a56d-f9d903e58f63",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -123,11 +132,22 @@
                 {
                     "name": "",
                     "id": "76bf3ac3-301f-4c2e-ac07-47c5fe457e05",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Heal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eb991fbc-235a-4b19-abe7-37ad0c93c165",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ability",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

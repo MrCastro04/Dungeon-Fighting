@@ -20,6 +20,7 @@ namespace Uitility
         public const string ANIMATOR_SPEED_PARAM = "Speed";
         public const string ANIMATOR_ATTACK_PARAM = "Attack";
         public const string ANIMATOR_DEFEAT_PARAM = "Defeat";
+        public const string ANIMATOR_ABILITY_TOKEN = "AbilityToken";
 
 
         // UI TOOLKIT
