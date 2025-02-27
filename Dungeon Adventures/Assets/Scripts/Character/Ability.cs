@@ -8,8 +8,8 @@ namespace Character
 {
     public class Ability : MonoBehaviour
     {
-        [SerializeField] private float _abilityDuration;
-        [SerializeField] private float _abilityCooldown;
+        [SerializeField] private float _abilityDuration = 4f;
+        [SerializeField] private float _abilityCooldown = 5f;
         [SerializeField] private float _hitRadius = 1.5f;
 
         private Combat _combatCmp;
