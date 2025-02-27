@@ -20,11 +20,8 @@ public class Ability : MonoBehaviour
     private void Awake()
     {
         _currentCooldown = _abilityCooldown;
-
         _combatCmp = GetComponent<Combat>();
-
         _bubbleEvent = GetComponentInChildren<BubbleEvent>();
-
         _animatorCmp = GetComponentInChildren<Animator>();
     }
 
@@ -46,7 +43,7 @@ public class Ability : MonoBehaviour
     {
         Debug.Log(_currentCooldown);
 
-        if(context.performed == false  || _isAbilityActive || !IsAbilityReady())
+        if (context.performed == false || _isAbilityActive || !IsAbilityReady())
         {
             return;
         }
@@ -73,20 +70,13 @@ public class Ability : MonoBehaviour
 
             _currentCooldown = 0f;
 
-            StartAbilityCooldownTimer();
+            StartCoroutine(StartAbilityCooldownTimer());
         }
     }
 
     private void HandlerHitAbilityAttack()
     {
-        RaycastHit[] targets = Physics.SphereCastAll(
-
-            transform.position,
-
-            _hitRadius,
-
-            transform.forward
-        );
+        RaycastHit[] targets = Physics.SphereCastAll(transform.position, _hitRadius, transform.forward);
 
         foreach (var target in targets)
         {
@@ -108,11 +98,11 @@ public class Ability : MonoBehaviour
 
     private IEnumerator StartAbilityCooldownTimer()
     {
-        Debug.Log($" CurrentCooldown in Coroutine {_currentCooldown}");
-
-        _currentCooldown += (Time.deltaTime + 1);
-
-        yield return new WaitUntil(IsAbilityReady);
+        while (IsAbilityReady() == false)
+        {
+            _currentCooldown += Time.deltaTime;
+            yield return null;
+        }
     }
 
     private bool IsAbilityReady()
