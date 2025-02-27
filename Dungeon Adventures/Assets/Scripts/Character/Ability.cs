@@ -1,3 +1,4 @@
+using System.Collections;
 using Character;
 using Uitility;
 using UnityEngine;
@@ -12,14 +13,14 @@ public class Ability : MonoBehaviour
     private BubbleEvent _bubbleEvent;
     private Animator _animatorCmp;
     private bool _isAbilityActive = false;
-    private float _hitRadius = 1.5f;
+    private float _hitRadius = 1f;
     private float _currentDuration;
     private float _currentCooldown;
 
-    public float GetFullCurrentCooldown => _currentCooldown = _abilityDuration;
-
     private void Awake()
     {
+        _currentCooldown = _abilityCooldown;
+
         _combatCmp = GetComponent<Combat>();
 
         _bubbleEvent = GetComponentInChildren<BubbleEvent>();
@@ -43,14 +44,14 @@ public class Ability : MonoBehaviour
 
     public void HandlerAbility(InputAction.CallbackContext context)
     {
-        if(context.performed == false || _isAbilityActive || !IsAbilityReady())
+        Debug.Log(_currentCooldown);
+
+        if(context.performed == false  || _isAbilityActive || !IsAbilityReady())
         {
             return;
         }
 
         _isAbilityActive = true;
-
-        _currentCooldown = 0;
 
         _animatorCmp.SetBool(Constants.ANIMATOR_ABILITY_TOKEN, true);
     }
@@ -69,6 +70,8 @@ public class Ability : MonoBehaviour
             _animatorCmp.SetBool(Constants.ANIMATOR_ABILITY_TOKEN, false);
 
             _currentDuration = 0f;
+
+            _currentCooldown = 0f;
 
             StartAbilityCooldownTimer();
         }
@@ -103,12 +106,13 @@ public class Ability : MonoBehaviour
         }
     }
 
-    private void StartAbilityCooldownTimer()
+    private IEnumerator StartAbilityCooldownTimer()
     {
-        while (IsAbilityReady() == false)
-        {
-            _currentCooldown += (Time.deltaTime + 1);
-        }
+        Debug.Log($" CurrentCooldown in Coroutine {_currentCooldown}");
+
+        _currentCooldown += (Time.deltaTime + 1);
+
+        yield return new WaitUntil(IsAbilityReady);
     }
 
     private bool IsAbilityReady()
