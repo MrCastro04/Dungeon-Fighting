@@ -9,7 +9,9 @@ namespace Core
         public static event Action<float> OnChangePlayerHealth;
         public static event Action <int> OnChangePlayerPotionCount;
         public static event Action<ItemSO> OnPlayerGetItem;
-        public static event Action<Collider , int> OnPortalEnter;
+        public static event Action <Collider , int> OnPortalEnter;
+        public static event Action OnAbilityButtonClick;
+        public static event Action OnAbilityReady;
 
         public static void RaiseChangePlayerHealth(float newHealthAmount)
         {
@@ -29,6 +31,16 @@ namespace Core
         public static void RaisePortalEnter(Collider player, int sceneIndex)
         {
             OnPortalEnter?.Invoke(player, sceneIndex);
+        }
+
+        public static void RaisebilityButtonClick()
+        {
+            OnAbilityButtonClick?.Invoke();
+        }
+
+        public static void RaiseOnAbilityReady()
+        {
+            OnAbilityReady?.Invoke();
         }
     }
 }

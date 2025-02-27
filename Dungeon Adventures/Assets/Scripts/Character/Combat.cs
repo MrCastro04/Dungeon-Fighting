@@ -1,3 +1,4 @@
+using System;
 using Uitility;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,7 +7,7 @@ namespace Character
 {
     public class Combat : MonoBehaviour
     {
-        public float Damage;
+        [NonSerialized] public float Damage;
 
         private BubbleEvent _bubbleEvent;
         private Animator _animator;

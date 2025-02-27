@@ -2226,7 +2226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3214723766722775586, guid: d6eebd5f97bdb8b42a89c4c953d10e5f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3850914752718453202, guid: d6eebd5f97bdb8b42a89c4c953d10e5f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2270,11 +2270,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8480793404172852454, guid: d6eebd5f97bdb8b42a89c4c953d10e5f, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8480793404172852454, guid: d6eebd5f97bdb8b42a89c4c953d10e5f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 536158094564830841, guid: d6eebd5f97bdb8b42a89c4c953d10e5f, type: 3}
@@ -4503,14 +4503,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -2372582357387560850, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
-      propertyPath: _abilityCooldown
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: -2372582357387560850, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
-      propertyPath: _abilityDuration
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2003016062652449898, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
       propertyPath: _playerAbilityTime
       value: 5
@@ -4530,10 +4522,6 @@ PrefabInstance:
     - target: {fileID: 5789221502150396407, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 37.76001
-      objectReference: {fileID: 0}
-    - target: {fileID: 6037446067799908981, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
-      propertyPath: PotionCount
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6950866285948992951, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
       propertyPath: m_LocalPosition.x
