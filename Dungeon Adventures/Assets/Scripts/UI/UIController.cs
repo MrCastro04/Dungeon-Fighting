@@ -1,8 +1,12 @@
+using System;
+using System.Collections.Generic;
 using Core;
 using DefaultNamespace;
 using ScriptableObjects;
 using Uitility;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace UI
@@ -11,13 +15,18 @@ namespace UI
 
     public class UIController : MonoBehaviour
     {
+        [NonSerialized] public int CurrentSelection = 0;
+
+        public UIMainMenuState MainMenuState;
         public VisualElement RootVisualElement;
         public VisualElement PlayerInfoContainer;
+        public VisualElement MainMenuContainer;
         public VisualElement PlayerAbilityContainer;
+        public List<Button> Buttons = new ();
 
+        private UIBaseState _currentState;
         private VisualElement _keyItem;
         private VisualElement _playerAbilityIcon;
-        private UIBaseState _currentState;
         private UIDocument _uiDocumentCmp;
         private Label _healthAmount;
         private Label _potionsCount;
@@ -27,6 +36,9 @@ namespace UI
             _uiDocumentCmp = GetComponent<UIDocument>();
 
             RootVisualElement = _uiDocumentCmp.rootVisualElement;
+
+            MainMenuContainer = RootVisualElement.Q <VisualElement>
+                (Constants.UI_TOOLKIT_VISUAL_ELEMENT_MAIN_MENU_CONTAINER );
 
             PlayerInfoContainer = RootVisualElement.Q<VisualElement>
                 (Constants.UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_INFO_CONTAINER);
@@ -45,6 +57,8 @@ namespace UI
 
             _playerAbilityIcon = PlayerAbilityContainer.Q<VisualElement>
                 (Constants.UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_ABILITY_ICON);
+
+            MainMenuState = new(this);
         }
 
         private void OnEnable()
@@ -63,6 +77,51 @@ namespace UI
             EventManager.OnPlayerGetItem -= HandlerPlayerGetItem;
             EventManager.OnAbilityButtonClick -= HandlerAbilityClick;
             EventManager.OnAbilityReady -= HandlerAbilityReady;
+        }
+
+        private void Start()
+        {
+            int buildIndex = SceneManager.GetActiveScene().buildIndex;
+
+            if (buildIndex == 0)
+            {
+                _currentState = MainMenuState;
+
+                _currentState.EnterState();
+            }
+
+            else
+            {
+                PlayerInfoContainer.style.display = DisplayStyle.Flex;
+
+                PlayerAbilityContainer.style.display = DisplayStyle.Flex;
+            }
+        }
+
+        public void HandlerNavigate(InputAction.CallbackContext context)
+        {
+            if (context.performed == false || Buttons.Count == 0) return;
+
+            Buttons[CurrentSelection].RemoveFromClassList(
+                Constants.UI_TOOLKIT_CLASS_STYLE_ACTIVE_BUTTON);
+
+            Vector2 input = context.ReadValue<Vector2>();
+
+            Debug.Log(input.y);
+
+            CurrentSelection += input.y > 0 ? -1 : 1;
+
+            CurrentSelection = Mathf.Clamp(CurrentSelection, 0, Buttons.Count - 1);
+
+            Buttons[CurrentSelection].AddToClassList(
+                Constants.UI_TOOLKIT_CLASS_STYLE_ACTIVE_BUTTON);
+        }
+
+        public void HandlerInteract(InputAction.CallbackContext context)
+        {
+            if(context.performed == false) return;
+
+            _currentState.SelectButton();
         }
 
         private void HandlerChangePlayerHealth(float newAmount)

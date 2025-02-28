@@ -1,18 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
+using Core;
+using DefaultNamespace;
+using UI;
+using Uitility;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class UIMainMenuState : MonoBehaviour
+public class UIMainMenuState : UIBaseState
 {
-    // Start is called before the first frame update
-    void Start()
+    public UIMainMenuState(UIController controller) : base(controller) {}
+
+    public override void EnterState()
     {
-        
+        Controller.MainMenuContainer.style.display = DisplayStyle.Flex;
+
+        Controller.Buttons = Controller.MainMenuContainer
+            .Query<Button>(null, Constants.UI_TOOLKIT_CLASS_STYLE_MENU_BUTTON)
+            .ToList();
+
+        Controller.Buttons[0].AddToClassList
+            (Constants.UI_TOOLKIT_CLASS_STYLE_ACTIVE_BUTTON);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void SelectButton()
     {
-        
+        Button currentButton = Controller.Buttons[Controller.CurrentSelection];
+
+        if (currentButton.name == "start-button")
+        {
+            SceneTransition.Initiate(1);
+        }
     }
 }

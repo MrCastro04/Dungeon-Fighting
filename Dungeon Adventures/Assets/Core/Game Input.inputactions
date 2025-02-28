@@ -158,26 +158,68 @@
             "id": "1a0f9939-a546-4c77-be61-21ab9b35880d",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "b1b9b692-e050-420b-9ecd-6ae6b05d65fd",
-                    "expectedControlType": "Button",
+                    "name": "Navigate",
+                    "type": "Value",
+                    "id": "ad18cee5-a50e-4099-b7b2-8c738c645d13",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Interact",
+                    "type": "Value",
+                    "id": "4dbf64cc-9bc3-4d4d-858f-e9da10abf401",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "9834c2fb-2edc-4571-a5d7-2cb1813dd6f9",
-                    "path": "",
+                    "id": "49f5f616-4036-480e-b596-040031314f1c",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "Keyboard",
+                    "id": "4a2e44f0-b8c3-4484-b1df-f7ee22cd118b",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "e9831574-e9b3-49f3-9df7-0983488d587a",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "3f9081d5-dbd2-488d-9fd3-bc4660522220",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

@@ -4,11 +4,11 @@ namespace DefaultNamespace
 {
     public abstract class UIBaseState
     {
-        public UIController ControllerCmp;
+        public UIController Controller;
 
         public UIBaseState( UIController controller )
         {
-            ControllerCmp = controller;
+            Controller = controller;
         }
 
         public abstract void EnterState();

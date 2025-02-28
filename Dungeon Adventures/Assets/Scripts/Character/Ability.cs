@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace Character
 {
+    [RequireComponent(typeof(Combat))]
     public class Ability : MonoBehaviour
     {
         [SerializeField] private float _abilityDuration = 4f;
@@ -18,6 +19,8 @@ namespace Character
         private bool _isAbilityActive = false;
         private float _currentDuration;
         private float _currentCooldown;
+
+        public bool IsAbilityActive => _isAbilityActive;
 
         private void Awake()
         {
@@ -73,8 +76,6 @@ namespace Character
 
                 _currentDuration = 0f;
 
-                _currentCooldown = 0f;
-
                 StartCoroutine(StartAbilityCooldownTimer());
             }
         }
@@ -111,6 +112,8 @@ namespace Character
 
         private IEnumerator StartAbilityCooldownTimer()
         {
+            _currentCooldown = 0f;
+
             while (IsAbilityReady() == false)
             {
                 _currentCooldown += Time.deltaTime;

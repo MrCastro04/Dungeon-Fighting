@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 namespace Character
 {
     [RequireComponent(typeof(NavMeshAgent))]
+    [RequireComponent(typeof(Ability))]
     public class Movement : MonoBehaviour
     {
         private BubbleEvent _bubbleEvent;
