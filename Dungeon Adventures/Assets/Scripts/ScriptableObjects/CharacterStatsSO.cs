@@ -12,6 +12,6 @@ namespace ScriptableObjects
     {
        [Min(5)] public float healthPoints;
        [Min(1)] public float damage;
-       [Min(0)]public float speed;
+       [Min(0)] public float speed;
     }
 }

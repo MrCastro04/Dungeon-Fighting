@@ -14,10 +14,10 @@
 
 .menu-button {
     background-color: rgb(78, 255, 234);
-    border-left-color: rgb(78, 255, 234);
-    border-right-color: rgb(78, 255, 234);
-    border-top-color: rgb(78, 255, 234);
-    border-bottom-color: rgb(78, 255, 234);
+    border-left-color: rgb(0, 255, 225);
+    border-right-color: rgb(0, 255, 225);
+    border-top-color: rgb(0, 255, 225);
+    border-bottom-color: rgb(0, 255, 225);
     border-top-width: 15px;
     border-right-width: 15px;
     border-bottom-width: 15px;

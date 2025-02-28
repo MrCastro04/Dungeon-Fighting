@@ -21,6 +21,8 @@ namespace Character.Mage
             _direction = direction;
 
             _flyingSpeed = flyingSpeed;
+
+            _damage = damage;
         }
 
         private void FixedUpdate()

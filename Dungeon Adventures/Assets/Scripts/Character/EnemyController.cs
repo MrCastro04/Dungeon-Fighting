@@ -1,36 +1,34 @@
 using ScriptableObjects;
 using Uitility;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 namespace Character
 {
     [RequireComponent(typeof(Movement))]
     [RequireComponent(typeof(BoxCollider))]
-    [RequireComponent(typeof(Combat))]
     [RequireComponent(typeof(Health))]
     public class EnemyController : MonoBehaviour
     {
-        [SerializeField] private CharacterStatsSO _enemyStats;
+        [SerializeField] protected CharacterStatsSO _enemyStats;
 
-        private AIBaseState _currentState;
-        private AIChaseState _chaseState = new();
-        private AIAttackState _attackState = new();
-        private AIDefeatState _defeatState = new();
+        protected AIBaseState _currentState;
+        protected AIChaseState _chaseState = new();
+        protected AIAttackState _attackState = new();
+        protected AIDefeatState _defeatState = new();
 
         [field: SerializeField] public float AttackRange { get; private set; }
 
         public AIChaseState ChaseState => _chaseState;
         public AIAttackState AttackState => _attackState;
-        public GameObject Player { get; private set; }
-        public Movement MovementCmp { get; private set; }
-        public Health HealthCmp { get; private set; }
+        public GameObject Player { get; protected set; }
+        public Movement MovementCmp { get; protected set; }
+        public Health HealthCmp { get; protected set; }
         public Combat CombatCmp { get; private set; }
-        public Vector3 OriginalPosition { get; private set; }
-        public Vector3 OriginalRotation { get; private set; }
-        public float DistanceFromPlayer { get; private set; }
+        public Vector3 OriginalPosition { get; protected set; }
+        public Vector3 OriginalRotation { get; protected set; }
+        public float DistanceFromPlayer { get; protected set; }
 
-        private void Awake()
+        public virtual void Awake()
         {
             _currentState = _chaseState;
 
@@ -44,7 +42,15 @@ namespace Character
 
             HealthCmp = GetComponent<Health>();
 
-            CombatCmp = GetComponent<Combat>();
+            if (CombatCmp == null)
+            {
+                Debug.LogWarning($"{this.name} doesn't have Combat component. Check {this.name} EnemyController");
+            }
+
+            else
+            {
+                CombatCmp = GetComponent<Combat>();
+            }
         }
 
         private void OnEnable()
@@ -57,7 +63,7 @@ namespace Character
             HealthCmp.OnStartEnemyDefeated -= HandleStartEnemyDefeated;
         }
 
-        private void Start()
+        public virtual void Start()
         {
             _currentState.EnterState(this);
 
@@ -72,7 +78,7 @@ namespace Character
             HealthCmp.SliderCmp.value = HealthCmp.HealthPoints;
         }
 
-        private void Update()
+        public virtual void Update()
         {
             CalculateDistanceFromPlayer();
 
