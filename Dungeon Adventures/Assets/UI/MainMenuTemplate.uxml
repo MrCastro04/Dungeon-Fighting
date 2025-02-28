@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/GlobalStyleSheet.uss?fileID=7433441132597879392&amp;guid=9a263fc98d1316240ba4fa5a4fe0e162&amp;type=3#GlobalStyleSheet" />
-    <ui:VisualElement name="main-menu-container" style="flex-grow: 1; display: flex;">
+    <ui:VisualElement name="main-menu-container" style="flex-grow: 1; display: none;">
         <ui:VisualElement name="box" style="flex-grow: 1; flex-wrap: wrap;">
             <ui:Label tabindex="-1" text="Dungeon Adventures" parse-escape-sequences="true" display-tooltip-when-elided="true" class="common-text" style="font-size: 77px; top: 126px;" />
             <ui:VisualElement name="buttons" style="flex-grow: 1; align-items: center; justify-content: center; top: 80px; position: absolute; width: 1926px; height: 1004px;">
@@ -20,4 +20,5 @@
     <ui:VisualElement name="player-ability-container" style="flex-grow: 1; left: 1004px; position: absolute; height: 378px; width: 779px; top: 750px; display: none; background-color: rgba(0, 0, 0, 0);">
         <ui:VisualElement name="player-ability-icon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/playerAbilityIcon-removebg-preview.png?fileID=2800000&amp;guid=86710b9d81995ad42b3a822241ccbaa1&amp;type=3#playerAbilityIcon-removebg-preview&quot;);" />
     </ui:VisualElement>
+    <ui:Label tabindex="-1" text="You should find a key" parse-escape-sequences="true" display-tooltip-when-elided="true" name="key-not-found-message" style="top: 217px; font-size: 70px; -unity-font-style: bold; -unity-text-align: middle-center; color: rgb(255, 167, 0); display: none;" />
 </ui:UXML>

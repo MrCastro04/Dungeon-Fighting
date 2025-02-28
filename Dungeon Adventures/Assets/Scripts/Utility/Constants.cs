@@ -35,6 +35,8 @@ namespace Uitility
         public const string UI_TOOLKIT_VISUAL_ELEMENT_MAIN_MENU_CONTAINER = "main-menu-container";
         public const string UI_TOOLKIT_VISUAL_ELEMENT_KEY_IMAGE = "key";
 
+        public const string UI_TOOLKIT_LABEL_KEY_NOT_FOUND_MESSAGE = "key-not-found-message";
+
         public const string UI_TOOLKIT_LABEL_HEALTH_AMOUNT = "health-amount";
         public const string UI_TOOLKIT_LABEL_POTIONS_COUNT = "potions-count";
 

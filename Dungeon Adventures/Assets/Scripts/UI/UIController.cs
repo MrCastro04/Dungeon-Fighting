@@ -30,6 +30,7 @@ namespace UI
         private UIDocument _uiDocumentCmp;
         private Label _healthAmount;
         private Label _potionsCount;
+        private Label _keyNotFoundMessage;
 
         private void Awake()
         {
@@ -45,6 +46,9 @@ namespace UI
 
             PlayerAbilityContainer = RootVisualElement.Q<VisualElement>
             (Constants.UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_ABILITY_CONTAINER);
+
+            _keyNotFoundMessage = RootVisualElement.Q<Label>(
+                Constants.UI_TOOLKIT_LABEL_KEY_NOT_FOUND_MESSAGE);
 
             _healthAmount = PlayerInfoContainer.Q<Label>
                 (Constants.UI_TOOLKIT_LABEL_HEALTH_AMOUNT);
@@ -68,6 +72,8 @@ namespace UI
             EventManager.OnPlayerGetItem += HandlerPlayerGetItem;
             EventManager.OnAbilityButtonClick += HandlerAbilityClick;
             EventManager.OnAbilityReady += HandlerAbilityReady;
+            EventManager.OnEnterLockDoor += HandlerEnterLockDoor;
+            EventManager.OnExitLockDoor += HandlerExitLockDoor;
         }
 
         private void OnDisable()
@@ -77,6 +83,8 @@ namespace UI
             EventManager.OnPlayerGetItem -= HandlerPlayerGetItem;
             EventManager.OnAbilityButtonClick -= HandlerAbilityClick;
             EventManager.OnAbilityReady -= HandlerAbilityReady;
+            EventManager.OnEnterLockDoor -= HandlerEnterLockDoor;
+            EventManager.OnExitLockDoor -= HandlerExitLockDoor;
         }
 
         private void Start()
@@ -149,6 +157,16 @@ namespace UI
         private void HandlerAbilityReady()
         {
             _playerAbilityIcon.RemoveFromClassList(Constants.UI_TOOLKIT_CLASS_STYLE_LOW_TINT);
+        }
+
+        private void HandlerEnterLockDoor()
+        {
+            _keyNotFoundMessage.style.display = DisplayStyle.Flex;
+        }
+
+        private void HandlerExitLockDoor()
+        {
+            _keyNotFoundMessage.style.display = DisplayStyle.None;
         }
     }
 }

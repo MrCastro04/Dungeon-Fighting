@@ -12,6 +12,8 @@ namespace Core
         public static event Action <Collider , int> OnPortalEnter;
         public static event Action OnAbilityButtonClick;
         public static event Action OnAbilityReady;
+        public static event Action OnEnterLockDoor;
+        public static event Action OnExitLockDoor;
 
         public static void RaiseChangePlayerHealth(float newHealthAmount)
         {
@@ -41,6 +43,16 @@ namespace Core
         public static void RaiseOnAbilityReady()
         {
             OnAbilityReady?.Invoke();
+        }
+
+        public static void RaiseOnEnterLockDoor()
+        {
+            OnEnterLockDoor?.Invoke();
+        }
+
+        public static void RaiseOnExitLockDoor()
+        {
+            OnExitLockDoor?.Invoke();
         }
     }
 }

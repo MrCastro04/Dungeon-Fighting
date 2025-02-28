@@ -2,7 +2,6 @@ using Core;
 using DefaultNamespace;
 using UI;
 using Uitility;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 public class UIMainMenuState : UIBaseState
