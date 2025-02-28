@@ -4338,6 +4338,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: table_long_broken (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4495235483337692082, guid: 1a875b30db3d09b4694aa395b747a8cf, type: 3}
+      propertyPath: m_Size.x
+      value: 4.3267927
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495235483337692082, guid: 1a875b30db3d09b4694aa395b747a8cf, type: 3}
+      propertyPath: m_Center.x
+      value: 1.1449914
+      objectReference: {fileID: 0}
     - target: {fileID: 7498774399968636060, guid: 1a875b30db3d09b4694aa395b747a8cf, type: 3}
       propertyPath: m_IsActive
       value: 1
