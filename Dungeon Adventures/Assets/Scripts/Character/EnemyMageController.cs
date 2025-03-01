@@ -48,6 +48,13 @@ namespace Character.Mage
 
                 _rangeCombatCmp.ProjectileSpeed = rangeCharacterStatsSo.ProjectileSpeed;
             }
+
+            else
+            {
+                Debug.LogWarning($"You choose no RangeCharacterStatsSO for this {this.name}." +
+                                        "Stats does not registered." +
+                                        " Set correct Stats - RangeCharacterStatsSO.");
+            }
         }
 
         public override void Update()
