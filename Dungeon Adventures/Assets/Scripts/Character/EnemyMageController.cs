@@ -1,5 +1,4 @@
 using ScriptableObjects;
-using Uitility;
 using UnityEngine;
 
 namespace Character.Mage
@@ -11,17 +10,7 @@ namespace Character.Mage
 
         public override void Awake()
         {
-            _currentState = _chaseState;
-
-            OriginalPosition = transform.position;
-
-            OriginalRotation = transform.forward;
-
-            Player = GameObject.FindWithTag(Constants.TAG_PLAYER);
-
-            MovementCmp = GetComponent<Movement>();
-
-            HealthCmp = GetComponent<Health>();
+            base.Awake();
 
             _rangeCombatCmp = GetComponent<RangeCombat>();
         }
@@ -30,7 +19,7 @@ namespace Character.Mage
         {
             _currentState.EnterState(this);
 
-            if (_enemyStats is RangeCharacterStatsSO rangeCharacterStatsSo)
+            if (_enemyStats is RangeCharacterStatsSO rangeCharacterStats)
             {
                 HealthCmp.HealthPoints = _enemyStats.healthPoints;
 
@@ -40,13 +29,13 @@ namespace Character.Mage
 
                 HealthCmp.SliderCmp.value = HealthCmp.HealthPoints;
 
-                _rangeCombatCmp.RangeDamage = rangeCharacterStatsSo.ProjectileDamage;
+                _rangeCombatCmp.RangeDamage = rangeCharacterStats.ProjectileDamage;
 
-                _rangeCombatCmp.FireRate = rangeCharacterStatsSo.FireRate;
+                _rangeCombatCmp.FireRate = rangeCharacterStats.FireRate;
 
-                _rangeCombatCmp.NextFireTime = rangeCharacterStatsSo.NextFireTime;
+                _rangeCombatCmp.NextFireTime = rangeCharacterStats.NextFireTime;
 
-                _rangeCombatCmp.ProjectileSpeed = rangeCharacterStatsSo.ProjectileSpeed;
+                _rangeCombatCmp.ProjectileSpeed = rangeCharacterStats.ProjectileSpeed;
             }
 
             else

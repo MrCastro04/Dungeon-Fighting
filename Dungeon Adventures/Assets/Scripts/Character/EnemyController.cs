@@ -1,3 +1,4 @@
+using Character.Mage;
 using ScriptableObjects;
 using Uitility;
 using UnityEngine;
@@ -42,7 +43,10 @@ namespace Character
 
             HealthCmp = GetComponent<Health>();
 
-            CombatCmp = CombatCmp == null ? GetComponent<Combat>() : CombatCmp;
+            if (this is not EnemyMageController)
+            {
+                CombatCmp = CombatCmp == null ? GetComponent<Combat>() : CombatCmp;
+            }
         }
 
         private void OnEnable()
