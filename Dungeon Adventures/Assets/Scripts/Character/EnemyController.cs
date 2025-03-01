@@ -42,15 +42,7 @@ namespace Character
 
             HealthCmp = GetComponent<Health>();
 
-            if (CombatCmp == null)
-            {
-                Debug.LogWarning($"{this.name} doesn't have Combat component. Check {this.name} EnemyController");
-            }
-
-            else
-            {
-                CombatCmp = GetComponent<Combat>();
-            }
+            CombatCmp = CombatCmp == null ? GetComponent<Combat>() : CombatCmp;
         }
 
         private void OnEnable()

@@ -7,8 +7,6 @@ namespace Character.Mage
     [RequireComponent(typeof(RangeCombat))]
     public class EnemyMageController : EnemyController
     {
-        [SerializeField] private RangeCharacterStatsSO _rangeCharacterStats;
-
         private RangeCombat _rangeCombatCmp;
 
         public override void Awake()
@@ -30,13 +28,26 @@ namespace Character.Mage
 
         public override void Start()
         {
-            _enemyStats = _rangeCharacterStats;
+            _currentState.EnterState(this);
 
-            HealthCmp.HealthPoints = _enemyStats.healthPoints;
+            if (_enemyStats is RangeCharacterStatsSO rangeCharacterStatsSo)
+            {
+                HealthCmp.HealthPoints = _enemyStats.healthPoints;
 
-            _rangeCombatCmp.RangeDamage = _rangeCharacterStats.ProjectileDamage;
+                MovementCmp.NavMeshAgent.speed = _enemyStats.speed;
 
-            
+                HealthCmp.SliderCmp.maxValue = HealthCmp.HealthPoints;
+
+                HealthCmp.SliderCmp.value = HealthCmp.HealthPoints;
+
+                _rangeCombatCmp.RangeDamage = rangeCharacterStatsSo.ProjectileDamage;
+
+                _rangeCombatCmp.FireRate = rangeCharacterStatsSo.FireRate;
+
+                _rangeCombatCmp.NextFireTime = rangeCharacterStatsSo.NextFireTime;
+
+                _rangeCombatCmp.ProjectileSpeed = rangeCharacterStatsSo.ProjectileSpeed;
+            }
         }
 
         public override void Update()

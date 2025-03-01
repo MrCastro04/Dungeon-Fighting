@@ -12,7 +12,7 @@ namespace ScriptableObjects
     {
         [Min(2f)] public float FireRate;
         [Min(2f)] public float NextFireTime;
-        public float ProjectileSpeed;
-        public float ProjectileDamage;
+        [Min(5f)] public float ProjectileSpeed;
+        [Min(5f)] public float ProjectileDamage;
     }
 }
