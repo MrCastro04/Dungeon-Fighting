@@ -1366,6 +1366,10 @@ PrefabInstance:
       propertyPath: _enemyStats
       value: 
       objectReference: {fileID: 11400000, guid: 16e24828a5d058d47a0359e0623a1a58, type: 2}
+    - target: {fileID: -7227055701437067978, guid: d7e36045fd8cd154fb029b16ab2d1d1d, type: 3}
+      propertyPath: <AttackRange>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1816340361650161631, guid: d7e36045fd8cd154fb029b16ab2d1d1d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

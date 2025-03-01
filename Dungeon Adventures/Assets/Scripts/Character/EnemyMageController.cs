@@ -15,6 +15,8 @@ namespace Character.Mage
             _rangeCombatCmp = GetComponent<RangeCombat>();
         }
 
+        public RangeCombat RangeCombatCmp => _rangeCombatCmp;
+
         public override void Start()
         {
             _currentState.EnterState(this);

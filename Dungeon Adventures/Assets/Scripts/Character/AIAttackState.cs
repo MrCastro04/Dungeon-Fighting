@@ -1,3 +1,5 @@
+using Character.Mage;
+
 namespace Character
 {
     public class AIAttackState : AIBaseState
@@ -18,7 +20,15 @@ namespace Character
 
             if (enemy.DistanceFromPlayer > enemy.AttackRange)
             {
-                enemy.CombatCmp.CancelAttack();
+                if (enemy.CombatCmp != null)
+                {
+                    enemy.CombatCmp.CancelAttack();
+                }
+
+                else
+                {
+                    (enemy as EnemyMageController)?.RangeCombatCmp.CancelAttack();
+                }
 
                 enemy.SwitchState(enemy.ChaseState);
 
@@ -27,7 +37,15 @@ namespace Character
 
             enemy.transform.LookAt(enemy.Player.transform.position);
 
-            enemy.CombatCmp.StartAttack();
+            if (enemy.CombatCmp != null)
+            {
+                enemy.CombatCmp.StartAttack();
+            }
+
+            else
+            {
+                (enemy as EnemyMageController)?.RangeCombatCmp.StartAttack();
+            }
         }
     }
 }
