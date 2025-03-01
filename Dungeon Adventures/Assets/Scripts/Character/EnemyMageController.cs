@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Character.Mage
 {
     [RequireComponent(typeof(RangeCombat))]
+
     public class EnemyMageController : EnemyController
     {
         private RangeCombat _rangeCombatCmp;
@@ -46,11 +47,6 @@ namespace Character.Mage
                                         "Stats does not registered." +
                                         " Set correct Stats - RangeCharacterStatsSO.");
             }
-        }
-
-        public override void Update()
-        {
-            base.Update();
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Character
     [RequireComponent(typeof(Movement))]
     [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(Health))]
+
     public class EnemyController : MonoBehaviour
     {
         [SerializeField] protected CharacterStatsSO _enemyStats;
@@ -74,7 +75,7 @@ namespace Character
             HealthCmp.SliderCmp.value = HealthCmp.HealthPoints;
         }
 
-        public virtual void Update()
+        private void Update()
         {
             CalculateDistanceFromPlayer();
 
