@@ -9,15 +9,15 @@ namespace Character.Mage
     {
         private RangeCombat _rangeCombatCmp;
 
+        public RangeCombat RangeCombatCmp => _rangeCombatCmp;
+
         public override void Awake()
         {
             base.Awake();
 
             _rangeCombatCmp = GetComponent<RangeCombat>();
         }
-
-        public RangeCombat RangeCombatCmp => _rangeCombatCmp;
-
+        
         public override void Start()
         {
             _currentState.EnterState(this);
