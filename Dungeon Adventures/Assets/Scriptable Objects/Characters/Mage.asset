@@ -16,7 +16,7 @@ MonoBehaviour:
   AttackRange: 20
   Speed: 2
   MeeleDamage: 0
-  FireRate: 2
-  NextFireTime: 2
+  FireRate: 10
+  NextFireTime: 10
   ProjectileSpeed: 5
   ProjectileDamage: 5

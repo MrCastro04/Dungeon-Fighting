@@ -29,7 +29,7 @@ namespace Character
         public float DistanceFromPlayer { get; protected set; }
         public float AttackRange { get; protected set; }
 
-        public virtual void Awake()
+        protected virtual void Awake()
         {
             _currentState = _chaseState;
 
@@ -76,7 +76,7 @@ namespace Character
             HealthCmp.SliderCmp.value = HealthCmp.HealthPoints;
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             CalculateDistanceFromPlayer();
 

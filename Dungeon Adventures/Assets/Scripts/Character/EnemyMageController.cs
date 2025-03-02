@@ -7,11 +7,14 @@ namespace Character.Mage
 
     public class EnemyMageController : EnemyController
     {
+         private float _fireRate;
+         private float _nextFireTime;
+
         private RangeCombat _rangeCombatCmp;
 
         public RangeCombat RangeCombatCmp => _rangeCombatCmp;
 
-        public override void Awake()
+        protected override void Awake()
         {
             base.Awake();
 
@@ -34,11 +37,11 @@ namespace Character.Mage
 
                 HealthCmp.SliderCmp.value = HealthCmp.HealthPoints;
 
+                _fireRate = rangeCharacterStats.FireRate;
+
+                _nextFireTime = rangeCharacterStats.NextFireTime;
+
                 _rangeCombatCmp.RangeDamage = rangeCharacterStats.ProjectileDamage;
-
-                _rangeCombatCmp.FireRate = rangeCharacterStats.FireRate;
-
-                _rangeCombatCmp.NextFireTime = rangeCharacterStats.NextFireTime;
 
                 _rangeCombatCmp.ProjectileSpeed = rangeCharacterStats.ProjectileSpeed;
             }
@@ -46,8 +49,8 @@ namespace Character.Mage
             else
             {
                 Debug.LogWarning($"You choose no RangeCharacterStatsSO for this {this.name}." +
-                                        "Stats does not registered." +
-                                        " Set correct Stats - RangeCharacterStatsSO.");
+                                 "Stats does not registered." +
+                                 " Set correct Stats - RangeCharacterStatsSO.");
             }
         }
     }

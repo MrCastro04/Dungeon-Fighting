@@ -16,13 +16,13 @@ namespace Character.Mage
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        public void Instantiate(Vector3 direction, float flyingSpeed , float damage)
+        public void Instantiate( float flyingSpeed , float damage , Vector3 direction)
         {
-            _direction = direction;
-
             _flyingSpeed = flyingSpeed;
 
             _damage = damage;
+
+            _direction = direction;
         }
 
         private void FixedUpdate()
@@ -43,7 +43,7 @@ namespace Character.Mage
                 FireballPool.Instance.ReturnToPool(this);
             }
 
-            else
+            else if(other.CompareTag(Constants.TAG_OBSTACLE))
             {
                 FireballPool.Instance.ReturnToPool(this);
             }

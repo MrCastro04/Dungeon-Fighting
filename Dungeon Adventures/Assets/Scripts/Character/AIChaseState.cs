@@ -16,6 +16,7 @@ namespace Character
             if (enemy.DistanceFromPlayer < enemy.AttackRange)
             {
                 enemy.SwitchState(enemy.AttackState);
+
                 return;
             }
 

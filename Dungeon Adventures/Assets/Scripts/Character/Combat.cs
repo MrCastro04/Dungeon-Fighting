@@ -13,7 +13,7 @@ namespace Character
         protected Animator _animator;
         protected bool _isAttacking = false;
 
-        protected void Awake()
+        protected virtual void Awake()
         {
             _animator = GetComponentInChildren<Animator>();
 
