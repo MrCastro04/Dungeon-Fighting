@@ -18,8 +18,6 @@ namespace Character
         protected AIAttackState _attackState = new();
         protected AIDefeatState _defeatState = new();
 
-        [field: SerializeField] public float AttackRange { get; private set; }
-
         public AIChaseState ChaseState => _chaseState;
         public AIAttackState AttackState => _attackState;
         public GameObject Player { get; protected set; }
@@ -29,6 +27,7 @@ namespace Character
         public Vector3 OriginalPosition { get; protected set; }
         public Vector3 OriginalRotation { get; protected set; }
         public float DistanceFromPlayer { get; protected set; }
+        public float AttackRange { get; protected set; }
 
         public virtual void Awake()
         {
@@ -64,11 +63,13 @@ namespace Character
         {
             _currentState.EnterState(this);
 
-            HealthCmp.HealthPoints = _enemyStats.healthPoints;
+            HealthCmp.HealthPoints = _enemyStats.HealthPoints;
 
-            CombatCmp.Damage = _enemyStats.damage;
+            CombatCmp.Damage = _enemyStats.MeeleDamage;
 
-            MovementCmp.NavMeshAgent.speed = _enemyStats.speed;
+            MovementCmp.NavMeshAgent.speed = _enemyStats.Speed;
+
+            AttackRange = _enemyStats.AttackRange;
 
             HealthCmp.SliderCmp.maxValue = HealthCmp.HealthPoints;
 

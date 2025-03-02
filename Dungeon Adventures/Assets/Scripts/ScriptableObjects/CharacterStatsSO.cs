@@ -10,8 +10,9 @@ namespace ScriptableObjects
 
     public class CharacterStatsSO : ScriptableObject
     {
-       [Min(5)] public float healthPoints;
-       [Min(0)] public float speed;
-       public float damage;
+       [Min(5f)] public float HealthPoints;
+       [Min(2f)] public float AttackRange;
+       [Min(0f)] public float Speed;
+       public float MeeleDamage;
     }
 }

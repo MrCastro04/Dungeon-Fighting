@@ -13,10 +13,19 @@ namespace Character
         {
             if (enemy.Player == null)
             {
-                enemy.CombatCmp.CancelAttack();
+                if (enemy is EnemyMageController mageController)
+                {
+                    mageController.RangeCombatCmp.CancelAttack();
+                }
+
+                else
+                {
+                    enemy.CombatCmp.CancelAttack();
+                }
 
                 return;
             }
+
 
             if (enemy.DistanceFromPlayer > enemy.AttackRange)
             {

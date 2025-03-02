@@ -9,32 +9,32 @@ namespace Character
     {
         [NonSerialized] public float Damage;
 
-        private BubbleEvent _bubbleEvent;
-        private Animator _animator;
-        private bool _isAttacking = false;
+        protected BubbleEvent _bubbleEvent;
+        protected Animator _animator;
+        protected bool _isAttacking = false;
 
-        private void Awake()
+        protected void Awake()
         {
             _animator = GetComponentInChildren<Animator>();
 
             _bubbleEvent = GetComponentInChildren<BubbleEvent>();
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             _bubbleEvent.OnBubbleStartAttack += HandleBubbleStartAttack;
             _bubbleEvent.OnBubbleEndAttack += HandleBubbleEndAttack;
             _bubbleEvent.OnBubbleHitAttack += HandleBubbleHitAttack;
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             _bubbleEvent.OnBubbleStartAttack -= HandleBubbleStartAttack;
             _bubbleEvent.OnBubbleEndAttack -= HandleBubbleEndAttack;
             _bubbleEvent.OnBubbleHitAttack -= HandleBubbleHitAttack;
         }
 
-        public void HandleAttack(InputAction.CallbackContext context)
+        public void HandleAttack (InputAction.CallbackContext context)
         {
             if (context.performed == false) return;
 
@@ -55,12 +55,12 @@ namespace Character
             _animator.ResetTrigger(Constants.ANIMATOR_ATTACK_PARAM);
         }
 
-        private void HandleBubbleStartAttack()
+        protected virtual void HandleBubbleStartAttack()
         {
             _isAttacking = true;
         }
 
-        private void HandleBubbleEndAttack()
+         protected void HandleBubbleEndAttack()
         {
             _isAttacking = false;
         }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f91aa4c7d57f1844afbd27f0aefdd6a, type: 3}
   m_Name: Blue Skeleton
   m_EditorClassIdentifier: 
-  healthPoints: 20
-  damage: 5
-  speed: 2
+  HealthPoints: 15
+  AttackRange: 3
+  Speed: 2
+  MeeleDamage: 5

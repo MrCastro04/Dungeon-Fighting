@@ -43,11 +43,11 @@ namespace Character
 
         private void Start()
         {
-            _healthCmp.HealthPoints = _playerStats.healthPoints;
+            _healthCmp.HealthPoints = _playerStats.HealthPoints;
 
-            _combatCmp.Damage = _playerStats.damage;
+            _combatCmp.Damage = _playerStats.MeeleDamage;
 
-            _agentCmp.speed = _playerStats.speed;
+            _agentCmp.speed = _playerStats.Speed;
 
             EventManager.RaiseChangePlayerHealth(_healthCmp.HealthPoints);
 

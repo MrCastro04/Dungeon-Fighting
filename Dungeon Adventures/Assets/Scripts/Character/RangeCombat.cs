@@ -1,20 +1,39 @@
 using System;
 using UnityEngine;
 
-public class RangeCombat : MonoBehaviour
+namespace Character
 {
- [NonSerialized] public float RangeDamage;
- [NonSerialized] public float FireRate;
- [NonSerialized] public float NextFireTime;
- [NonSerialized] public float ProjectileSpeed;
+    public class RangeCombat : Combat
+    {
+        [SerializeField] private Transform _firePoint;
 
- public void StartAttack()
- {
-  Debug.Log("Range Combat Start Attack");
- }
+        [NonSerialized] public float RangeDamage;
+        [NonSerialized] public float FireRate;
+        [NonSerialized] public float NextFireTime;
+        [NonSerialized] public float ProjectileSpeed;
 
- public void CancelAttack()
- {
-  Debug.Log("Range Combat Cancel Attack");
- }
+        protected override void OnEnable()
+        {
+            _bubbleEvent.OnBubbleStartAttack += HandleBubbleStartAttack;
+            _bubbleEvent.OnBubbleEndAttack += HandleBubbleEndAttack;
+        }
+
+        protected override void OnDisable()
+        {
+            _bubbleEvent.OnBubbleStartAttack -= HandleBubbleStartAttack;
+            _bubbleEvent.OnBubbleEndAttack -= HandleBubbleEndAttack;
+        }
+
+        protected override void HandleBubbleStartAttack()
+        {
+            base.HandleBubbleStartAttack();
+
+            ShootFireball();
+        }
+
+        private void ShootFireball()
+        {
+            Debug.Log("Shoot Fireball");
+        }
+    }
 }

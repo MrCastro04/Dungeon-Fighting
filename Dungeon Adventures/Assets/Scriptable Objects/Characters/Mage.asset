@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48da770793e345618e9db86afa181c20, type: 3}
   m_Name: Mage
   m_EditorClassIdentifier: 
-  healthPoints: 15
-  speed: 2
-  damage: 0
+  HealthPoints: 30
+  AttackRange: 20
+  Speed: 2
+  MeeleDamage: 0
   FireRate: 2
   NextFireTime: 2
   ProjectileSpeed: 5
