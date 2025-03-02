@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Character.Mage
 {
     [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Collider))]
     public class Fireball : MonoBehaviour
     {
         private FireballPool _fireballPool;
@@ -46,7 +47,7 @@ namespace Character.Mage
                 _fireballPool.ReturnToPool(this);
             }
 
-            else if(other.CompareTag(Constants.TAG_OBSTACLE))
+            else if (other.CompareTag(Constants.TAG_OBSTACLE) || other.GetComponent<Fireball>())
             {
                 _fireballPool.ReturnToPool(this);
             }
