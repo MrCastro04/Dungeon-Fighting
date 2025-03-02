@@ -6,6 +6,7 @@ namespace Character.Mage
     [RequireComponent(typeof(Rigidbody))]
     public class Fireball : MonoBehaviour
     {
+        private FireballPool _fireballPool;
         private Rigidbody _rigidbody;
         private Vector3 _direction;
         private float _flyingSpeed;
@@ -16,13 +17,15 @@ namespace Character.Mage
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        public void Instantiate( float flyingSpeed , float damage , Vector3 direction)
+        public void Instantiate( float flyingSpeed , float damage , Vector3 direction , FireballPool fireballPool )
         {
             _flyingSpeed = flyingSpeed;
 
             _damage = damage;
 
             _direction = direction;
+
+            _fireballPool = fireballPool;
         }
 
         private void FixedUpdate()
@@ -40,12 +43,12 @@ namespace Character.Mage
 
                 healthCmp.TakeDamage(_damage);
 
-                FireballPool.Instance.ReturnToPool(this);
+                _fireballPool.ReturnToPool(this);
             }
 
             else if(other.CompareTag(Constants.TAG_OBSTACLE))
             {
-                FireballPool.Instance.ReturnToPool(this);
+                _fireballPool.ReturnToPool(this);
             }
         }
     }

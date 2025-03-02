@@ -13,10 +13,13 @@ namespace Character
         [NonSerialized] public float ProjectileSpeed = 10f;
 
         private GameObject _player;
+        private FireballPool _fireballPool;
 
         protected override void Awake()
         {
             base.Awake();
+
+            _fireballPool = GetComponent<FireballPool>();
 
             _player = _player == null ? GetPlayer() : _player;
         }
@@ -53,13 +56,13 @@ namespace Character
         {
             if(_player == null) return;
 
-            Fireball fireball = FireballPool.Instance.GetFireball();
+            Fireball fireball = _fireballPool.GetFireball();
 
             fireball.transform.position = _firePoint.position;
 
             Vector3 direction = (_player.transform.position - transform.position).normalized;
 
-            fireball.Instantiate( ProjectileSpeed , RangeDamage , direction);
+            fireball.Instantiate( ProjectileSpeed , RangeDamage , direction , _fireballPool);
         }
     }
 }

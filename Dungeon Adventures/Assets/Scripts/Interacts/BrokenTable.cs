@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Character;
+using Character.Mage;
 using Core;
 using ScriptableObjects;
 using Uitility;
@@ -28,7 +29,7 @@ namespace Interacts
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.CompareTag(Constants.TAG_ENEMY)) return;
+            if( other.CompareTag(Constants.TAG_ENEMY) || other.gameObject.GetComponent<Fireball>() ) return;
 
             bool playerHasKey = false;
 

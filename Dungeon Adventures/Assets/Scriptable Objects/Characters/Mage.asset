@@ -13,10 +13,8 @@ MonoBehaviour:
   m_Name: Mage
   m_EditorClassIdentifier: 
   HealthPoints: 30
-  AttackRange: 20
+  AttackRange: 15
   Speed: 2
   MeeleDamage: 0
-  FireRate: 10
-  NextFireTime: 10
   ProjectileSpeed: 5
   ProjectileDamage: 5

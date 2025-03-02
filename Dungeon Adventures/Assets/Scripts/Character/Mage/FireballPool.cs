@@ -5,25 +5,14 @@ namespace Character.Mage
 {
     public class FireballPool : MonoBehaviour
     {
-        public static FireballPool Instance;
-
         [SerializeField] private Fireball _fireballPrefab;
-        [SerializeField] private int _poolSize = 5;
+        [SerializeField, Min(3f)] private int _poolSize;
 
         private Queue <Fireball> _fireballPool = new Queue<Fireball>();
 
         private void Awake()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-
-                PopulatePool();
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            PopulatePool();
         }
 
         private void PopulatePool()
