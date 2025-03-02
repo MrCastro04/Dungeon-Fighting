@@ -7,9 +7,6 @@ namespace Character.Mage
 
     public class EnemyMageController : EnemyController
     {
-         private float _fireRate;
-         private float _nextFireTime;
-
         private RangeCombat _rangeCombatCmp;
 
         public RangeCombat RangeCombatCmp => _rangeCombatCmp;
@@ -36,10 +33,6 @@ namespace Character.Mage
                 HealthCmp.SliderCmp.maxValue = HealthCmp.HealthPoints;
 
                 HealthCmp.SliderCmp.value = HealthCmp.HealthPoints;
-
-                _fireRate = rangeCharacterStats.FireRate;
-
-                _nextFireTime = rangeCharacterStats.NextFireTime;
 
                 _rangeCombatCmp.RangeDamage = rangeCharacterStats.ProjectileDamage;
 

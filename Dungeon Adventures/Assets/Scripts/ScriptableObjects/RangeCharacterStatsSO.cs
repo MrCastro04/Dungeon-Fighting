@@ -10,8 +10,6 @@ namespace ScriptableObjects
     )]
     public class RangeCharacterStatsSO : CharacterStatsSO
     {
-        [Min(2f)] public float FireRate;
-        [Min(2f)] public float NextFireTime;
         [Min(5f)] public float ProjectileSpeed;
         [Min(5f)] public float ProjectileDamage;
     }

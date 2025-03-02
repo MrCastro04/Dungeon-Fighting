@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthPoints: 30
   AttackRange: 3
-  Speed: 3
+  Speed: 4
   MeeleDamage: 10

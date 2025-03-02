@@ -11,7 +11,8 @@ namespace Character
 
         protected BubbleEvent _bubbleEvent;
         protected Animator _animator;
-        protected bool _isAttacking = false;
+
+        public bool IsAttacking { get; protected set; }
 
         protected virtual void Awake()
         {
@@ -43,7 +44,7 @@ namespace Character
 
         public void StartAttack()
         {
-            if (_isAttacking) return;
+            if (IsAttacking) return;
 
             _animator.SetFloat(Constants.ANIMATOR_SPEED_PARAM, 0f);
 
@@ -57,12 +58,12 @@ namespace Character
 
         protected virtual void HandleBubbleStartAttack()
         {
-            _isAttacking = true;
+            IsAttacking = true;
         }
 
          protected void HandleBubbleEndAttack()
         {
-            _isAttacking = false;
+            IsAttacking = false;
         }
 
         private void HandleBubbleHitAttack()

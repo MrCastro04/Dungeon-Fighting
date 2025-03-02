@@ -49,7 +49,7 @@ namespace Character
 
         public void HandlerAbility(InputAction.CallbackContext context)
         {
-            if (context.performed == false || _isAbilityActive || !IsAbilityReady())
+            if (context.performed == false || _isAbilityActive || !IsAbilityReady() || _combatCmp.IsAttacking)
             {
                 return;
             }

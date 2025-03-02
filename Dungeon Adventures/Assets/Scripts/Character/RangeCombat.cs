@@ -51,6 +51,8 @@ namespace Character
 
         private void ShootFireball()
         {
+            if(_player == null) return;
+
             Fireball fireball = FireballPool.Instance.GetFireball();
 
             fireball.transform.position = _firePoint.position;
