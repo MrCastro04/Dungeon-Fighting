@@ -9,7 +9,7 @@ namespace Core
     [RequireComponent(typeof(Collider))]
     public class Portal : MonoBehaviour
     {
-        [SerializeField] private ItemSO _itemToEnterThePortal;
+         [SerializeField] private ItemSO _itemToEnterThePortal;
          [SerializeField] private Transform _spawnPoint;
          [SerializeField] private int _nextScene;
 
@@ -59,9 +59,9 @@ namespace Core
 
              List<ItemSO> playerItems = playerController.Items;
 
-             playerItems.ForEach((ItemSO item) =>
+             playerItems.ForEach((ItemSO playerItem) =>
              {
-                 if (item.Name == _itemToEnterThePortal.Name)
+                 if (playerItem.Name == _itemToEnterThePortal.Name)
                  {
                      HasKey = true;
                  }
