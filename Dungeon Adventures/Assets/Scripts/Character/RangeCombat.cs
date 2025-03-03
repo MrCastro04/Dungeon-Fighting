@@ -62,7 +62,7 @@ namespace Character
 
             Vector3 direction = (_player.transform.position - transform.position).normalized;
 
-            fireball.Instantiate( ProjectileSpeed , RangeDamage , direction , _fireballPool);
+            fireball.Instantiate( ProjectileSpeed , RangeDamage , direction , _fireballPool );
         }
     }
 }

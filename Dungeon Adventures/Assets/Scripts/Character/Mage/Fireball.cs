@@ -46,7 +46,7 @@ namespace Character.Mage
                 _fireballPool.ReturnToPool(this);
             }
 
-            else if(other.CompareTag(Constants.TAG_OBSTACLE))
+            else if(other.CompareTag(Constants.TAG_OBSTACLE) || other.GetComponent<Fireball>())
             {
                 _fireballPool.ReturnToPool(this);
             }
