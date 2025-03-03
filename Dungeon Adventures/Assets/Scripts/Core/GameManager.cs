@@ -73,11 +73,20 @@ namespace Core
 
             if(isAlive) return;
 
-            List<string> defeatedEnemies = new List<string>();
+            string key = "DefeatedEnemies";
+
+            List<string> defeatedEnemies = PlayerPrefsUtility.GetString(key);
 
             defeatedEnemies.Add(savedEnemyId);
 
-            //
+            PlayerPrefsUtility.SetString(key, defeatedEnemies);
+
+            ///
+            ///
+            ///
+            string s = PlayerPrefs.GetString(key);
+
+            Debug.Log(s);
         }
     }
 }
