@@ -32,7 +32,7 @@ namespace Core
             allEnemies.ForEach((GameObject enemy) =>
             {
                 EnemyController enemyController = enemy.GetComponent<EnemyController>();
-                
+
                 _allSceneEnemiesId.Add(enemyController.EnemyId);
             });
         }
@@ -70,7 +70,7 @@ namespace Core
 
             if(isAlive) return;
 
-            string key = "DefeatedEnemies";
+            string key = Constants.PREF_DEFEATED_ENEMIES;
 
             List<string> defeatedEnemies = PlayerPrefsUtility.GetString(key);
 

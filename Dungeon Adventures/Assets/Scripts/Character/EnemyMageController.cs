@@ -20,19 +20,9 @@ namespace Character.Mage
 
         public override void Start()
         {
-            _currentState.EnterState(this);
-
             if (_enemyStats is RangeCharacterStatsSO rangeCharacterStats)
             {
-                HealthCmp.HealthPoints = _enemyStats.HealthPoints;
-
-                MovementCmp.NavMeshAgent.speed = _enemyStats.Speed;
-
-                AttackRange = _enemyStats.AttackRange;
-
-                HealthCmp.SliderCmp.maxValue = HealthCmp.HealthPoints;
-
-                HealthCmp.SliderCmp.value = HealthCmp.HealthPoints;
+                base.Start();
 
                 _rangeCombatCmp.RangeDamage = rangeCharacterStats.ProjectileDamage;
 

@@ -63,11 +63,7 @@ namespace Character
 
         public virtual void Start()
         {
-            _currentState.EnterState(this);
-
             HealthCmp.HealthPoints = _enemyStats.HealthPoints;
-
-            CombatCmp.Damage = _enemyStats.MeeleDamage;
 
             MovementCmp.NavMeshAgent.speed = _enemyStats.Speed;
 
@@ -76,6 +72,13 @@ namespace Character
             HealthCmp.SliderCmp.maxValue = HealthCmp.HealthPoints;
 
             HealthCmp.SliderCmp.value = HealthCmp.HealthPoints;
+
+            if (CombatCmp != null)
+            {
+                CombatCmp.Damage = _enemyStats.MeeleDamage;
+            }
+
+            _currentState.EnterState(this);
         }
 
         protected virtual void Update()

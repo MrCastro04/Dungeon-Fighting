@@ -21,6 +21,8 @@ namespace Uitility
         public const string PREF_PLAYER_DAMAGE = "PlayerDamage";
         public const string PREF_PLAYER_SPEED = "PlayerSpeed";
         public const string PREF_PLAYER_POTION_COUNT = "PlayerPotionCount";
+        public const string PREF_DEFEATED_ENEMIES = "DefeatedEnemies";
+        public const string PREF_PLAYER_ITEMS = "PlayerItems";
 
 
         // TAGS
@@ -46,7 +48,6 @@ namespace Uitility
         public const string UI_TOOLKIT_VISUAL_ELEMENT_KEY_IMAGE = "key";
 
         public const string UI_TOOLKIT_LABEL_KEY_NOT_FOUND_MESSAGE = "key-not-found-message";
-
         public const string UI_TOOLKIT_LABEL_HEALTH_AMOUNT = "health-amount";
         public const string UI_TOOLKIT_LABEL_POTIONS_COUNT = "potions-count";
 
