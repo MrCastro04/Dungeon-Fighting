@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Core;
 using ScriptableObjects;
+using Uitility;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,6 +15,7 @@ namespace Character
 
     public class PlayerController : MonoBehaviour
     {
+
         [SerializeField] private CharacterStatsSO _playerStats;
 
         [NonSerialized] public List<ItemSO> Items = new List<ItemSO>();
@@ -21,6 +23,10 @@ namespace Character
         private Health _healthCmp;
         private Combat _combatCmp;
         private NavMeshAgent _agentCmp;
+
+        public Health HealthCmp => _healthCmp;
+        public Combat CombatCmp => _combatCmp;
+        public NavMeshAgent AgentCmp => _agentCmp;
 
         private void Awake()
         {
@@ -43,11 +49,19 @@ namespace Character
 
         private void Start()
         {
-            _healthCmp.HealthPoints = _playerStats.HealthPoints;
+            if (PlayerPrefs.HasKey(Constants.PREF_PLAYER_HEALTH))
+            {
+                _healthCmp.HealthPoints = PlayerPrefs.GetFloat(Constants.PREF_PLAYER_HEALTH);
+            }
 
-            _combatCmp.Damage = _playerStats.MeeleDamage;
+            else
+            {
+                _healthCmp.HealthPoints = _playerStats.HealthPoints;
 
-            _agentCmp.speed = _playerStats.Speed;
+                _combatCmp.Damage = _playerStats.MeeleDamage;
+
+                _agentCmp.speed = _playerStats.Speed;
+            }
 
             EventManager.RaiseChangePlayerHealth(_healthCmp.HealthPoints);
 

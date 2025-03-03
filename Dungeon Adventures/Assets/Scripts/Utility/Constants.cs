@@ -16,6 +16,12 @@ namespace Uitility
         public const string SO_ITEM_MENU_NAME = "Scriptable Objects/Item";
 
 
+        // PLAYER PREFS
+        public const string PREF_PLAYER_HEALTH = "PlayerHealth";
+        public const string PREF_PLAYER_DAMAGE = "PlayerDamage";
+        public const string PREF_PLAYER_SPEED = "PlayerSpeed";
+
+
         // TAGS
         public const string TAG_PLAYER = "Player";
         public const string TAG_ENEMY = "Enemy";
