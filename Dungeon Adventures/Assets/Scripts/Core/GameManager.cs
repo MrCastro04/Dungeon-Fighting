@@ -10,8 +10,8 @@ namespace Core
 
     public class GameManager : MonoBehaviour
     {
-        private List<string> _allSceneEnemiesId = new ();
         private List<GameObject> _aliveEnemies = new ();
+        private List<string> _allSceneEnemiesId = new ();
 
         private void OnEnable()
         {
@@ -32,11 +32,8 @@ namespace Core
             allEnemies.ForEach((GameObject enemy) =>
             {
                 EnemyController enemyController = enemy.GetComponent<EnemyController>();
-
-                if (enemyController != null)
-                {
-                    _allSceneEnemiesId.Add(enemyController.EnemyId);
-                }
+                
+                _allSceneEnemiesId.Add(enemyController.EnemyId);
             });
         }
 
@@ -80,13 +77,6 @@ namespace Core
             defeatedEnemies.Add(savedEnemyId);
 
             PlayerPrefsUtility.SetString(key, defeatedEnemies);
-
-            ///
-            ///
-            ///
-            string s = PlayerPrefs.GetString(key);
-
-            Debug.Log(s);
         }
     }
 }
