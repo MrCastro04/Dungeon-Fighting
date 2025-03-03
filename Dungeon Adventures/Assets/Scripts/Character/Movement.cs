@@ -31,20 +31,16 @@ namespace Character
 
         private void OnEnable()
         {
-            if (CompareTag(Constants.TAG_PLAYER))
-            {
-                _bubbleEvent.OnBubbleStartAttack += HandleBubbleStartAttack;
-                _bubbleEvent.OnBubbleEndAttack += HandleBubbleEndAttack;
-            }
+            _bubbleEvent.OnBubbleStartAttack += HandleBubbleStartAttack;
+            _bubbleEvent.OnBubbleEndAttack += HandleBubbleEndAttack;
+            _bubbleEvent.OnBubbleStartAnimationDefeat += HandleBubbleStartAnimationDefeat;
         }
 
         private void OnDisable()
         {
-            if (CompareTag(Constants.TAG_PLAYER))
-            {
-                _bubbleEvent.OnBubbleStartAttack -= HandleBubbleStartAttack;
-                _bubbleEvent.OnBubbleEndAttack -= HandleBubbleEndAttack;
-            }
+            _bubbleEvent.OnBubbleStartAttack -= HandleBubbleStartAttack;
+            _bubbleEvent.OnBubbleEndAttack -= HandleBubbleEndAttack;
+            _bubbleEvent.OnBubbleStartAnimationDefeat -= HandleBubbleStartAnimationDefeat;
         }
 
         private void Update()
@@ -163,6 +159,11 @@ namespace Character
             _agent.speed = _originAgentSpeed;
 
             _canRotate = true;
+        }
+
+        private void HandleBubbleStartAnimationDefeat()
+        {
+            HandleBubbleStartAttack();
         }
     }
 }

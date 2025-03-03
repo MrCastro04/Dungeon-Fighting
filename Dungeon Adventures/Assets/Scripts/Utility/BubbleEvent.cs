@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +13,7 @@ namespace Uitility
         public event UnityAction OnBubbleAbilityEnd = () => {};
         public event UnityAction OnBubbleHitAbilityAttack = () => {};
         public event UnityAction OnBubbleDefeat = () => {};
+        public event UnityAction OnBubbleStartAnimationDefeat = () => { };
 
         private void OnStartAttack()
         {
@@ -46,6 +48,11 @@ namespace Uitility
         private void OnAbilityEnd()
         {
             OnBubbleAbilityEnd?.Invoke();
+        }
+
+        private void OnStartAnimationDefeat()
+        {
+            OnBubbleStartAnimationDefeat?.Invoke();
         }
     }
 }
