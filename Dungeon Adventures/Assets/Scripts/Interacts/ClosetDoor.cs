@@ -55,7 +55,7 @@ namespace Interacts
             if (playerController == null)
                 return false;
 
-            List<ItemSO> playerItems = playerController.Items;
+            List<ItemSO> playerItems = playerController.InventoryCmp.Items;
 
             playerItems.ForEach((ItemSO playerItem) =>
             {

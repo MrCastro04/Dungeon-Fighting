@@ -29,30 +29,19 @@ namespace Interacts
 
         private void OnTriggerEnter(Collider other)
         {
-            if( other.CompareTag(Constants.TAG_ENEMY) || other.gameObject.GetComponent<Fireball>() ) return;
+            if( other.CompareTag(Constants.TAG_ENEMY) || other.gameObject.GetComponent<Fireball>() )
+                return;
 
-            bool playerHasKey = false;
+            Inventory playerInventory = other.GetComponent<PlayerController>().InventoryCmp;
 
-            List<ItemSO> playerInventory = other.GetComponent<PlayerController>().Items;
+            if (playerInventory.HasDesiredItem(_item))
+            {
+                _canvasCmp.enabled = false;
 
-           playerInventory.ForEach((ItemSO playerItem) =>
-           {
-               if (playerItem.Name == _item.Name)
-               {
-                   playerHasKey = true;
-                   return;
-               }
+                return;
+            }
 
-               playerHasKey = false;
-           });
-
-           if (playerHasKey)
-           {
-               _canvasCmp.enabled = false;
-               return;
-           }
-
-           _canvasCmp.enabled = true;
+            _canvasCmp.enabled = true;
         }
 
         private void OnTriggerExit(Collider other)
