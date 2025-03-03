@@ -62,11 +62,6 @@ namespace Character
             EventManager.RaiseChangePlayerHealth(_healthCmp.HealthPoints);
 
             EventManager.RaiseChangePlayerPotionCount(_healthCmp.PotionCount);
-
-            if (_inventoryCmp.Items.Count == 0)
-            {
-                Debug.Log("List is empty");
-            }
         }
     }
 }

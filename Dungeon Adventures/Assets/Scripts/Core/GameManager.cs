@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Character;
 using Uitility;
 using UnityEngine;
@@ -9,6 +10,9 @@ namespace Core
 
     public class GameManager : MonoBehaviour
     {
+        private List<string> _allSceneEnemiesId = new ();
+        private List<GameObject> _aliveEnemies = new ();
+
         private void OnEnable()
         {
             EventManager.OnPortalEnter += HandlerPortalEnter;
@@ -17,6 +21,23 @@ namespace Core
         private void OnDisable()
         {
             EventManager.OnPortalEnter -= HandlerPortalEnter;
+        }
+
+        private void Start()
+        {
+            List<GameObject> allEnemies = new();
+
+            allEnemies.AddRange(GameObject.FindGameObjectsWithTag(Constants.TAG_ENEMY));
+
+            allEnemies.ForEach((GameObject enemy) =>
+            {
+                EnemyController enemyController = enemy.GetComponent<EnemyController>();
+
+                if (enemyController != null)
+                {
+                    _allSceneEnemiesId.Add(enemyController.EnemyId);
+                }
+            });
         }
 
         private void HandlerPortalEnter(Collider player, int nextSceneIndex)
@@ -29,9 +50,34 @@ namespace Core
 
             PlayerPrefs.SetFloat(Constants.PREF_PLAYER_SPEED , playerController.AgentCmp.speed);
 
-            PlayerPrefs.SetInt(Constants.PREF_PLAYER_POTION_COUNT , playerController.HealthCmp.PotionCount);
+            PlayerPrefs.SetInt(Constants.PREF_PLAYER_POTION_COUNT, playerController.HealthCmp.PotionCount);
 
+            _aliveEnemies.AddRange(GameObject.FindGameObjectsWithTag(Constants.TAG_ENEMY));
 
+            _allSceneEnemiesId.ForEach(SaveDefeatedEnemies);
+        }
+
+        private void SaveDefeatedEnemies(string savedEnemyId)
+        {
+            bool isAlive = false;
+
+            _aliveEnemies.ForEach((aliveEnemy) =>
+            {
+                EnemyController enemyController = aliveEnemy.GetComponent<EnemyController>();
+
+                if (enemyController.EnemyId == savedEnemyId)
+                {
+                    isAlive = true;
+                }
+            });
+
+            if(isAlive) return;
+
+            List<string> defeatedEnemies = new List<string>();
+
+            defeatedEnemies.Add(savedEnemyId);
+
+            //
         }
     }
 }

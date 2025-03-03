@@ -8,7 +8,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="player-info-container" style="position: absolute; height: 138px; width: 411px; top: 884px; left: 527px; flex-direction: row; display: flex;">
+    <ui:VisualElement name="player-info-container" style="position: absolute; height: 138px; width: 411px; top: 884px; left: 527px; flex-direction: row; display: none;">
         <ui:VisualElement name="heal-potion" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/HealPotion-removebg-preview.png?fileID=2800000&amp;guid=9a8b3d40060271446874793b388c1cb9&amp;type=3#HealPotion-removebg-preview&quot;); margin-right: 30px; justify-content: flex-end; width: -139px; top: -30px;">
             <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="potions-count" style="align-self: flex-end; font-size: 50px; -unity-font-style: bold; -unity-text-align: upper-center;" />
         </ui:VisualElement>
@@ -17,7 +17,7 @@
         </ui:VisualElement>
         <ui:VisualElement name="key" style="flex-grow: 1; left: -465px; height: 93px; width: -5px;" />
     </ui:VisualElement>
-    <ui:VisualElement name="player-ability-container" style="flex-grow: 1; left: 978px; position: absolute; height: 378px; width: 779px; top: 745px; display: flex; background-color: rgba(0, 0, 0, 0);">
+    <ui:VisualElement name="player-ability-container" style="flex-grow: 1; left: 978px; position: absolute; height: 378px; width: 779px; top: 745px; display: none; background-color: rgba(0, 0, 0, 0);">
         <ui:VisualElement name="player-ability-icon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/playerAbilityIcon-removebg-preview.png?fileID=2800000&amp;guid=86710b9d81995ad42b3a822241ccbaa1&amp;type=3#playerAbilityIcon-removebg-preview&quot;);" />
     </ui:VisualElement>
     <ui:Label tabindex="-1" text="You should find a key" parse-escape-sequences="true" display-tooltip-when-elided="true" name="key-not-found-message" style="top: 217px; font-size: 70px; -unity-font-style: bold; -unity-text-align: middle-center; color: rgb(255, 167, 0); display: none;" />

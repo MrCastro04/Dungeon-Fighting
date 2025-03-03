@@ -18,6 +18,8 @@ namespace Character
         protected AIAttackState _attackState = new();
         protected AIDefeatState _defeatState = new();
 
+        [field: SerializeField]  public string EnemyId { get; protected set; }
+
         public AIChaseState ChaseState => _chaseState;
         public AIAttackState AttackState => _attackState;
         public GameObject Player { get; protected set; }
