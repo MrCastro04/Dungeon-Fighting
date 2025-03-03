@@ -20,6 +20,7 @@ namespace Uitility
         public const string PREF_PLAYER_HEALTH = "PlayerHealth";
         public const string PREF_PLAYER_DAMAGE = "PlayerDamage";
         public const string PREF_PLAYER_SPEED = "PlayerSpeed";
+        public const string PREF_PLAYER_POTION_COUNT = "PlayerPotionCount";
 
 
         // TAGS

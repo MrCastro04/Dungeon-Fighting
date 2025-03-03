@@ -52,6 +52,12 @@ namespace Character
             if (PlayerPrefs.HasKey(Constants.PREF_PLAYER_HEALTH))
             {
                 _healthCmp.HealthPoints = PlayerPrefs.GetFloat(Constants.PREF_PLAYER_HEALTH);
+
+                _combatCmp.Damage = PlayerPrefs.GetFloat(Constants.PREF_PLAYER_DAMAGE);
+
+                _agentCmp.speed = PlayerPrefs.GetFloat(Constants.PREF_PLAYER_SPEED);
+
+                _healthCmp.PotionCount = PlayerPrefs.GetInt(Constants.PREF_PLAYER_POTION_COUNT);
             }
 
             else
@@ -66,6 +72,11 @@ namespace Character
             EventManager.RaiseChangePlayerHealth(_healthCmp.HealthPoints);
 
             EventManager.RaiseChangePlayerPotionCount(_healthCmp.PotionCount);
+
+            if (Items.Count == 0)
+            {
+                Debug.Log("List is empty");
+            }
         }
 
         private void HandlerPlayerGetItem(ItemSO item)
