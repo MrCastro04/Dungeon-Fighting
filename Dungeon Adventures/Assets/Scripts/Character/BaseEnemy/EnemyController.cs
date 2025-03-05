@@ -83,7 +83,7 @@ namespace Character.BaseEnemy
             _currentState.EnterState(this);
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             CalculateDistanceFromPlayer();
 

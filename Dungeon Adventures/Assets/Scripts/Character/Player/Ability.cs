@@ -59,7 +59,7 @@ namespace Character.Player
 
             _isAbilityActive = true;
 
-            _animatorCmp.SetBool(Constants.ANIMATOR_ABILITY_TOKEN, true);
+            _animatorCmp.SetBool(Constants.ANIMATOR_ABILITY_TOKEN, _isAbilityActive);
         }
 
         private void HandlerBubbleAbilityStart()
@@ -73,7 +73,7 @@ namespace Character.Player
             {
                 _isAbilityActive = false;
 
-                _animatorCmp.SetBool(Constants.ANIMATOR_ABILITY_TOKEN, false);
+                _animatorCmp.SetBool(Constants.ANIMATOR_ABILITY_TOKEN, _isAbilityActive);
 
                 _currentDuration = 0f;
 
