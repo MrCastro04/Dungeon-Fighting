@@ -11,7 +11,7 @@ namespace Character.BaseEnemy
     [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(Health))]
 
-    public class EnemyController : MonoBehaviour
+    public class EnemyController : MonoBehaviour , IController
     {
         [SerializeField] protected CharacterStatsSO _enemyStats;
 

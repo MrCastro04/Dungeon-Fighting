@@ -1,4 +1,5 @@
 using Character.BaseEnemy;
+using Core;
 using UnityEngine;
 
 namespace Character.Boss
@@ -8,7 +9,7 @@ namespace Character.Boss
 
     public class BossController : EnemyController
     {
-        public AIBossSecondPhase AiBossSecondPhase = new();
+        private AIBossSecondPhase _aiBossSecondPhase = new();
 
         private BossCombat _bossCombatCmp;
         private BossAbility _bossAbilityCmp;
@@ -23,6 +24,23 @@ namespace Character.Boss
             _bossCombatCmp = GetComponent<BossCombat>();
 
             _bossAbilityCmp = GetComponent<BossAbility>();
+        }
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            EventManager.OnBossEnterSecondPhase += HandlerBossEnterSecondPhase;
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            EventManager.OnBossEnterSecondPhase -= HandlerBossEnterSecondPhase;
+        }
+
+        private void HandlerBossEnterSecondPhase()
+        {
+            SwitchState(_aiBossSecondPhase);
         }
     }
 }

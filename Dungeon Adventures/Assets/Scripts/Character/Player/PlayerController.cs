@@ -14,7 +14,7 @@ namespace Character.Player
     [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(Ability))]
 
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour , IController
     {
         [SerializeField] private CharacterStatsSO _playerStats;
 

@@ -10,9 +10,9 @@ namespace Character.Player
     [RequireComponent(typeof(Combat))]
     public class Ability : MonoBehaviour
     {
-        [SerializeField] protected float _abilityDuration = 4f;
-        [SerializeField] protected float _abilityCooldown = 5f;
-        [SerializeField] protected float _hitRadius = 1.5f;
+        [SerializeField] private float _hitRadius = 1.5f;
+        [SerializeField] private float _abilityDuration = 4f;
+        [SerializeField] private float _abilityCooldown = 5f;
 
         private Combat _combatCmp;
         private BubbleEvent _bubbleEvent;

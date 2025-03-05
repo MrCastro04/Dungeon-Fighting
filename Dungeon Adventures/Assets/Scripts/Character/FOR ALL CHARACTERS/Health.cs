@@ -69,11 +69,11 @@ namespace Character.FOR_ALL_CHARACTERS
             }
         }
 
-        public bool IsBossHealthAtRequiredPercentage(BossController bossController, float requiredPercentage)
+        public bool IsHealthAtRequiredPercentage(IController anyController, float requiredPercentage)
         {
-            float bossOriginHealth = bossController.HealthCmp.OriginHealthPoints;
+            float bossOriginHealth = anyController.HealthCmp.OriginHealthPoints;
 
-            float bossCurrentHealth = bossController.HealthCmp.HealthPoints;
+            float bossCurrentHealth = anyController.HealthCmp.HealthPoints;
 
             float bossCurrentHealthPercent = Mathf.Clamp01(bossCurrentHealth / bossOriginHealth);
 

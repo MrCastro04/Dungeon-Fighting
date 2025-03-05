@@ -1,6 +1,6 @@
 using Character.Boss;
 using Character.Range_Enemy;
-using UnityEngine;
+using Core;
 
 namespace Character.BaseEnemy
 {
@@ -35,9 +35,9 @@ namespace Character.BaseEnemy
 
             if (enemy is BossController boss)
             {
-                if (boss.HealthCmp.IsBossHealthAtRequiredPercentage(boss, 0.5f))
+                if (boss.HealthCmp.IsHealthAtRequiredPercentage(boss, 0.5f))
                 {
-                    boss.SwitchState(boss.AiBossSecondPhase);
+                    EventManager.RaiseOnBossEnterSecondPhase();
 
                     return;
                 }

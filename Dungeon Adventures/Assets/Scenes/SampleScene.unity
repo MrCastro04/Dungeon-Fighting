@@ -2333,6 +2333,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4613586480511157970, guid: 8a3003bf0024c97499352a6cd5f9e7ec, type: 3}
+      propertyPath: _hitRadius
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7986233071948134691, guid: 8a3003bf0024c97499352a6cd5f9e7ec, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.97
