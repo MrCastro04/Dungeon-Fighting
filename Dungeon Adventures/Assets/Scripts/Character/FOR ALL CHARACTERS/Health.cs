@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-namespace Character
+namespace Character.FOR_ALL_CHARACTERS
 {
     public class Health : MonoBehaviour
     {

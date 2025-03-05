@@ -1,8 +1,8 @@
 using System;
-using Character.Mage;
+using Character.FOR_ALL_CHARACTERS;
 using UnityEngine;
 
-namespace Character
+namespace Character.Range_Enemy
 {
     [RequireComponent(typeof(FireballPool))]
     public class RangeCombat : Combat

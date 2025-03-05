@@ -1,7 +1,8 @@
+using Character.BaseEnemy;
 using ScriptableObjects;
 using UnityEngine;
 
-namespace Character.Mage
+namespace Character.Range_Enemy
 {
     [RequireComponent(typeof(RangeCombat))]
 
@@ -18,7 +19,7 @@ namespace Character.Mage
             _rangeCombatCmp = GetComponent<RangeCombat>();
         }
 
-        public override void Start()
+        protected override void Start()
         {
             if (_enemyStats is RangeCharacterStatsSO rangeCharacterStats)
             {

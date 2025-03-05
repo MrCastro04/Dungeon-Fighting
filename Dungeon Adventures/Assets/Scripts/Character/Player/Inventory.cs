@@ -4,7 +4,7 @@ using Core;
 using ScriptableObjects;
 using UnityEngine;
 
-namespace Character
+namespace Character.Player
 {
     public class Inventory : MonoBehaviour
     {

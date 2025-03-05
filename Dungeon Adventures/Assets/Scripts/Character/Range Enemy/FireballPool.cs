@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Character.Mage
+namespace Character.Range_Enemy
 {
     public class FireballPool : MonoBehaviour
     {

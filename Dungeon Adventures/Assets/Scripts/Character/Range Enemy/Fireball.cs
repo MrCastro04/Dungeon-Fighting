@@ -1,7 +1,9 @@
+using Character.FOR_ALL_CHARACTERS;
+using Character.Player;
 using Uitility;
 using UnityEngine;
 
-namespace Character.Mage
+namespace Character.Range_Enemy
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(Collider))]

@@ -1,10 +1,11 @@
+using Character.FOR_ALL_CHARACTERS;
 using Core;
 using ScriptableObjects;
 using Uitility;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Character
+namespace Character.Player
 {
     [RequireComponent(typeof(Health))]
     [RequireComponent(typeof(Combat))]

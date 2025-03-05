@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Character
+namespace Character.BaseEnemy
 {
     public class AIChaseState : AIBaseState
     {

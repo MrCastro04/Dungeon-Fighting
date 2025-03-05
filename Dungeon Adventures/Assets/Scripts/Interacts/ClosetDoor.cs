@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Character;
-using Character.Mage;
+using Character.Player;
+using Character.Range_Enemy;
 using Core;
 using ScriptableObjects;
 using Uitility;

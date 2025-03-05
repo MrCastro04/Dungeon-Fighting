@@ -1,6 +1,6 @@
-using Character.Mage;
+using Character.Range_Enemy;
 
-namespace Character
+namespace Character.BaseEnemy
 {
     public class AIAttackState : AIBaseState
     {

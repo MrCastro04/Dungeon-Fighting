@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
-namespace Character
+namespace Character.FOR_ALL_CHARACTERS
 {
     [RequireComponent(typeof(NavMeshAgent))]
     public class Movement : MonoBehaviour

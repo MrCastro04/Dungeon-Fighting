@@ -1,4 +1,4 @@
-namespace Character
+namespace Character.BaseEnemy
 {
     public abstract class AIBaseState
     {

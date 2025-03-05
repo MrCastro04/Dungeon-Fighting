@@ -1,10 +1,11 @@
 using System.Collections;
+using Character.FOR_ALL_CHARACTERS;
 using Core;
 using Uitility;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Character
+namespace Character.Player
 {
     [RequireComponent(typeof(Combat))]
     public class Ability : MonoBehaviour

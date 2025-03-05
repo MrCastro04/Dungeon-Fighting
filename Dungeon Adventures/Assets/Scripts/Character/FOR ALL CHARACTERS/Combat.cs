@@ -3,7 +3,7 @@ using Uitility;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Character
+namespace Character.FOR_ALL_CHARACTERS
 {
     public class Combat : MonoBehaviour
     {

@@ -1,9 +1,10 @@
-using Character.Mage;
+using Character.FOR_ALL_CHARACTERS;
+using Character.Range_Enemy;
 using ScriptableObjects;
 using Uitility;
 using UnityEngine;
 
-namespace Character
+namespace Character.BaseEnemy
 {
     [RequireComponent(typeof(Movement))]
     [RequireComponent(typeof(BoxCollider))]
@@ -61,7 +62,7 @@ namespace Character
             HealthCmp.OnStartEnemyDefeated -= HandleStartEnemyDefeated;
         }
 
-        public virtual void Start()
+        protected virtual void Start()
         {
             HealthCmp.HealthPoints = _enemyStats.HealthPoints;
 
@@ -81,7 +82,7 @@ namespace Character
             _currentState.EnterState(this);
         }
 
-        protected virtual void Update()
+        private void Update()
         {
             CalculateDistanceFromPlayer();
 
