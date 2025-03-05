@@ -1,3 +1,4 @@
+using Character.Boss;
 using Character.Range_Enemy;
 
 namespace Character.BaseEnemy
@@ -18,6 +19,11 @@ namespace Character.BaseEnemy
                     mageController.RangeCombatCmp.CancelAttack();
                 }
 
+                else if (enemy is BossController bossController)
+                {
+                    bossController.BossCombatCmp.CancelAttack();
+                }
+
                 else
                 {
                     enemy.CombatCmp.CancelAttack();
@@ -25,7 +31,6 @@ namespace Character.BaseEnemy
 
                 return;
             }
-
 
             if (enemy.DistanceFromPlayer > enemy.AttackRange)
             {
@@ -36,7 +41,15 @@ namespace Character.BaseEnemy
 
                 else
                 {
-                    (enemy as EnemyMageController)?.RangeCombatCmp.CancelAttack();
+                    if (enemy is EnemyMageController enemyMageController)
+                    {
+                        enemyMageController.RangeCombatCmp.CancelAttack();
+                    }
+
+                    else if (enemy is BossController bossController)
+                    {
+                        bossController.BossCombatCmp.CancelAttack();
+                    }
                 }
 
                 enemy.SwitchState(enemy.ChaseState);
@@ -53,7 +66,15 @@ namespace Character.BaseEnemy
 
             else
             {
-                (enemy as EnemyMageController)?.RangeCombatCmp.StartAttack();
+                if (enemy is EnemyMageController enemyMageController)
+                {
+                    enemyMageController.RangeCombatCmp.StartAttack();
+                }
+
+                else if (enemy is BossController bossController)
+                {
+                    bossController.BossCombatCmp.StartAttack();
+                }
             }
         }
     }

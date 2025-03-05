@@ -66,7 +66,7 @@ namespace Character.FOR_ALL_CHARACTERS
             IsAttacking = false;
         }
 
-        private void HandleBubbleHitAttack()
+        protected virtual void HandleBubbleHitAttack()
         {
             var targets = Physics.BoxCastAll(
 

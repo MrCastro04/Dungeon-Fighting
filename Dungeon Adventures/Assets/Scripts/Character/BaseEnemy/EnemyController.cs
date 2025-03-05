@@ -1,3 +1,4 @@
+using Character.Boss;
 using Character.FOR_ALL_CHARACTERS;
 using Character.Range_Enemy;
 using ScriptableObjects;
@@ -46,7 +47,7 @@ namespace Character.BaseEnemy
 
             HealthCmp = GetComponent<Health>();
 
-            if (this is not EnemyMageController)
+            if (this is not EnemyMageController || this is not BossController)
             {
                 CombatCmp = CombatCmp == null ? GetComponent<Combat>() : CombatCmp;
             }

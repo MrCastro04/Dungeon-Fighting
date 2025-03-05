@@ -5785,6 +5785,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 929898504520165901, guid: 8a3003bf0024c97499352a6cd5f9e7ec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1516135722343143933, guid: 8a3003bf0024c97499352a6cd5f9e7ec, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.6
@@ -11149,6 +11153,6 @@ SceneRoots:
   - {fileID: 708088017}
   - {fileID: 1051747280}
   - {fileID: 587544044}
+  - {fileID: 1061396996}
   - {fileID: 1535392131}
   - {fileID: 755981544}
-  - {fileID: 1061396996}
