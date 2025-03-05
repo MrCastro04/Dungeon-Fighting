@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f91aa4c7d57f1844afbd27f0aefdd6a, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  HealthPoints: 30
+  HealthPoints: 200
   AttackRange: 3
   Speed: 4
   MeeleDamage: 10

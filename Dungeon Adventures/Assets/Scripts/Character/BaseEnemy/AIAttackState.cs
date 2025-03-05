@@ -1,5 +1,6 @@
 using Character.Boss;
 using Character.Range_Enemy;
+using UnityEngine;
 
 namespace Character.BaseEnemy
 {
@@ -30,6 +31,16 @@ namespace Character.BaseEnemy
                 }
 
                 return;
+            }
+
+            if (enemy is BossController boss)
+            {
+                if (boss.HealthCmp.IsBossHealthAtRequiredPercentage(boss, 0.5f))
+                {
+                    boss.SwitchState(boss.AiBossSecondPhase);
+
+                    return;
+                }
             }
 
             if (enemy.DistanceFromPlayer > enemy.AttackRange)

@@ -12,6 +12,7 @@ namespace Character.Player
     [RequireComponent(typeof(Inventory))]
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(BoxCollider))]
+    [RequireComponent(typeof(Ability))]
 
     public class PlayerController : MonoBehaviour
     {
@@ -21,6 +22,7 @@ namespace Character.Player
         private Combat _combatCmp;
         private NavMeshAgent _agentCmp;
         private Inventory _inventoryCmp;
+        private Ability _abilityCmp;
 
         public Health HealthCmp => _healthCmp;
         public Combat CombatCmp => _combatCmp;
@@ -36,6 +38,8 @@ namespace Character.Player
             _agentCmp = GetComponent<NavMeshAgent>();
 
             _inventoryCmp = GetComponent<Inventory>();
+
+            _abilityCmp = GetComponent<Ability>();
         }
 
         private void Start()
@@ -54,6 +58,8 @@ namespace Character.Player
             else
             {
                 _healthCmp.HealthPoints = _playerStats.HealthPoints;
+
+                _healthCmp.OriginHealthPoints = HealthCmp.HealthPoints;
 
                 _combatCmp.Damage = _playerStats.MeeleDamage;
 

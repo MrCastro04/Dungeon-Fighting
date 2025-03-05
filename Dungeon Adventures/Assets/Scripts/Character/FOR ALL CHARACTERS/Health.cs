@@ -1,4 +1,5 @@
 using System;
+using Character.Boss;
 using Core;
 using Uitility;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace Character.FOR_ALL_CHARACTERS
     {
         public event Action OnStartEnemyDefeated;
 
+        [NonSerialized] public float OriginHealthPoints;
         [NonSerialized] public float HealthPoints;
         [NonSerialized] public Slider SliderCmp;
 
@@ -67,6 +69,22 @@ namespace Character.FOR_ALL_CHARACTERS
             }
         }
 
+        public bool IsBossHealthAtRequiredPercentage(BossController bossController, float requiredPercentage)
+        {
+            float bossOriginHealth = bossController.HealthCmp.OriginHealthPoints;
+
+            float bossCurrentHealth = bossController.HealthCmp.HealthPoints;
+
+            float bossCurrentHealthPercent = Mathf.Clamp01(bossCurrentHealth / bossOriginHealth);
+
+            if (bossCurrentHealthPercent <= requiredPercentage)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         private void Defeat()
         {
             if(_isDefeated) return;
@@ -81,11 +99,6 @@ namespace Character.FOR_ALL_CHARACTERS
             _animatorCmp.SetTrigger(Constants.ANIMATOR_DEFEAT_PARAM);
         }
 
-        private void HandleOnDefeat()
-        {
-            Destroy(gameObject);
-        }
-
         private void UsePotion()
         {
             HealthPoints += HealAmount;
@@ -97,6 +110,11 @@ namespace Character.FOR_ALL_CHARACTERS
             EventManager.RaiseChangePlayerHealth(HealthPoints);
 
             EventManager.RaiseChangePlayerPotionCount(PotionCount);
+        }
+
+        private void HandleOnDefeat()
+        {
+            Destroy(gameObject);
         }
     }
 }

@@ -53,12 +53,12 @@ namespace Character.BaseEnemy
             }
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             HealthCmp.OnStartEnemyDefeated += HandleStartEnemyDefeated;
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             HealthCmp.OnStartEnemyDefeated -= HandleStartEnemyDefeated;
         }
@@ -66,6 +66,8 @@ namespace Character.BaseEnemy
         protected virtual void Start()
         {
             HealthCmp.HealthPoints = _enemyStats.HealthPoints;
+
+            HealthCmp.OriginHealthPoints = HealthCmp.HealthPoints;
 
             MovementCmp.NavMeshAgent.speed = _enemyStats.Speed;
 

@@ -14,6 +14,8 @@ namespace Core
         public static event Action OnAbilityReady;
         public static event Action OnEnterLockDoor;
         public static event Action OnExitLockDoor;
+        public static event Action OnBossEnterSecondPhase;
+
 
         public static void RaiseChangePlayerHealth(float newHealthAmount)
         {
@@ -53,6 +55,11 @@ namespace Core
         public static void RaiseOnExitLockDoor()
         {
             OnExitLockDoor?.Invoke();
+        }
+
+        public static void RaiseOnBossEnterSecondPhase()
+        {
+            OnBossEnterSecondPhase?.Invoke();
         }
     }
 }

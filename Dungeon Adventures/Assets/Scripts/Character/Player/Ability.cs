@@ -10,9 +10,9 @@ namespace Character.Player
     [RequireComponent(typeof(Combat))]
     public class Ability : MonoBehaviour
     {
-        [SerializeField] private float _abilityDuration = 4f;
-        [SerializeField] private float _abilityCooldown = 5f;
-        [SerializeField] private float _hitRadius = 1.5f;
+        [SerializeField] protected float _abilityDuration = 4f;
+        [SerializeField] protected float _abilityCooldown = 5f;
+        [SerializeField] protected float _hitRadius = 1.5f;
 
         private Combat _combatCmp;
         private BubbleEvent _bubbleEvent;
@@ -22,6 +22,7 @@ namespace Character.Player
         private float _currentCooldown;
 
         public bool IsAbilityActive => _isAbilityActive;
+        public Animator AnimatorCmp => _animatorCmp;
 
         private void Awake()
         {
@@ -34,21 +35,21 @@ namespace Character.Player
             _animatorCmp = GetComponentInChildren<Animator>();
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             _bubbleEvent.OnBubbleAbilityStart += HandlerBubbleAbilityStart;
             _bubbleEvent.OnBubbleAbilityEnd += HandlerBubbleAbilityEnd;
             _bubbleEvent.OnBubbleHitAbilityAttack += HandlerHitAbilityAttack;
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             _bubbleEvent.OnBubbleAbilityStart -= HandlerBubbleAbilityStart;
             _bubbleEvent.OnBubbleAbilityEnd -= HandlerBubbleAbilityEnd;
             _bubbleEvent.OnBubbleHitAbilityAttack -= HandlerHitAbilityAttack;
         }
 
-        public void HandlerAbility(InputAction.CallbackContext context)
+        public virtual void HandlerAbility(InputAction.CallbackContext context)
         {
             if (context.performed == false || _isAbilityActive || !IsAbilityReady() || _combatCmp.IsAttacking)
             {
@@ -59,7 +60,12 @@ namespace Character.Player
 
             _isAbilityActive = true;
 
-            _animatorCmp.SetBool(Constants.ANIMATOR_ABILITY_TOKEN, _isAbilityActive);
+            SetAbilityToken(_isAbilityActive);
+        }
+
+        public void SetAbilityToken(bool value)
+        {
+            _animatorCmp.SetBool(Constants.ANIMATOR_ABILITY_TOKEN, value);
         }
 
         private void HandlerBubbleAbilityStart()
