@@ -10,21 +10,21 @@ namespace Character.Player
     [RequireComponent(typeof(Combat))]
     public class Ability : MonoBehaviour
     {
-        [SerializeField] private float _hitRadius = 1.5f;
-        [SerializeField] private float _abilityDuration = 4f;
-        [SerializeField] private float _abilityCooldown = 5f;
+        [SerializeField] protected float _hitRadius = 1.5f;
+        [SerializeField] protected float _abilityDuration = 4f;
+        [SerializeField] protected float _abilityCooldown = 5f;
 
-        private Combat _combatCmp;
-        private BubbleEvent _bubbleEvent;
-        private Animator _animatorCmp;
-        private bool _isAbilityActive = false;
-        private float _currentDuration;
-        private float _currentCooldown;
+        protected Combat _combatCmp;
+        protected BubbleEvent _bubbleEvent;
+        protected Animator _animatorCmp;
+        protected bool _isAbilityActive = false;
+        protected float _currentDuration;
+        protected float _currentCooldown;
 
         public bool IsAbilityActive => _isAbilityActive;
         public Animator AnimatorCmp => _animatorCmp;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _currentCooldown = _abilityCooldown;
 
@@ -68,12 +68,12 @@ namespace Character.Player
             _animatorCmp.SetBool(Constants.ANIMATOR_ABILITY_TOKEN, value);
         }
 
-        private void HandlerBubbleAbilityStart()
+        protected virtual void HandlerBubbleAbilityStart()
         {
             _currentDuration += (Time.deltaTime + 1);
         }
 
-        private void HandlerBubbleAbilityEnd()
+        protected virtual void HandlerBubbleAbilityEnd()
         {
             if (_currentDuration >= _abilityDuration)
             {
@@ -117,7 +117,7 @@ namespace Character.Player
             }
         }
 
-        private IEnumerator StartAbilityCooldownTimer()
+        protected virtual IEnumerator StartAbilityCooldownTimer()
         {
             _currentCooldown = 0f;
 
@@ -128,10 +128,10 @@ namespace Character.Player
                 yield return null;
             }
 
-            EventManager.RaiseOnAbilityReady();
+            EventManager.RaiseOnPlayerAbilityReady();
         }
 
-        private bool IsAbilityReady()
+        public bool IsAbilityReady()
         {
             return _currentCooldown >= _abilityCooldown;
         }

@@ -71,7 +71,7 @@ namespace UI
             EventManager.OnChangePlayerPotionCount += HandlerChangePlayerPotionCount;
             EventManager.OnPlayerGetItem += HandlerPlayerGetItem;
             EventManager.OnAbilityButtonClick += HandlerAbilityClick;
-            EventManager.OnAbilityReady += HandlerAbilityReady;
+            EventManager.OnPlayerAbilityReady += HandlerPlayerAbilityReady;
             EventManager.OnEnterLockDoor += HandlerEnterLockDoor;
             EventManager.OnExitLockDoor += HandlerExitLockDoor;
         }
@@ -82,7 +82,7 @@ namespace UI
             EventManager.OnChangePlayerPotionCount -= HandlerChangePlayerPotionCount;
             EventManager.OnPlayerGetItem -= HandlerPlayerGetItem;
             EventManager.OnAbilityButtonClick -= HandlerAbilityClick;
-            EventManager.OnAbilityReady -= HandlerAbilityReady;
+            EventManager.OnPlayerAbilityReady -= HandlerPlayerAbilityReady;
             EventManager.OnEnterLockDoor -= HandlerEnterLockDoor;
             EventManager.OnExitLockDoor -= HandlerExitLockDoor;
         }
@@ -154,7 +154,7 @@ namespace UI
             _playerAbilityIcon.AddToClassList(Constants.UI_TOOLKIT_CLASS_STYLE_LOW_TINT);
         }
 
-        private void HandlerAbilityReady()
+        private void HandlerPlayerAbilityReady()
         {
             _playerAbilityIcon.RemoveFromClassList(Constants.UI_TOOLKIT_CLASS_STYLE_LOW_TINT);
         }

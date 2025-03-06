@@ -41,8 +41,6 @@ namespace Character.BaseEnemy
                 }
             }
 
-            Debug.Log("fdsfdsfsdfdfdfdfdfd");
-
             enemy.MovementCmp.MoveAgentByDestination(enemy.Player.transform.position);
 
             Vector3 forwardVector = enemy.Player.transform.position - enemy.transform.position;

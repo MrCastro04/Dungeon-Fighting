@@ -31,6 +31,7 @@ namespace Uitility
         public const string TAG_MAIN_CAMERA = "MainCamera";
         public const string TAG_KEY_IMAGE = "KeyImage";
         public const string TAG_OBSTACLE = "Obstacle";
+        public const string TAG_BOSS = "Boss";
 
 
         // ANIMATOR

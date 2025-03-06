@@ -58,6 +58,11 @@ namespace Character.FOR_ALL_CHARACTERS
                 EventManager.RaiseChangePlayerHealth(HealthPoints);
             }
 
+            if (CompareTag(Constants.TAG_BOSS))
+            {
+                EventManager.RaiseOnChangeBossHitCounters();
+            }
+
             if (SliderCmp != null)
             {
                 SliderCmp.value -= damageAmount;
@@ -69,7 +74,7 @@ namespace Character.FOR_ALL_CHARACTERS
             }
         }
 
-        public bool IsHealthAtRequiredPercentage(IController anyController, float requiredPercentage)
+        public bool IsHealthLesserRequiredPercentage(IController anyController, float requiredPercentage)
         {
             float bossOriginHealth = anyController.HealthCmp.OriginHealthPoints;
 
@@ -77,7 +82,7 @@ namespace Character.FOR_ALL_CHARACTERS
 
             float bossCurrentHealthPercent = Mathf.Clamp01(bossCurrentHealth / bossOriginHealth);
 
-            if (bossCurrentHealthPercent <= requiredPercentage)
+            if (bossCurrentHealthPercent < requiredPercentage)
             {
                 return true;
             }

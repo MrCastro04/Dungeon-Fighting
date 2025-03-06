@@ -15,4 +15,4 @@ MonoBehaviour:
   HealthPoints: 15
   AttackRange: 3
   Speed: 2
-  MeeleDamage: 5
+  MeeleDamage: 2

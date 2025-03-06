@@ -11,10 +11,11 @@ namespace Core
         public static event Action<ItemSO> OnPlayerGetItem;
         public static event Action <Collider , int> OnPortalEnter;
         public static event Action OnAbilityButtonClick;
-        public static event Action OnAbilityReady;
+        public static event Action OnPlayerAbilityReady;
         public static event Action OnEnterLockDoor;
         public static event Action OnExitLockDoor;
         public static event Action OnBossEnterSecondPhase;
+        public static event Action OnChangeBossHitCounters;
 
 
         public static void RaiseChangePlayerHealth(float newHealthAmount)
@@ -42,9 +43,9 @@ namespace Core
             OnAbilityButtonClick?.Invoke();
         }
 
-        public static void RaiseOnAbilityReady()
+        public static void RaiseOnPlayerAbilityReady()
         {
-            OnAbilityReady?.Invoke();
+            OnPlayerAbilityReady?.Invoke();
         }
 
         public static void RaiseOnEnterLockDoor()
@@ -60,6 +61,11 @@ namespace Core
         public static void RaiseOnBossEnterSecondPhase()
         {
             OnBossEnterSecondPhase?.Invoke();
+        }
+
+        public static void RaiseOnChangeBossHitCounters()
+        {
+            OnChangeBossHitCounters?.Invoke();
         }
     }
 }

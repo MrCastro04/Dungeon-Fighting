@@ -6,31 +6,44 @@ namespace Character.Boss
     {
         public override void EnterState(EnemyController enemy)
         {
-            (enemy as BossController)?.BossCombatCmp.CancelAttack();
-            (enemy as BossController)?.BossAbilityCmp.SetAbilityToken(true);
+            if (enemy is BossController bossController)
+            {
+                if (bossController.BossAbilityCmp.IsCurrentCountersEqualOrGreatThenDesired())
+                {
+                    bossController.BossAbilityCmp.SetAbilityToken(true);
+                }
+            }
         }
 
         public override void UpdateState(EnemyController enemy)
         {
-            if (enemy.Player == null)
+            if (enemy is BossController bossController)
             {
-                (enemy as BossController)?.BossCombatCmp.CancelAttack();
+                if (enemy.Player == null)
+                {
+                    bossController.BossCombatCmp.CancelAttack();
 
-                return;
+                    return;
+                }
+
+                if (enemy.DistanceFromPlayer > enemy.AttackRange)
+                {
+                    bossController.BossCombatCmp.CancelAttack();
+
+                    enemy.SwitchState(enemy.ChaseState);
+
+                    return;
+                }
+
+                if (bossController.BossAbilityCmp.IsCurrentCountersEqualOrGreatThenDesired())
+                {
+                    bossController.BossAbilityCmp.SetAbilityToken(true);
+                }
+
+                enemy.transform.LookAt(enemy.Player.transform.position);
+
+                bossController.BossCombatCmp.StartAttack();
             }
-
-            if (enemy.DistanceFromPlayer > enemy.AttackRange)
-            {
-                (enemy as BossController)?.BossCombatCmp.CancelAttack();
-
-                enemy.SwitchState(enemy.ChaseState);
-
-                return;
-            }
-
-            enemy.transform.LookAt(enemy.Player.transform.position);
-
-            (enemy as BossController)?.BossCombatCmp.StartAttack();
         }
     }
 }

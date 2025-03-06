@@ -8,6 +8,7 @@ TagManager:
   - HealthBar
   - KeyImage
   - Obstacle
+  - Boss
   layers:
   - Default
   - TransparentFX

@@ -35,8 +35,10 @@ namespace Character.BaseEnemy
 
             if (enemy is BossController boss)
             {
-                if (boss.HealthCmp.IsHealthAtRequiredPercentage(boss, 0.5f))
+                if (boss.HealthCmp.IsHealthLesserRequiredPercentage(boss, 0.7f))
                 {
+                    boss.BossCombatCmp.CancelAttack();
+
                     EventManager.RaiseOnBossEnterSecondPhase();
 
                     return;
