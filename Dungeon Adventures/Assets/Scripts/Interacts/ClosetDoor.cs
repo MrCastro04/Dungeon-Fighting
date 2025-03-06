@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Character;
 using Character.Player;
 using Character.Range_Enemy;
 using Core;

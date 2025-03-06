@@ -1,6 +1,5 @@
 using Uitility;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace ScriptableObjects
 {
