@@ -1,4 +1,3 @@
-using System.Collections;
 using Character.Player;
 using Core;
 using Uitility;
@@ -53,8 +52,6 @@ namespace Character.Boss
 
             _desiredHitCounter = GetRandomHitCounter();
 
-            Debug.Log($"DesiredHitCounters - {_desiredHitCounter}");
-
             _isAbilityActive = false;
 
             _animatorCmp.SetBool(Constants.ANIMATOR_ABILITY_TOKEN, _isAbilityActive);
@@ -77,7 +74,7 @@ namespace Character.Boss
 
         private int GetRandomHitCounter()
         {
-            return Random.Range(1, 5);
+            return Random.Range(1, 3);
         }
 
         private void HandlerChangeBossHitCounters()
@@ -85,8 +82,6 @@ namespace Character.Boss
             if (_canCountHitCounters && IsCurrentCountersEqualOrGreatThenDesired() == false)
             {
                 _currentHitCounter ++;
-
-                Debug.Log($"After hit counter - {_currentHitCounter}");
             }
         }
     }

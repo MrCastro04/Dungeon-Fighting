@@ -2,6 +2,7 @@ using Uitility;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
 
 namespace Character.FOR_ALL_CHARACTERS
 {
@@ -31,6 +32,12 @@ namespace Character.FOR_ALL_CHARACTERS
 
         private void OnEnable()
         {
+            if (CompareTag(Constants.TAG_BOSS))
+            {
+                _bubbleEvent.OnBubbleAbilityStart += HandleBubbleAbilityStart;
+                _bubbleEvent.OnBubbleAbilityEnd += HandleBubbleAbilityEnd;
+            }
+
             _bubbleEvent.OnBubbleStartAttack += HandleBubbleStartAttack;
             _bubbleEvent.OnBubbleEndAttack += HandleBubbleEndAttack;
             _bubbleEvent.OnBubbleStartAnimationDefeat += HandleBubbleStartAnimationDefeat;
@@ -38,6 +45,12 @@ namespace Character.FOR_ALL_CHARACTERS
 
         private void OnDisable()
         {
+            if (CompareTag(Constants.TAG_BOSS))
+            {
+                _bubbleEvent.OnBubbleAbilityStart -= HandleBubbleAbilityStart;
+                _bubbleEvent.OnBubbleAbilityEnd -= HandleBubbleAbilityEnd;
+            }
+
             _bubbleEvent.OnBubbleStartAttack -= HandleBubbleStartAttack;
             _bubbleEvent.OnBubbleEndAttack -= HandleBubbleEndAttack;
             _bubbleEvent.OnBubbleStartAnimationDefeat -= HandleBubbleStartAnimationDefeat;
@@ -159,6 +172,16 @@ namespace Character.FOR_ALL_CHARACTERS
             _agent.speed = _originAgentSpeed;
 
             _canRotate = true;
+        }
+
+        private void HandleBubbleAbilityStart()
+        {
+            HandleBubbleStartAttack();
+        }
+
+        private void HandleBubbleAbilityEnd()
+        {
+            HandleBubbleEndAttack();
         }
 
         private void HandleBubbleStartAnimationDefeat()

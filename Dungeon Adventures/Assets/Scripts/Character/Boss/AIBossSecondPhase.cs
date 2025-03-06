@@ -8,10 +8,7 @@ namespace Character.Boss
         {
             if (enemy is BossController bossController)
             {
-                if (bossController.BossAbilityCmp.IsCurrentCountersEqualOrGreatThenDesired())
-                {
-                    bossController.BossAbilityCmp.SetAbilityToken(true);
-                }
+                ApplyBossHit(bossController);
             }
         }
 
@@ -35,13 +32,21 @@ namespace Character.Boss
                     return;
                 }
 
-                if (bossController.BossAbilityCmp.IsCurrentCountersEqualOrGreatThenDesired())
-                {
-                    bossController.BossAbilityCmp.SetAbilityToken(true);
-                }
-
                 enemy.transform.LookAt(enemy.Player.transform.position);
 
+                ApplyBossHit(bossController);
+            }
+        }
+
+        private void ApplyBossHit(BossController bossController)
+        {
+            if (bossController.BossAbilityCmp.IsCurrentCountersEqualOrGreatThenDesired())
+            {
+                bossController.BossAbilityCmp.SetAbilityToken(true);
+            }
+
+            else
+            {
                 bossController.BossCombatCmp.StartAttack();
             }
         }
