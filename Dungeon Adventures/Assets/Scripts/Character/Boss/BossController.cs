@@ -13,9 +13,12 @@ namespace Character.Boss
 
         private BossCombat _bossCombatCmp;
         private BossAbility _bossAbilityCmp;
+        private bool _hasSecondPhase = false;
 
         public BossCombat BossCombatCmp => _bossCombatCmp;
         public BossAbility BossAbilityCmp => _bossAbilityCmp;
+        public AIBossSecondPhase AIBossSecondPhase => _aiBossSecondPhase;
+        public bool HasSecondPhase => _hasSecondPhase;
 
         protected override void Awake()
         {
@@ -29,17 +32,21 @@ namespace Character.Boss
         protected override void OnEnable()
         {
             base.OnEnable();
+
             EventManager.OnBossEnterSecondPhase += HandlerBossEnterSecondPhase;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
+
             EventManager.OnBossEnterSecondPhase -= HandlerBossEnterSecondPhase;
         }
 
         private void HandlerBossEnterSecondPhase()
         {
+            _hasSecondPhase = true;
+
             SwitchState(_aiBossSecondPhase);
         }
     }

@@ -1,16 +1,36 @@
 using Character.BaseEnemy;
-using Character.Boss;
 
-public class AIBossSecondPhase : AIBaseState
+namespace Character.Boss
 {
-    public override void EnterState(EnemyController enemy)
+    public class AIBossSecondPhase : AIBaseState
     {
-        (enemy as BossController)?.BossCombatCmp.CancelAttack();
-       (enemy as BossController)?.BossAbilityCmp.SetAbilityToken(true);
-    }
+        public override void EnterState(EnemyController enemy)
+        {
+            (enemy as BossController)?.BossCombatCmp.CancelAttack();
+            (enemy as BossController)?.BossAbilityCmp.SetAbilityToken(true);
+        }
 
-    public override void UpdateState(EnemyController enemy)
-    {
+        public override void UpdateState(EnemyController enemy)
+        {
+            if (enemy.Player == null)
+            {
+                (enemy as BossController)?.BossCombatCmp.CancelAttack();
 
+                return;
+            }
+
+            if (enemy.DistanceFromPlayer > enemy.AttackRange)
+            {
+                (enemy as BossController)?.BossCombatCmp.CancelAttack();
+
+                enemy.SwitchState(enemy.ChaseState);
+
+                return;
+            }
+
+            enemy.transform.LookAt(enemy.Player.transform.position);
+
+            (enemy as BossController)?.BossCombatCmp.StartAttack();
+        }
     }
 }

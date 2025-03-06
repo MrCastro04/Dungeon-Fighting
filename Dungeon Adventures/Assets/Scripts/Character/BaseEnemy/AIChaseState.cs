@@ -1,3 +1,4 @@
+using Character.Boss;
 using UnityEngine;
 
 namespace Character.BaseEnemy
@@ -15,10 +16,32 @@ namespace Character.BaseEnemy
 
             if (enemy.DistanceFromPlayer < enemy.AttackRange)
             {
-                enemy.SwitchState(enemy.AttackState);
+                if (enemy is BossController boss)
+                {
+                    if (boss.HasSecondPhase)
+                    {
+                        boss.SwitchState(boss.AIBossSecondPhase);
 
-                return;
+                        return;
+                    }
+
+                    if (boss.HasSecondPhase == false)
+                    {
+                        enemy.SwitchState(enemy.AttackState);
+
+                        return;
+                    }
+                }
+
+                else
+                {
+                    enemy.SwitchState(enemy.AttackState);
+
+                    return;
+                }
             }
+
+            Debug.Log("fdsfdsfsdfdfdfdfdfd");
 
             enemy.MovementCmp.MoveAgentByDestination(enemy.Player.transform.position);
 
