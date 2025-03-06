@@ -16,7 +16,7 @@ namespace Core
         public static event Action OnExitLockDoor;
         public static event Action OnBossEnterSecondPhase;
         public static event Action OnChangeBossHitCounters;
-
+        public static event Action OnPlayerEnterTheAreaWithBoss;
 
         public static void RaiseChangePlayerHealth(float newHealthAmount)
         {
@@ -66,6 +66,11 @@ namespace Core
         public static void RaiseOnChangeBossHitCounters()
         {
             OnChangeBossHitCounters?.Invoke();
+        }
+
+        public static void RaiseOnPlayerEnterTheAreaWithBoss()
+        {
+            OnPlayerEnterTheAreaWithBoss?.Invoke();
         }
     }
 }
