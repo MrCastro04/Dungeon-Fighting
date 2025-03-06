@@ -22,6 +22,7 @@ namespace UI
         public VisualElement PlayerInfoContainer;
         public VisualElement MainMenuContainer;
         public VisualElement PlayerAbilityContainer;
+        public VisualElement ExitContainer;
         public List<Button> Buttons = new ();
 
         private UIBaseState _currentState;
@@ -46,6 +47,9 @@ namespace UI
 
             PlayerAbilityContainer = RootVisualElement.Q<VisualElement>
             (Constants.UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_ABILITY_CONTAINER);
+
+            ExitContainer = RootVisualElement.Q<VisualElement>
+                (Constants.UI_TOOLKIT_VISUAL_ELEMENT_EXIT_CONTAINER);
 
             _keyNotFoundMessage = RootVisualElement.Q<Label>(
                 Constants.UI_TOOLKIT_LABEL_KEY_NOT_FOUND_MESSAGE);

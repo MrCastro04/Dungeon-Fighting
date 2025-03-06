@@ -46,6 +46,7 @@ namespace Uitility
         public const string UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_ABILITY_CONTAINER = "player-ability-container";
         public const string UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_ABILITY_ICON = "player-ability-icon";
         public const string UI_TOOLKIT_VISUAL_ELEMENT_MAIN_MENU_CONTAINER = "main-menu-container";
+        public const string UI_TOOLKIT_VISUAL_ELEMENT_EXIT_CONTAINER = "exit-container";
         public const string UI_TOOLKIT_VISUAL_ELEMENT_KEY_IMAGE = "key";
 
         public const string UI_TOOLKIT_LABEL_KEY_NOT_FOUND_MESSAGE = "key-not-found-message";
