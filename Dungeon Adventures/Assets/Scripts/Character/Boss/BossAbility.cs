@@ -11,9 +11,6 @@ namespace Character.Boss
         private int _currentHitCounter;
         private bool _canCountHitCounters = true;
 
-        public int DesiredHitCounter => _desiredHitCounter;
-        public int CurrentHitCounter => _currentHitCounter;
-
         protected override void Awake()
         {
             base.Awake();
@@ -37,6 +34,8 @@ namespace Character.Boss
 
         protected override void HandlerBubbleAbilityStart()
         {
+            _isAbilityActive = true;
+
             _canCountHitCounters = false;
 
             base.HandlerBubbleAbilityStart();

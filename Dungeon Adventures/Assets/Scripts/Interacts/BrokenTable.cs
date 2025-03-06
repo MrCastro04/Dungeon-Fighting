@@ -30,7 +30,8 @@ namespace Interacts
 
         private void OnTriggerEnter(Collider other)
         {
-            if( other.CompareTag(Constants.TAG_ENEMY) || other.gameObject.GetComponent<Fireball>() )
+            if( other.CompareTag(Constants.TAG_ENEMY) || other.CompareTag(Constants.TAG_BOSS)
+                                                      || other.gameObject.GetComponent<Fireball>() )
                 return;
 
             Inventory playerInventory = other.GetComponent<PlayerController>().InventoryCmp;

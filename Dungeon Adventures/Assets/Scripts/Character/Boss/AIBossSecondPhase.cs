@@ -32,9 +32,9 @@ namespace Character.Boss
                     return;
                 }
 
-                enemy.transform.LookAt(enemy.Player.transform.position);
-
                 ApplyBossHit(bossController);
+
+                enemy.transform.LookAt(enemy.Player.transform.position);
             }
         }
 

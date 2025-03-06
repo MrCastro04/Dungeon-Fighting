@@ -10,19 +10,18 @@ namespace Character.Player
     [RequireComponent(typeof(Combat))]
     public class Ability : MonoBehaviour
     {
-        [SerializeField] protected float _hitRadius = 1.5f;
-        [SerializeField] protected float _abilityDuration = 4f;
-        [SerializeField] protected float _abilityCooldown = 5f;
+        [SerializeField] private float _hitRadius = 1.5f;
+        [SerializeField] private float _abilityDuration = 4f;
+        [SerializeField] private float _abilityCooldown = 5f;
 
-        protected Combat _combatCmp;
+        private Combat _combatCmp;
         protected BubbleEvent _bubbleEvent;
         protected Animator _animatorCmp;
         protected bool _isAbilityActive = false;
-        protected float _currentDuration;
-        protected float _currentCooldown;
+        private float _currentDuration;
+        private float _currentCooldown;
 
         public bool IsAbilityActive => _isAbilityActive;
-        public Animator AnimatorCmp => _animatorCmp;
 
         protected virtual void Awake()
         {
@@ -66,6 +65,11 @@ namespace Character.Player
         public void SetAbilityToken(bool value)
         {
             _animatorCmp.SetBool(Constants.ANIMATOR_ABILITY_TOKEN, value);
+        }
+
+        public bool IsAbilityReady()
+        {
+            return _currentCooldown >= _abilityCooldown;
         }
 
         protected virtual void HandlerBubbleAbilityStart()
@@ -117,7 +121,7 @@ namespace Character.Player
             }
         }
 
-        protected virtual IEnumerator StartAbilityCooldownTimer()
+        private IEnumerator StartAbilityCooldownTimer()
         {
             _currentCooldown = 0f;
 
@@ -129,11 +133,6 @@ namespace Character.Player
             }
 
             EventManager.RaiseOnPlayerAbilityReady();
-        }
-
-        public bool IsAbilityReady()
-        {
-            return _currentCooldown >= _abilityCooldown;
         }
     }
 }
