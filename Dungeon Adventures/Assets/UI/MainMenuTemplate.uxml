@@ -1,24 +1,24 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/GlobalStyleSheet.uss?fileID=7433441132597879392&amp;guid=9a263fc98d1316240ba4fa5a4fe0e162&amp;type=3#GlobalStyleSheet" />
-    <ui:VisualElement name="main-menu-container" style="flex-grow: 1; display: none;">
+    <ui:VisualElement name="main-menu-container" style="flex-grow: 1; display: none; flex-wrap: wrap; align-self: center; justify-content: center;">
         <ui:VisualElement name="box" style="flex-grow: 1; flex-wrap: wrap;">
             <ui:Label tabindex="-1" text="Dungeon Adventures" parse-escape-sequences="true" display-tooltip-when-elided="true" class="common-text" style="font-size: 77px; top: 126px;" />
-            <ui:VisualElement name="buttons" style="flex-grow: 1; align-items: center; justify-content: center; top: 80px; position: absolute; width: 1926px; height: 1004px;">
+            <ui:VisualElement name="buttons" style="flex-grow: 1; align-items: center; justify-content: center; flex-wrap: wrap;">
                 <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="start-button" class="menu-button" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="player-info-container" style="position: absolute; height: 138px; width: 411px; top: 884px; left: 527px; flex-direction: row; display: none;">
-        <ui:VisualElement name="heal-potion" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/HealPotion-removebg-preview.png?fileID=2800000&amp;guid=9a8b3d40060271446874793b388c1cb9&amp;type=3#HealPotion-removebg-preview&quot;); margin-right: 30px; justify-content: flex-end; width: -139px; top: -30px;">
-            <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="potions-count" style="align-self: flex-end; font-size: 50px; -unity-font-style: bold; -unity-text-align: upper-center;" />
+    <ui:VisualElement name="player-info-container" style="flex-direction: row; display: none; flex-wrap: wrap; align-self: center; justify-content: center; align-items: center; bottom: -80%; left: -15%;">
+        <ui:VisualElement name="heal-potion" style="background-image: url(&quot;project://database/Assets/Sprites/HealPotion-removebg-preview.png?fileID=2800000&amp;guid=9a8b3d40060271446874793b388c1cb9&amp;type=3#HealPotion-removebg-preview&quot;); margin-right: 30px; width: 150px; height: 150px;">
+            <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="potions-count" style="align-self: flex-end; font-size: 50px; -unity-font-style: bold; -unity-text-align: upper-center; flex-direction: row; justify-content: flex-end; align-items: flex-end; bottom: -93px;" />
         </ui:VisualElement>
-        <ui:VisualElement name="healthbar" style="flex-grow: 1; flex-wrap: nowrap; height: 101px; width: 52px;">
+        <ui:VisualElement name="healthbar" style="height: 101px; width: 52px;">
             <ui:Label tabindex="-1" text="health-amount" parse-escape-sequences="true" display-tooltip-when-elided="true" name="health-amount" style="background-color: rgb(55, 255, 0); height: 95px; width: 493px; -unity-text-align: middle-center; font-size: 50px; -unity-font-style: bold;" />
         </ui:VisualElement>
-        <ui:VisualElement name="key" style="flex-grow: 1; left: -465px; height: 93px; width: -5px;" />
+        <ui:VisualElement name="key" style="left: -100%; width: 124px; height: 121px;" />
     </ui:VisualElement>
-    <ui:VisualElement name="player-ability-container" style="flex-grow: 1; left: 978px; position: absolute; height: 378px; width: 779px; top: 745px; display: none; background-color: rgba(0, 0, 0, 0);">
-        <ui:VisualElement name="player-ability-icon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Sprites/playerAbilityIcon-removebg-preview.png?fileID=2800000&amp;guid=86710b9d81995ad42b3a822241ccbaa1&amp;type=3#playerAbilityIcon-removebg-preview&quot;);" />
+    <ui:VisualElement name="player-ability-container" style="display: none; flex-wrap: wrap; align-items: center; flex-direction: row; justify-content: center; align-self: center; width: 45%; height: 30%; left: 30%; top: 55%;">
+        <ui:VisualElement name="player-ability-icon" style="background-image: url(&quot;project://database/Assets/Sprites/playerAbilityIcon-removebg-preview.png?fileID=2800000&amp;guid=86710b9d81995ad42b3a822241ccbaa1&amp;type=3#playerAbilityIcon-removebg-preview&quot;); background-color: rgba(0, 0, 0, 0); height: 100%; width: 100%;" />
     </ui:VisualElement>
-    <ui:Label tabindex="-1" text="You should find a key" parse-escape-sequences="true" display-tooltip-when-elided="true" name="key-not-found-message" style="top: 217px; font-size: 70px; -unity-font-style: bold; -unity-text-align: middle-center; color: rgb(255, 167, 0); display: none;" />
+    <ui:Label tabindex="-1" text="You should find a key" parse-escape-sequences="true" display-tooltip-when-elided="true" name="key-not-found-message" style="font-size: 70px; -unity-font-style: bold; -unity-text-align: middle-center; color: rgb(255, 167, 0); display: none; top: 15%;" />
 </ui:UXML>
