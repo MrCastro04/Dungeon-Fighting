@@ -4,6 +4,7 @@
         <ui:VisualElement name="box" style="flex-grow: 1; flex-wrap: wrap;">
             <ui:Label tabindex="-1" text="Dungeon Adventures" parse-escape-sequences="true" display-tooltip-when-elided="true" class="common-text" style="font-size: 77px; top: 126px;" />
             <ui:VisualElement name="buttons" style="flex-grow: 1; align-items: center; justify-content: center; flex-wrap: wrap; align-self: center;">
+                <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="invisible-button" class="menu-button" style="background-color: rgba(78, 255, 234, 0); border-left-color: rgba(0, 255, 225, 0); border-right-color: rgba(0, 255, 225, 0); border-top-color: rgba(0, 255, 225, 0); border-bottom-color: rgba(0, 255, 225, 0); color: rgba(255, 255, 255, 0); -unity-text-outline-color: rgba(0, 0, 0, 0);" />
                 <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="start-button" class="menu-button" />
                 <ui:Button text="Exit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="exit-button" class="menu-button" />
             </ui:VisualElement>

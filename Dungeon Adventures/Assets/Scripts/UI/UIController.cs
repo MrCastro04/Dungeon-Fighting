@@ -77,7 +77,7 @@ namespace UI
             EventManager.OnPlayerAbilityReady += HandlerPlayerAbilityReady;
             EventManager.OnEnterLockDoor += HandlerEnterLockDoor;
             EventManager.OnExitLockDoor += HandlerExitLockDoor;
-            EventManager.OnPlayerDefeat += HandlerOnPlayerDefeat;
+            EventManager.OnGameEnd += HandlerOnGameEnd;
         }
 
         private void OnDisable()
@@ -89,7 +89,7 @@ namespace UI
             EventManager.OnPlayerAbilityReady -= HandlerPlayerAbilityReady;
             EventManager.OnEnterLockDoor -= HandlerEnterLockDoor;
             EventManager.OnExitLockDoor -= HandlerExitLockDoor;
-            EventManager.OnPlayerDefeat += HandlerOnPlayerDefeat;
+            EventManager.OnGameEnd += HandlerOnGameEnd;
         }
 
         private void Start()
@@ -172,11 +172,12 @@ namespace UI
             _keyNotFoundMessage.style.display = DisplayStyle.None;
         }
 
-        private void HandlerOnPlayerDefeat()
+        private void HandlerOnGameEnd()
         {
             _currentState = EndGameState;
 
             _currentState.EnterState();
+
         }
     }
 }

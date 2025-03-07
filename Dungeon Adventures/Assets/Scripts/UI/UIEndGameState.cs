@@ -46,6 +46,8 @@ namespace UI
 
             if (currentButton.name == "restart-button")
             {
+                EventManager.RaiseOnStartButtonClick();
+
                 SceneTransition.Initiate(1);
             }
 

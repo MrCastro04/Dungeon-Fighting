@@ -120,9 +120,10 @@ namespace Character.FOR_ALL_CHARACTERS
         {
             Destroy(gameObject);
 
-            if (gameObject.CompareTag(Constants.TAG_PLAYER))
+            if (gameObject.CompareTag(Constants.TAG_BOSS)
+                || gameObject.CompareTag(Constants.TAG_PLAYER))
             {
-                EventManager.RaiseOnPlayerDefeat();
+                EventManager.RaiseOnGameEnd();
             }
         }
     }

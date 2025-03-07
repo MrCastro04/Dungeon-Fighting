@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48da770793e345618e9db86afa181c20, type: 3}
   m_Name: Mage
   m_EditorClassIdentifier: 
-  HealthPoints: 30
+  HealthPoints: 15
   AttackRange: 15
   Speed: 2
   MeeleDamage: 0
