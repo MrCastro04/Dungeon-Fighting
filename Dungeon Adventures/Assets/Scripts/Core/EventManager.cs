@@ -20,8 +20,9 @@ namespace Core
         public static event Action OnPlayerEnterTheAreaWithBoss;
         public static event Action OnStartButtonClick;
         public static event Action OnGameEnd;
-        public static event Action <Actions> OnHit;
-        public static event Action<Actions> OnUsePotion;
+        public static event Action <Actions> OnSoundHit;
+        public static event Action <Actions> OnSoundUsePotion;
+        public static event Action<Actions> OnSoundDefeat;
 
         public static void RaiseChangePlayerHealth(float newHealthAmount)
         {
@@ -88,14 +89,19 @@ namespace Core
             OnGameEnd?.Invoke();
         }
 
-        public static void RaiseOnHit(Actions actionType)
+        public static void RaiseSoundOnHit(Actions actionType)
         {
-            OnHit?.Invoke(actionType);
+            OnSoundHit?.Invoke(actionType);
         }
 
-        public static void RaiseOnUsePotion(Actions actionType)
+        public static void RaiseSoundOnUsePotion(Actions actionType)
         {
-            OnUsePotion?.Invoke(actionType);
+            OnSoundUsePotion?.Invoke(actionType);
+        }
+
+        public static void RaiseSoundOnDefeat(Actions actionType)
+        {
+            OnSoundDefeat?.Invoke(actionType);
         }
     }
 }

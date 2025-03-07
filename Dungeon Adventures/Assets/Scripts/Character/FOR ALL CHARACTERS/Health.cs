@@ -59,7 +59,7 @@ namespace Character.FOR_ALL_CHARACTERS
 
             if (healthBeforeDamage != healthAfterDamage)
             {
-                EventManager.RaiseOnHit(Actions.Hit);
+                EventManager.RaiseSoundOnHit(Actions.Hit);
             }
 
             if (CompareTag(Constants.TAG_PLAYER))
@@ -121,7 +121,7 @@ namespace Character.FOR_ALL_CHARACTERS
 
             PotionCount = Mathf.Max(PotionCount, 0);
 
-            EventManager.RaiseOnUsePotion(Actions.UsePotion);
+            EventManager.RaiseSoundOnUsePotion(Actions.UsePotion);
 
             EventManager.RaiseChangePlayerHealth(HealthPoints);
 
@@ -130,6 +130,8 @@ namespace Character.FOR_ALL_CHARACTERS
 
         private void HandleOnDefeat()
         {
+            EventManager.RaiseSoundOnDefeat(Actions.Defeat);
+
             Destroy(gameObject);
 
             if (gameObject.CompareTag(Constants.TAG_BOSS)

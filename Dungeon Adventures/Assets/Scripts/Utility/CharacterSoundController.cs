@@ -10,35 +10,24 @@ namespace Utility
 
       private void OnEnable()
       {
-          EventManager.OnHit += HandlerOnHit;
-          EventManager.OnUsePotion += HandlerOnUsePotion;
+          EventManager.OnSoundHit += HandlerPlayActionTypeSound;
+          EventManager.OnSoundUsePotion += HandlerPlayActionTypeSound;
+          EventManager.OnSoundDefeat += HandlerPlayActionTypeSound;
       }
 
       private void OnDisable()
       {
-          EventManager.OnHit -= HandlerOnHit;
-          EventManager.OnUsePotion += HandlerOnUsePotion;
+          EventManager.OnSoundHit -= HandlerPlayActionTypeSound;
+          EventManager.OnSoundUsePotion += HandlerPlayActionTypeSound;
+          EventManager.OnSoundDefeat -= HandlerPlayActionTypeSound;
       }
 
-      private void HandlerOnHit(Actions actionType)
-      {
-         PlayActionTypeSound(actionType);
-      }
-
-      private void HandlerOnUsePotion(Actions actionType)
-      {
-          PlayActionTypeSound(actionType);
-      }
-
-      private void PlayActionTypeSound(Actions actionType)
+      private void HandlerPlayActionTypeSound(Actions actionType)
       {
           var foundSound = _sounds.FirstOrDefault
-              (sound => sound.ActionType == actionType);
+                  (sound => sound.ActionType == actionType);
 
-          if (foundSound.ActionType != null)
-          {
-              AudioSource.PlayClipAtPoint(foundSound.ActionClip, transform.position);
-          }
+          AudioSource.PlayClipAtPoint(foundSound.ActionClip, transform.position);
       }
   }
 }
