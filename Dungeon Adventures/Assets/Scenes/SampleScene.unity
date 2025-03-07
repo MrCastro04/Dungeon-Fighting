@@ -7958,6 +7958,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1013808157}
     m_Modifications:
+    - target: {fileID: 3136711728061168868, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
+      propertyPath: _characterSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3136711728061168868, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
+      propertyPath: _characterSounds.Array.data[3]._actionClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 664cc50cb166395419f5e1ef208575db, type: 3}
+    - target: {fileID: 3136711728061168868, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
+      propertyPath: _characterSounds.Array.data[3]._actionType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4600761373884857088, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
       propertyPath: m_Name
       value: Player
@@ -8026,7 +8038,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6188949985323693283, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10972,7 +10985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3983710631210239370, guid: 2c36c40aefd75aa42aaff328f7db7688, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7495016669374266092, guid: 2c36c40aefd75aa42aaff328f7db7688, type: 3}
       propertyPath: _clip

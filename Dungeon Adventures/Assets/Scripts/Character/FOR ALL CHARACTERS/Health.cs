@@ -57,9 +57,9 @@ namespace Character.FOR_ALL_CHARACTERS
 
             var healthAfterDamage = HealthPoints;
 
-            if (healthBeforeDamage != healthAfterDamage)
+            if (IsAlienTakeDamage(healthBeforeDamage, healthAfterDamage))
             {
-                EventManager.RaiseSoundOnHit(Actions.Hit);
+                EventManager.RaiseSoundOnHit(SoundActionType.Hit);
             }
 
             if (CompareTag(Constants.TAG_PLAYER))
@@ -83,11 +83,11 @@ namespace Character.FOR_ALL_CHARACTERS
             }
         }
 
-        public bool IsHealthLesserRequiredPercentage(IController anyController, float requiredPercentage)
+        public bool IsHealthLesserRequiredPercentage(IHealthable characterWithHealth, float requiredPercentage)
         {
-            float bossOriginHealth = anyController.HealthCmp.OriginHealthPoints;
+            float bossOriginHealth = characterWithHealth.HealthCmp.OriginHealthPoints;
 
-            float bossCurrentHealth = anyController.HealthCmp.HealthPoints;
+            float bossCurrentHealth = characterWithHealth.HealthCmp.HealthPoints;
 
             float bossCurrentHealthPercent = Mathf.Clamp01(bossCurrentHealth / bossOriginHealth);
 
@@ -111,6 +111,8 @@ namespace Character.FOR_ALL_CHARACTERS
             _isDefeated = true;
 
             _animatorCmp.SetTrigger(Constants.ANIMATOR_DEFEAT_PARAM);
+
+            EventManager.RaiseSoundOnDefeat(SoundActionType.Defeat);
         }
 
         private void UsePotion()
@@ -121,7 +123,7 @@ namespace Character.FOR_ALL_CHARACTERS
 
             PotionCount = Mathf.Max(PotionCount, 0);
 
-            EventManager.RaiseSoundOnUsePotion(Actions.UsePotion);
+            EventManager.RaiseSoundOnUsePotion(SoundActionType.UsePotion);
 
             EventManager.RaiseChangePlayerHealth(HealthPoints);
 
@@ -130,15 +132,22 @@ namespace Character.FOR_ALL_CHARACTERS
 
         private void HandleOnDefeat()
         {
-            EventManager.RaiseSoundOnDefeat(Actions.Defeat);
-
             Destroy(gameObject);
 
-            if (gameObject.CompareTag(Constants.TAG_BOSS)
-                || gameObject.CompareTag(Constants.TAG_PLAYER))
+            if (CompareTag(Constants.TAG_BOSS) || CompareTag(Constants.TAG_PLAYER))
             {
                 EventManager.RaiseOnGameEnd();
             }
+        }
+
+        private bool IsAlienTakeDamage(float healthBefore , float healthAfter)
+        {
+            if (healthBefore != healthAfter)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

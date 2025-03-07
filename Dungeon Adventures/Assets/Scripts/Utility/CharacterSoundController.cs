@@ -1,33 +1,26 @@
 using System.Linq;
-using Core;
 using UnityEngine;
 
 namespace Utility
 {
-  public class CharacterSoundController : MonoBehaviour
+  public class CharacterSoundController
   {
-      [SerializeField] private CharacterSounds[] _sounds;
+      private CharacterSounds[] _sounds;
+      private Vector3 _soundPlayPosition;
 
-      private void OnEnable()
+      public CharacterSoundController(CharacterSounds[] sounds , Vector3 soundPlayPosition)
       {
-          EventManager.OnSoundHit += HandlerPlayActionTypeSound;
-          EventManager.OnSoundUsePotion += HandlerPlayActionTypeSound;
-          EventManager.OnSoundDefeat += HandlerPlayActionTypeSound;
+          _sounds = sounds;
+
+          _soundPlayPosition = soundPlayPosition;
       }
 
-      private void OnDisable()
-      {
-          EventManager.OnSoundHit -= HandlerPlayActionTypeSound;
-          EventManager.OnSoundUsePotion += HandlerPlayActionTypeSound;
-          EventManager.OnSoundDefeat -= HandlerPlayActionTypeSound;
-      }
-
-      private void HandlerPlayActionTypeSound(Actions actionType)
+      public void HandlerPlayActionTypeSound(SoundActionType actionType)
       {
           var foundSound = _sounds.FirstOrDefault
                   (sound => sound.ActionType == actionType);
 
-          AudioSource.PlayClipAtPoint(foundSound.ActionClip, transform.position);
+              AudioSource.PlayClipAtPoint(foundSound.ActionClip, _soundPlayPosition);
       }
   }
 }

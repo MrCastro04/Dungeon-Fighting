@@ -70,6 +70,8 @@ namespace Character.FOR_ALL_CHARACTERS
 
         protected virtual void HandleBubbleHitAttack()
         {
+            EventManager.RaiseSoundOnMissHit(SoundActionType.MissHit);
+
             var targets = Physics.BoxCastAll(
 
                 transform.position + transform.forward,
@@ -88,7 +90,10 @@ namespace Character.FOR_ALL_CHARACTERS
 
                 var health = target.transform.gameObject.GetComponent<Health>();
 
-                if (health == null) continue;
+                if (health == null)
+                {
+                    continue;
+                }
 
                 health.TakeDamage(Damage);
             }

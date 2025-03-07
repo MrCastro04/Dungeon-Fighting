@@ -4,6 +4,7 @@ using ScriptableObjects;
 using Uitility;
 using UnityEngine;
 using UnityEngine.AI;
+using Utility;
 
 namespace Character.Player
 {
@@ -14,10 +15,12 @@ namespace Character.Player
     [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(Ability))]
 
-    public class PlayerController : MonoBehaviour , IController
+    public class PlayerController : MonoBehaviour , IHealthable
     {
         [SerializeField] private CharacterStatsSO _playerStats;
+        [SerializeField] private CharacterSounds[] _characterSounds;
 
+        private CharacterSoundController _characterSoundControllerCmp;
         private Health _healthCmp;
         private Combat _combatCmp;
         private NavMeshAgent _agentCmp;
@@ -31,6 +34,8 @@ namespace Character.Player
 
         private void Awake()
         {
+            _characterSoundControllerCmp = new (_characterSounds, transform.position);
+
             _healthCmp = GetComponent<Health>();
 
             _combatCmp = GetComponent<Combat>();
@@ -40,6 +45,22 @@ namespace Character.Player
             _inventoryCmp = GetComponent<Inventory>();
 
             _abilityCmp = GetComponent<Ability>();
+        }
+
+        private void OnEnable()
+        {
+            EventManager.OnSoundHit += _characterSoundControllerCmp.HandlerPlayActionTypeSound;
+            EventManager.OnSoundUsePotion += _characterSoundControllerCmp.HandlerPlayActionTypeSound;
+            EventManager.OnSoundDefeat += _characterSoundControllerCmp.HandlerPlayActionTypeSound;
+            EventManager.OnSoundMissHit += _characterSoundControllerCmp.HandlerPlayActionTypeSound;
+        }
+
+        private void OnDisable()
+        {
+            EventManager.OnSoundHit -= _characterSoundControllerCmp.HandlerPlayActionTypeSound;
+            EventManager.OnSoundUsePotion -= _characterSoundControllerCmp.HandlerPlayActionTypeSound;
+            EventManager.OnSoundDefeat -= _characterSoundControllerCmp.HandlerPlayActionTypeSound;
+            EventManager.OnSoundMissHit -= _characterSoundControllerCmp.HandlerPlayActionTypeSound;
         }
 
         private void Start()

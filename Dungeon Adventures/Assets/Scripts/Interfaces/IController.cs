@@ -1,6 +1,6 @@
 using Character.FOR_ALL_CHARACTERS;
 
-public interface IController
+public interface IHealthable
 {
     public Health HealthCmp { get; }
 }

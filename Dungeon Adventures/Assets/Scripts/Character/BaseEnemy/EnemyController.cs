@@ -11,7 +11,7 @@ namespace Character.BaseEnemy
     [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(Health))]
 
-    public class EnemyController : MonoBehaviour , IController
+    public class EnemyController : MonoBehaviour , IHealthable
     {
         [SerializeField] protected CharacterStatsSO _enemyStats;
 
@@ -19,8 +19,6 @@ namespace Character.BaseEnemy
         protected AIChaseState _chaseState = new();
         protected AIAttackState _attackState = new();
         protected AIDefeatState _defeatState = new();
-
-        [field: SerializeField]  public string EnemyId { get; protected set; }
 
         public AIChaseState ChaseState => _chaseState;
         public AIAttackState AttackState => _attackState;

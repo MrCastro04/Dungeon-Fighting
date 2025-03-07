@@ -1,9 +1,10 @@
 namespace Utility
 {
-    public enum Actions
+    public enum SoundActionType
     {
         Defeat,
         UsePotion,
         Hit,
+        MissHit
     }
 }
