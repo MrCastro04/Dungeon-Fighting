@@ -4,6 +4,7 @@ using Uitility;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Utility;
 
 namespace Character.FOR_ALL_CHARACTERS
 {
@@ -50,7 +51,16 @@ namespace Character.FOR_ALL_CHARACTERS
 
         public void TakeDamage(float damageAmount)
         {
+            var healthBeforeDamage = HealthPoints;
+
             HealthPoints = Mathf.Max(HealthPoints - damageAmount, 0f);
+
+            var healthAfterDamage = HealthPoints;
+
+            if (healthBeforeDamage != healthAfterDamage)
+            {
+                EventManager.RaiseOnHit(Actions.Hit);
+            }
 
             if (CompareTag(Constants.TAG_PLAYER))
             {
@@ -110,6 +120,8 @@ namespace Character.FOR_ALL_CHARACTERS
             PotionCount--;
 
             PotionCount = Mathf.Max(PotionCount, 0);
+
+            EventManager.RaiseOnUsePotion(Actions.UsePotion);
 
             EventManager.RaiseChangePlayerHealth(HealthPoints);
 

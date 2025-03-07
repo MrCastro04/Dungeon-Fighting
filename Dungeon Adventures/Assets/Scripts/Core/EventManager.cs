@@ -1,6 +1,7 @@
 using System;
 using ScriptableObjects;
 using UnityEngine;
+using Utility;
 
 namespace Core
 {
@@ -19,6 +20,8 @@ namespace Core
         public static event Action OnPlayerEnterTheAreaWithBoss;
         public static event Action OnStartButtonClick;
         public static event Action OnGameEnd;
+        public static event Action <Actions> OnHit;
+        public static event Action<Actions> OnUsePotion;
 
         public static void RaiseChangePlayerHealth(float newHealthAmount)
         {
@@ -83,6 +86,16 @@ namespace Core
         public static void RaiseOnGameEnd()
         {
             OnGameEnd?.Invoke();
+        }
+
+        public static void RaiseOnHit(Actions actionType)
+        {
+            OnHit?.Invoke(actionType);
+        }
+
+        public static void RaiseOnUsePotion(Actions actionType)
+        {
+            OnUsePotion?.Invoke(actionType);
         }
     }
 }
