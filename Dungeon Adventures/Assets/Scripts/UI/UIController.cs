@@ -17,12 +17,12 @@ namespace UI
     {
         [NonSerialized] public int CurrentSelection = 0;
 
+        public UIEndGameState EndGameState;
         public UIMainMenuState MainMenuState;
         public VisualElement RootVisualElement;
         public VisualElement PlayerInfoContainer;
         public VisualElement MainMenuContainer;
         public VisualElement PlayerAbilityContainer;
-        public VisualElement ExitContainer;
         public List<Button> Buttons = new ();
 
         private UIBaseState _currentState;
@@ -48,9 +48,6 @@ namespace UI
             PlayerAbilityContainer = RootVisualElement.Q<VisualElement>
             (Constants.UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_ABILITY_CONTAINER);
 
-            ExitContainer = RootVisualElement.Q<VisualElement>
-                (Constants.UI_TOOLKIT_VISUAL_ELEMENT_EXIT_CONTAINER);
-
             _keyNotFoundMessage = RootVisualElement.Q<Label>(
                 Constants.UI_TOOLKIT_LABEL_KEY_NOT_FOUND_MESSAGE);
 
@@ -67,6 +64,8 @@ namespace UI
                 (Constants.UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_ABILITY_ICON);
 
             MainMenuState = new(this);
+
+            EndGameState = new(this);
         }
 
         private void OnEnable()
@@ -78,6 +77,7 @@ namespace UI
             EventManager.OnPlayerAbilityReady += HandlerPlayerAbilityReady;
             EventManager.OnEnterLockDoor += HandlerEnterLockDoor;
             EventManager.OnExitLockDoor += HandlerExitLockDoor;
+            EventManager.OnPlayerDefeat += HandlerOnPlayerDefeat;
         }
 
         private void OnDisable()
@@ -89,6 +89,7 @@ namespace UI
             EventManager.OnPlayerAbilityReady -= HandlerPlayerAbilityReady;
             EventManager.OnEnterLockDoor -= HandlerEnterLockDoor;
             EventManager.OnExitLockDoor -= HandlerExitLockDoor;
+            EventManager.OnPlayerDefeat += HandlerOnPlayerDefeat;
         }
 
         private void Start()
@@ -118,8 +119,6 @@ namespace UI
                 Constants.UI_TOOLKIT_CLASS_STYLE_ACTIVE_BUTTON);
 
             Vector2 input = context.ReadValue<Vector2>();
-
-            Debug.Log(input.y);
 
             CurrentSelection += input.y > 0 ? -1 : 1;
 
@@ -171,6 +170,13 @@ namespace UI
         private void HandlerExitLockDoor()
         {
             _keyNotFoundMessage.style.display = DisplayStyle.None;
+        }
+
+        private void HandlerOnPlayerDefeat()
+        {
+            _currentState = EndGameState;
+
+            _currentState.EnterState();
         }
     }
 }

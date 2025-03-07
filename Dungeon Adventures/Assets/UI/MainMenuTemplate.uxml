@@ -1,10 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/GlobalStyleSheet.uss?fileID=7433441132597879392&amp;guid=9a263fc98d1316240ba4fa5a4fe0e162&amp;type=3#GlobalStyleSheet" />
-    <ui:VisualElement name="main-menu-container" style="flex-grow: 1; display: none; flex-wrap: wrap; align-self: center; justify-content: center;">
+    <ui:VisualElement name="main-menu-container" style="flex-grow: 1; display: none; flex-wrap: wrap; align-self: center; justify-content: center; align-items: center;">
         <ui:VisualElement name="box" style="flex-grow: 1; flex-wrap: wrap;">
             <ui:Label tabindex="-1" text="Dungeon Adventures" parse-escape-sequences="true" display-tooltip-when-elided="true" class="common-text" style="font-size: 77px; top: 126px;" />
-            <ui:VisualElement name="buttons" style="flex-grow: 1; align-items: center; justify-content: center; flex-wrap: wrap;">
+            <ui:VisualElement name="buttons" style="flex-grow: 1; align-items: center; justify-content: center; flex-wrap: wrap; align-self: center;">
                 <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="start-button" class="menu-button" />
+                <ui:Button text="Exit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="exit-button" class="menu-button" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
@@ -20,8 +21,13 @@
     <ui:VisualElement name="player-ability-container" style="display: none; flex-wrap: wrap; align-items: center; flex-direction: row; justify-content: center; align-self: center; width: 45%; height: 30%; left: 30%; top: 55%;">
         <ui:VisualElement name="player-ability-icon" style="background-image: url(&quot;project://database/Assets/Sprites/playerAbilityIcon-removebg-preview.png?fileID=2800000&amp;guid=86710b9d81995ad42b3a822241ccbaa1&amp;type=3#playerAbilityIcon-removebg-preview&quot;); background-color: rgba(0, 0, 0, 0); height: 100%; width: 100%;" />
     </ui:VisualElement>
-    <ui:VisualElement name="exit-container" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; justify-content: center; display: none;">
-        <ui:Button text="Exit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="exit-button" class="menu-button" style="top: 15%;" />
+    <ui:VisualElement name="end-panel-container" style="flex-grow: 1; display: none; position: absolute; left: 26%; top: 23%; width: 50%; height: 50%;">
+        <ui:VisualElement name="end-panel" style="flex-grow: 1; background-color: rgb(230, 215, 152); border-left-color: rgb(94, 201, 184); border-right-color: rgb(94, 201, 184); border-top-color: rgb(94, 201, 184); border-bottom-color: rgb(94, 201, 184); border-top-width: 15px; border-right-width: 15px; border-bottom-width: 15px; border-left-width: 15px; border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; align-self: stretch; align-items: center; justify-content: center;">
+            <ui:VisualElement name="buttons" style="flex-grow: 1; flex-wrap: wrap; justify-content: center; align-self: stretch; align-items: center;">
+                <ui:Button text="Restart" parse-escape-sequences="true" display-tooltip-when-elided="true" name="restart-button" class="menu-button" />
+                <ui:Button text="Menu" parse-escape-sequences="true" display-tooltip-when-elided="true" name="menu-button" class="menu-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:VisualElement>
     <ui:Label tabindex="-1" text="You should find a key" parse-escape-sequences="true" display-tooltip-when-elided="true" name="key-not-found-message" style="font-size: 70px; -unity-font-style: bold; -unity-text-align: middle-center; color: rgb(255, 167, 0); display: none; top: 15%;" />
 </ui:UXML>

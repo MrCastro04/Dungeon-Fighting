@@ -3,6 +3,7 @@ using DefaultNamespace;
 using UI;
 using Uitility;
 using UnityEngine.UIElements;
+using UnityEngine;
 
 public class UIMainMenuState : UIBaseState
 {
@@ -26,7 +27,14 @@ public class UIMainMenuState : UIBaseState
 
         if (currentButton.name == "start-button")
         {
+            EventManager.RaiseOnStartButtonClick();
+
             SceneTransition.Initiate(1);
+        }
+
+        else if (currentButton.name == "exit-button")
+        {
+            Application.Quit();
         }
     }
 }

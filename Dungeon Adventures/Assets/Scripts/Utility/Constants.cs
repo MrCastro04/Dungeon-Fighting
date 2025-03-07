@@ -32,6 +32,7 @@ namespace Uitility
         public const string TAG_KEY_IMAGE = "KeyImage";
         public const string TAG_OBSTACLE = "Obstacle";
         public const string TAG_BOSS = "Boss";
+        public const string TAG_GAME_MANAGER = "GameManager";
 
 
         // ANIMATOR
@@ -46,8 +47,11 @@ namespace Uitility
         public const string UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_ABILITY_CONTAINER = "player-ability-container";
         public const string UI_TOOLKIT_VISUAL_ELEMENT_PLAYER_ABILITY_ICON = "player-ability-icon";
         public const string UI_TOOLKIT_VISUAL_ELEMENT_MAIN_MENU_CONTAINER = "main-menu-container";
-        public const string UI_TOOLKIT_VISUAL_ELEMENT_EXIT_CONTAINER = "exit-container";
+        public const string UI_TOOLKIT_VISUAL_ELEMENT_END_PANEL_CONTAINER = "end-panel-container";
         public const string UI_TOOLKIT_VISUAL_ELEMENT_KEY_IMAGE = "key";
+
+        public const string UI_TOOLKIT_RESTART_BUTTON = "restart-button";
+        public const string UI_TOOLKIT_MENU_BUTTON = "menu-button";
 
         public const string UI_TOOLKIT_LABEL_KEY_NOT_FOUND_MESSAGE = "key-not-found-message";
         public const string UI_TOOLKIT_LABEL_HEALTH_AMOUNT = "health-amount";

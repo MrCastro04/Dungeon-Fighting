@@ -9,6 +9,7 @@ TagManager:
   - KeyImage
   - Obstacle
   - Boss
+  - GameManager
   layers:
   - Default
   - TransparentFX
