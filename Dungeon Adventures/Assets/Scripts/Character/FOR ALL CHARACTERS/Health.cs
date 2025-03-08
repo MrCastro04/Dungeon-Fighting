@@ -59,7 +59,7 @@ namespace Character.FOR_ALL_CHARACTERS
 
             if (IsAlienTakeDamage(healthBeforeDamage, healthAfterDamage))
             {
-                EventManager.RaiseSoundOnHit(SoundActionType.Hit);
+                EventManager.RaiseSoundOnHit(SoundActionType.TakeDamage);
             }
 
             if (CompareTag(Constants.TAG_PLAYER))

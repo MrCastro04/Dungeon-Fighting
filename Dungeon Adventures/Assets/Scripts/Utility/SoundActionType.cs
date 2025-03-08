@@ -4,7 +4,7 @@ namespace Utility
     {
         Defeat,
         UsePotion,
-        Hit,
+        TakeDamage,
         MissHit
     }
 }

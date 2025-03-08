@@ -4,6 +4,7 @@ using Character.Range_Enemy;
 using ScriptableObjects;
 using Uitility;
 using UnityEngine;
+using Utility;
 
 namespace Character.BaseEnemy
 {
@@ -14,11 +15,14 @@ namespace Character.BaseEnemy
     public class EnemyController : MonoBehaviour , IHealthable
     {
         [SerializeField] protected CharacterStatsSO _enemyStats;
+        [SerializeField] protected CharacterSounds[] _characterSounds;
 
         protected AIBaseState _currentState;
         protected AIChaseState _chaseState = new();
         protected AIAttackState _attackState = new();
         protected AIDefeatState _defeatState = new();
+
+        protected CharacterSoundController _characterSoundController;
 
         public AIChaseState ChaseState => _chaseState;
         public AIAttackState AttackState => _attackState;
@@ -33,6 +37,8 @@ namespace Character.BaseEnemy
 
         protected virtual void Awake()
         {
+            _characterSoundController = new (_characterSounds, transform.position);
+
             _currentState = _chaseState;
 
             OriginalPosition = transform.position;
