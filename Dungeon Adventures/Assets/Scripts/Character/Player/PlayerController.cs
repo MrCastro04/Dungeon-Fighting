@@ -15,6 +15,7 @@ namespace Character.Player
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(Ability))]
+    [RequireComponent(typeof(CharacterSoundController))]
 
     public class PlayerController : MonoBehaviour , IHealthable , IControllerType
     {

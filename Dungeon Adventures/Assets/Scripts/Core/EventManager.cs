@@ -2,6 +2,7 @@ using System;
 using Interfaces;
 using ScriptableObjects;
 using UnityEngine;
+using UnityEngine.Events;
 using Utility;
 
 namespace Core
@@ -9,13 +10,15 @@ namespace Core
     public static class EventManager
     {
         public static event Action<float> OnChangePlayerHealth;
-        public static event Action <int> OnChangePlayerPotionCount;
+        public static event Action<int> OnChangePlayerPotionCount;
         public static event Action<ItemSO> OnPlayerGetItem;
-        public static event Action <Collider , int> OnPortalEnter;
-        public static event Action <SoundActionType , IControllerType> OnSoundHit;
-        public static event Action <SoundActionType , IControllerType> OnSoundUsePotion;
-        public static event Action <SoundActionType , IControllerType> OnSoundDefeat;
-        public static event Action <SoundActionType , IControllerType> OnSoundMissHit;
+        public static event Action<Collider, int> OnPortalEnter;
+        public static event Action<SoundActionType, IControllerType> OnSoundHit;
+        public static event Action<SoundActionType, IControllerType> OnSoundUsePotion;
+        public static event Action<SoundActionType, IControllerType> OnSoundDefeat;
+        public static event Action<SoundActionType, IControllerType> OnSoundMissHit;
+        public static event Action<SoundActionType, IControllerType> OnSoundAbilityWindCut;
+        public static event Action<SoundActionType, IControllerType> OnSoundCharacterRun;
         public static event Action OnAbilityButtonClick;
         public static event Action OnPlayerAbilityReady;
         public static event Action OnEnterLockDoor;
@@ -49,7 +52,7 @@ namespace Core
 
         public static void RaiseSoundOnHit(SoundActionType actionType, IControllerType controllerType)
         {
-            OnSoundHit?.Invoke(actionType , controllerType);
+            OnSoundHit?.Invoke(actionType, controllerType);
         }
 
         public static void RaiseSoundOnMissHit(SoundActionType actionType, IControllerType controllerType)
@@ -65,6 +68,11 @@ namespace Core
         public static void RaiseSoundOnDefeat(SoundActionType actionType, IControllerType controllerType)
         {
             OnSoundDefeat?.Invoke(actionType, controllerType);
+        }
+
+        public static void RaiseSoundOnAbilityWindCut(SoundActionType actionType , IControllerType controllerType)
+        {
+            OnSoundAbilityWindCut?.Invoke(actionType , controllerType);
         }
 
         public static void RaisebilityButtonClick()

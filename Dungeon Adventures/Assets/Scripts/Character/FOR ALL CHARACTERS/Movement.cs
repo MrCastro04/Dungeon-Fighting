@@ -1,7 +1,10 @@
+using Core;
+using Interfaces;
 using Uitility;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using Utility;
 
 namespace Character.FOR_ALL_CHARACTERS
 {
@@ -109,26 +112,6 @@ namespace Character.FOR_ALL_CHARACTERS
             Quaternion endQuaternion = Quaternion.LookRotation(offset);
 
             transform.rotation = Quaternion.Lerp(startQuaternion,endQuaternion, normal);
-        }
-
-        public bool ReachedDestination()
-        {
-            if (_agent.pathPending)
-            {
-                return false;
-            }
-
-            if (_agent.remainingDistance > _agent.stoppingDistance)
-            {
-                return false;
-            }
-
-            if (_agent.hasPath || _agent.velocity.sqrMagnitude != 0f)
-            {
-                return false;
-            }
-
-            return true;
         }
 
         private void MovePlayer()

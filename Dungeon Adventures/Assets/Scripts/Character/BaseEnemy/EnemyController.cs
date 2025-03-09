@@ -12,6 +12,7 @@ namespace Character.BaseEnemy
     [RequireComponent(typeof(Movement))]
     [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(Health))]
+    [RequireComponent(typeof(CharacterSoundController))]
 
     public class EnemyController : MonoBehaviour , IHealthable , IControllerType
     {

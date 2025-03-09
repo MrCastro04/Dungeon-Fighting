@@ -5,9 +5,12 @@ using UnityEngine;
 namespace Character.Range_Enemy
 {
     [RequireComponent(typeof(FireballPool))]
+
     public class RangeCombat : Combat
     {
         [SerializeField] private Transform _firePoint;
+        [SerializeField] private AudioClip _projectileHitSound;
+        [SerializeField] private AudioClip _projectileSpawnSound;
 
         [NonSerialized] public float RangeDamage = 10f;
         [NonSerialized] public float ProjectileSpeed = 10f;
@@ -62,7 +65,9 @@ namespace Character.Range_Enemy
 
             Vector3 direction = (_player.transform.position - transform.position).normalized;
 
-            fireball.Instantiate( ProjectileSpeed , RangeDamage , direction , _fireballPool);
+            AudioSource.PlayClipAtPoint(_projectileSpawnSound, transform.position);
+
+            fireball.Instantiate( ProjectileSpeed , RangeDamage , direction , _fireballPool , _projectileHitSound);
         }
     }
 }

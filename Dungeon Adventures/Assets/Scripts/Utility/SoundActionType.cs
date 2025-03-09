@@ -5,6 +5,7 @@ namespace Utility
         Defeat,
         UsePotion,
         TakeDamage,
-        MissHit
+        MissHit,
+        AbilityWindCut,
     }
 }

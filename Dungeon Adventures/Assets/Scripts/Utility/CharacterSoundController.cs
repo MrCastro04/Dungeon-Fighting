@@ -31,6 +31,7 @@ namespace Utility
 
       private void OnEnable()
       {
+          EventManager.OnSoundAbilityWindCut += HandlerPlayActionTypeSound;
           EventManager.OnPlayerGetItem += HandlerPlayActionTypeSound;
           EventManager.OnSoundHit += HandlerPlayActionTypeSound;
           EventManager.OnSoundUsePotion += HandlerPlayActionTypeSound;
@@ -40,6 +41,7 @@ namespace Utility
 
       private void OnDisable()
       {
+          EventManager.OnSoundAbilityWindCut -= HandlerPlayActionTypeSound;
           EventManager.OnPlayerGetItem -= HandlerPlayActionTypeSound;
           EventManager.OnSoundHit -= HandlerPlayActionTypeSound;
           EventManager.OnSoundUsePotion -= HandlerPlayActionTypeSound;
@@ -59,9 +61,9 @@ namespace Utility
               return;
           }
 
-          if (_soundsDictionary.TryGetValue(actionType, out AudioClip clip))
+          if (_soundsDictionary.TryGetValue(actionType, out AudioClip anyClip))
           {
-              _soundPlayPosition.PlayOneShot(clip);
+              _soundPlayPosition.PlayOneShot(anyClip);
           }
       }
   }

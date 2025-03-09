@@ -1,9 +1,11 @@
 using System.Collections;
 using Character.FOR_ALL_CHARACTERS;
 using Core;
+using Interfaces;
 using Uitility;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Utility;
 
 namespace Character.Player
 {
@@ -93,6 +95,8 @@ namespace Character.Player
 
         private void HandlerHitAbilityAttack()
         {
+            EventManager.RaiseSoundOnAbilityWindCut(SoundActionType.AbilityWindCut, GetComponent<IControllerType>().GetSelfType());
+
             RaycastHit[] targets = Physics.SphereCastAll(
 
                 transform.position,

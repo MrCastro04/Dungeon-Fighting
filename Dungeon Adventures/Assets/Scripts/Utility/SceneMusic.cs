@@ -8,7 +8,7 @@ namespace Utility
    public class SceneMusic : MonoBehaviour
    {
       [SerializeField] private AudioSource _audioSource;
-      [SerializeField] private AudioClip _clip;
+      [SerializeField] private AudioClip _sceneMusic;
       [SerializeField] private AudioClip _enterSceneSound;
 
       private void Start()
@@ -18,7 +18,7 @@ namespace Utility
             _audioSource.PlayOneShot(_enterSceneSound);
          }
 
-         _audioSource.clip = _clip;
+         _audioSource.clip = _sceneMusic;
 
          _audioSource.Play();
       }
