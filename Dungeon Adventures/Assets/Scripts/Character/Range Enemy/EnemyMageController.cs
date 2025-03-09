@@ -9,7 +9,7 @@ namespace Character.Range_Enemy
     public class EnemyMageController : EnemyController
     {
         private RangeCombat _rangeCombatCmp;
-
+        
         public RangeCombat RangeCombatCmp => _rangeCombatCmp;
 
         protected override void Awake()

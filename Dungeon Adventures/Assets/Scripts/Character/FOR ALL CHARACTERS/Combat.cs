@@ -1,5 +1,6 @@
 using System;
 using Core;
+using Interfaces;
 using Uitility;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -70,7 +71,8 @@ namespace Character.FOR_ALL_CHARACTERS
 
         protected virtual void HandleBubbleHitAttack()
         {
-            EventManager.RaiseSoundOnMissHit(SoundActionType.MissHit);
+            EventManager.RaiseSoundOnMissHit( SoundActionType.MissHit,
+                GetComponent<IControllerType>().GetSelfType() );
 
             var targets = Physics.BoxCastAll(
 

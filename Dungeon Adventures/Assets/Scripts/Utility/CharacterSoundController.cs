@@ -1,26 +1,68 @@
-using System.Linq;
+using System.Collections.Generic;
+using Core;
+using Interfaces;
+using ScriptableObjects;
 using UnityEngine;
 
 namespace Utility
 {
-  public class CharacterSoundController
+    [RequireComponent(typeof(AudioSource))]
+  public class CharacterSoundController : MonoBehaviour
   {
-      private CharacterSounds[] _sounds;
-      private Vector3 _soundPlayPosition;
+     [SerializeField] private CharacterSounds[] _sounds;
 
-      public CharacterSoundController(CharacterSounds[] sounds , Vector3 soundPlayPosition)
+      private Dictionary < SoundActionType, AudioClip > _soundsDictionary;
+      private AudioSource _soundPlayPosition;
+
+      private void Awake()
       {
-          _sounds = sounds;
+          _soundPlayPosition = GetComponent<AudioSource>();
 
-          _soundPlayPosition = soundPlayPosition;
+          _soundsDictionary = new();
+
+          foreach (var sound in _sounds)
+          {
+              if (_soundsDictionary.ContainsKey(sound.ActionType) == false)
+              {
+                  _soundsDictionary.Add(sound.ActionType, sound.ActionClip);
+              }
+          }
       }
 
-      public void HandlerPlayActionTypeSound(SoundActionType actionType)
+      private void OnEnable()
       {
-          var foundSound = _sounds.FirstOrDefault
-                  (sound => sound.ActionType == actionType);
+          EventManager.OnPlayerGetItem += HandlerPlayActionTypeSound;
+          EventManager.OnSoundHit += HandlerPlayActionTypeSound;
+          EventManager.OnSoundUsePotion += HandlerPlayActionTypeSound;
+          EventManager.OnSoundDefeat += HandlerPlayActionTypeSound;
+          EventManager.OnSoundMissHit += HandlerPlayActionTypeSound;
+      }
 
-              AudioSource.PlayClipAtPoint(foundSound.ActionClip, _soundPlayPosition);
+      private void OnDisable()
+      {
+          EventManager.OnPlayerGetItem -= HandlerPlayActionTypeSound;
+          EventManager.OnSoundHit -= HandlerPlayActionTypeSound;
+          EventManager.OnSoundUsePotion -= HandlerPlayActionTypeSound;
+          EventManager.OnSoundDefeat -= HandlerPlayActionTypeSound;
+          EventManager.OnSoundMissHit -= HandlerPlayActionTypeSound;
+      }
+
+      public void HandlerPlayActionTypeSound(ItemSO item)
+      {
+          _soundPlayPosition.PlayOneShot(item.CollectSound);
+      }
+
+      public void HandlerPlayActionTypeSound(SoundActionType actionType, IControllerType controllerType)
+      {
+          if (controllerType != this.GetComponent<IControllerType>())
+          {
+              return;
+          }
+
+          if (_soundsDictionary.TryGetValue(actionType, out AudioClip clip))
+          {
+              _soundPlayPosition.PlayOneShot(clip);
+          }
       }
   }
 }

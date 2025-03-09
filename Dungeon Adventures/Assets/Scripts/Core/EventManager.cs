@@ -1,4 +1,5 @@
 using System;
+using Interfaces;
 using ScriptableObjects;
 using UnityEngine;
 using Utility;
@@ -11,6 +12,10 @@ namespace Core
         public static event Action <int> OnChangePlayerPotionCount;
         public static event Action<ItemSO> OnPlayerGetItem;
         public static event Action <Collider , int> OnPortalEnter;
+        public static event Action <SoundActionType , IControllerType> OnSoundHit;
+        public static event Action <SoundActionType , IControllerType> OnSoundUsePotion;
+        public static event Action <SoundActionType , IControllerType> OnSoundDefeat;
+        public static event Action <SoundActionType , IControllerType> OnSoundMissHit;
         public static event Action OnAbilityButtonClick;
         public static event Action OnPlayerAbilityReady;
         public static event Action OnEnterLockDoor;
@@ -20,10 +25,7 @@ namespace Core
         public static event Action OnPlayerEnterTheAreaWithBoss;
         public static event Action OnStartButtonClick;
         public static event Action OnGameEnd;
-        public static event Action <SoundActionType> OnSoundHit;
-        public static event Action <SoundActionType> OnSoundUsePotion;
-        public static event Action <SoundActionType> OnSoundDefeat;
-        public static event Action <SoundActionType> OnSoundMissHit;
+
 
         public static void RaiseChangePlayerHealth(float newHealthAmount)
         {
@@ -43,6 +45,26 @@ namespace Core
         public static void RaisePortalEnter(Collider player, int sceneIndex)
         {
             OnPortalEnter?.Invoke(player, sceneIndex);
+        }
+
+        public static void RaiseSoundOnHit(SoundActionType actionType, IControllerType controllerType)
+        {
+            OnSoundHit?.Invoke(actionType , controllerType);
+        }
+
+        public static void RaiseSoundOnMissHit(SoundActionType actionType, IControllerType controllerType)
+        {
+            OnSoundMissHit?.Invoke(actionType, controllerType);
+        }
+
+        public static void RaiseSoundOnUsePotion(SoundActionType actionType, IControllerType controllerType)
+        {
+            OnSoundUsePotion?.Invoke(actionType, controllerType);
+        }
+
+        public static void RaiseSoundOnDefeat(SoundActionType actionType, IControllerType controllerType)
+        {
+            OnSoundDefeat?.Invoke(actionType, controllerType);
         }
 
         public static void RaisebilityButtonClick()
@@ -88,26 +110,6 @@ namespace Core
         public static void RaiseOnGameEnd()
         {
             OnGameEnd?.Invoke();
-        }
-
-        public static void RaiseSoundOnHit(SoundActionType actionType)
-        {
-            OnSoundHit?.Invoke(actionType);
-        }
-
-        public static void RaiseSoundOnUsePotion(SoundActionType actionType)
-        {
-            OnSoundUsePotion?.Invoke(actionType);
-        }
-
-        public static void RaiseSoundOnDefeat(SoundActionType actionType)
-        {
-            OnSoundDefeat?.Invoke(actionType);
-        }
-
-        public static void RaiseSoundOnMissHit(SoundActionType actionType)
-        {
-            OnSoundMissHit?.Invoke(actionType);
         }
     }
 }

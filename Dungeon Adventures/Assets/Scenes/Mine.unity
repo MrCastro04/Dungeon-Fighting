@@ -18372,6 +18372,10 @@ PrefabInstance:
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 424360933}
+    - target: {fileID: 7495016669374266092, guid: 2c36c40aefd75aa42aaff328f7db7688, type: 3}
+      propertyPath: _enterSceneSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9ad39c2532f281948820073d2ff27e89, type: 3}
     - target: {fileID: 8780032320987359250, guid: 2c36c40aefd75aa42aaff328f7db7688, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.49

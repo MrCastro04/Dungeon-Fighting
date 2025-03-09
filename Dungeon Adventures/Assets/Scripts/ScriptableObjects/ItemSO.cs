@@ -13,5 +13,6 @@ namespace ScriptableObjects
     {
         public string Name;
         public Sprite Image;
+        public AudioClip CollectSound;
     }
 }

@@ -1,5 +1,6 @@
 using Character.FOR_ALL_CHARACTERS;
 using Core;
+using Interfaces;
 using ScriptableObjects;
 using Uitility;
 using UnityEngine;
@@ -15,10 +16,9 @@ namespace Character.Player
     [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(Ability))]
 
-    public class PlayerController : MonoBehaviour , IHealthable
+    public class PlayerController : MonoBehaviour , IHealthable , IControllerType
     {
         [SerializeField] private CharacterStatsSO _playerStats;
-        [SerializeField] private CharacterSounds[] _characterSounds;
 
         private CharacterSoundController _characterSoundControllerCmp;
         private Health _healthCmp;
@@ -34,7 +34,7 @@ namespace Character.Player
 
         private void Awake()
         {
-            _characterSoundControllerCmp = new (_characterSounds, transform.position);
+            _characterSoundControllerCmp = GetComponent<CharacterSoundController>();
 
             _healthCmp = GetComponent<Health>();
 
@@ -47,21 +47,6 @@ namespace Character.Player
             _abilityCmp = GetComponent<Ability>();
         }
 
-        private void OnEnable()
-        {
-            EventManager.OnSoundHit += _characterSoundControllerCmp.HandlerPlayActionTypeSound;
-            EventManager.OnSoundUsePotion += _characterSoundControllerCmp.HandlerPlayActionTypeSound;
-            EventManager.OnSoundDefeat += _characterSoundControllerCmp.HandlerPlayActionTypeSound;
-            EventManager.OnSoundMissHit += _characterSoundControllerCmp.HandlerPlayActionTypeSound;
-        }
-
-        private void OnDisable()
-        {
-            EventManager.OnSoundHit -= _characterSoundControllerCmp.HandlerPlayActionTypeSound;
-            EventManager.OnSoundUsePotion -= _characterSoundControllerCmp.HandlerPlayActionTypeSound;
-            EventManager.OnSoundDefeat -= _characterSoundControllerCmp.HandlerPlayActionTypeSound;
-            EventManager.OnSoundMissHit -= _characterSoundControllerCmp.HandlerPlayActionTypeSound;
-        }
 
         private void Start()
         {
@@ -90,6 +75,11 @@ namespace Character.Player
             EventManager.RaiseChangePlayerHealth(_healthCmp.HealthPoints);
 
             EventManager.RaiseChangePlayerPotionCount(_healthCmp.PotionCount);
+        }
+
+        public IControllerType GetSelfType()
+        {
+            return this;
         }
     }
 }

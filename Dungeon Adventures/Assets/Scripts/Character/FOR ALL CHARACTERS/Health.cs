@@ -1,5 +1,6 @@
 using System;
 using Core;
+using Interfaces;
 using Uitility;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -59,7 +60,7 @@ namespace Character.FOR_ALL_CHARACTERS
 
             if (IsAlienTakeDamage(healthBeforeDamage, healthAfterDamage))
             {
-                EventManager.RaiseSoundOnHit(SoundActionType.TakeDamage);
+                EventManager.RaiseSoundOnHit(SoundActionType.TakeDamage , GetComponent<IControllerType>());
             }
 
             if (CompareTag(Constants.TAG_PLAYER))
@@ -112,7 +113,8 @@ namespace Character.FOR_ALL_CHARACTERS
 
             _animatorCmp.SetTrigger(Constants.ANIMATOR_DEFEAT_PARAM);
 
-            EventManager.RaiseSoundOnDefeat(SoundActionType.Defeat);
+            EventManager.RaiseSoundOnDefeat(SoundActionType.Defeat ,
+                GetComponent<IControllerType>().GetSelfType() );
         }
 
         private void UsePotion()
@@ -123,7 +125,8 @@ namespace Character.FOR_ALL_CHARACTERS
 
             PotionCount = Mathf.Max(PotionCount, 0);
 
-            EventManager.RaiseSoundOnUsePotion(SoundActionType.UsePotion);
+            EventManager.RaiseSoundOnUsePotion( SoundActionType.UsePotion ,
+                GetComponent<IControllerType>().GetSelfType() );
 
             EventManager.RaiseChangePlayerHealth(HealthPoints);
 

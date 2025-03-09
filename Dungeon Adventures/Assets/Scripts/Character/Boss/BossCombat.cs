@@ -1,5 +1,8 @@
 using Character.FOR_ALL_CHARACTERS;
+using Core;
+using Interfaces;
 using UnityEngine;
+using Utility;
 
 namespace Character.Boss
 {
@@ -17,6 +20,9 @@ namespace Character.Boss
 
         protected override void HandleBubbleHitAttack()
         {
+            EventManager.RaiseSoundOnMissHit( SoundActionType.MissHit,
+                GetComponent<IControllerType>().GetSelfType() );
+
             var targets = Physics.BoxCastAll(
 
                 transform.position + transform.forward,

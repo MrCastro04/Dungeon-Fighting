@@ -1,6 +1,7 @@
 using Character.Boss;
 using Character.FOR_ALL_CHARACTERS;
 using Character.Range_Enemy;
+using Interfaces;
 using ScriptableObjects;
 using Uitility;
 using UnityEngine;
@@ -12,17 +13,16 @@ namespace Character.BaseEnemy
     [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(Health))]
 
-    public class EnemyController : MonoBehaviour , IHealthable
+    public class EnemyController : MonoBehaviour , IHealthable , IControllerType
     {
         [SerializeField] protected CharacterStatsSO _enemyStats;
-        [SerializeField] protected CharacterSounds[] _characterSounds;
 
         protected AIBaseState _currentState;
         protected AIChaseState _chaseState = new();
         protected AIAttackState _attackState = new();
         protected AIDefeatState _defeatState = new();
 
-        protected CharacterSoundController _characterSoundController;
+        private CharacterSoundController _characterSoundControllerCmp;
 
         public AIChaseState ChaseState => _chaseState;
         public AIAttackState AttackState => _attackState;
@@ -37,7 +37,7 @@ namespace Character.BaseEnemy
 
         protected virtual void Awake()
         {
-            _characterSoundController = new (_characterSounds, transform.position);
+            _characterSoundControllerCmp = GetComponent<CharacterSoundController>();
 
             _currentState = _chaseState;
 
@@ -119,6 +119,11 @@ namespace Character.BaseEnemy
            SwitchState(_defeatState);
 
            _currentState.EnterState(this);
+        }
+
+        public IControllerType GetSelfType()
+        {
+            return this;
         }
     }
 }

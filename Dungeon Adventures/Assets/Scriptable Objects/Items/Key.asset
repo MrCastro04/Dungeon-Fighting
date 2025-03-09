@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Key
   Image: {fileID: 21300000, guid: 23617824e99065e4ea7fd8ba2026ee4e, type: 3}
+  CollectSound: {fileID: 8300000, guid: 6a5173e69cf233e4ea05dccf56f83487, type: 3}
