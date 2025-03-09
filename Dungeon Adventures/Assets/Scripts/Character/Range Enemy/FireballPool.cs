@@ -45,8 +45,6 @@ namespace Character.Range_Enemy
 
         public void ReturnToPool(Fireball fireball)
         {
-
-
             fireball.gameObject.SetActive(false);
 
             _fireballPool.Enqueue(fireball);

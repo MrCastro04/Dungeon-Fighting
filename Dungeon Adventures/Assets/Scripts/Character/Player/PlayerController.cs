@@ -13,7 +13,7 @@ namespace Character.Player
     [RequireComponent(typeof(Combat))]
     [RequireComponent(typeof(Inventory))]
     [RequireComponent(typeof(NavMeshAgent))]
-    [RequireComponent(typeof(BoxCollider))]
+    [RequireComponent(typeof(CapsuleCollider))]
     [RequireComponent(typeof(Ability))]
     [RequireComponent(typeof(CharacterSoundController))]
 

@@ -10,7 +10,7 @@ using Utility;
 namespace Character.BaseEnemy
 {
     [RequireComponent(typeof(Movement))]
-    [RequireComponent(typeof(BoxCollider))]
+    [RequireComponent(typeof(CapsuleCollider))]
     [RequireComponent(typeof(Health))]
     [RequireComponent(typeof(CharacterSoundController))]
 

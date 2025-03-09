@@ -1,6 +1,5 @@
 using Character.Boss;
 using Character.Range_Enemy;
-using Core;
 
 namespace Character.BaseEnemy
 {
@@ -35,14 +34,10 @@ namespace Character.BaseEnemy
 
             if (enemy is BossController boss)
             {
-                if (boss.HealthCmp.IsHealthLesserRequiredPercentage(boss, 0.5f))
-                {
-                    boss.BossCombatCmp.CancelAttack();
+                boss.CheckBossHealthToSwitchInSecondPhase();
 
-                    EventManager.RaiseOnBossEnterSecondPhase();
-
+                if(boss.HasSecondPhase)
                     return;
-                }
             }
 
             if (enemy.DistanceFromPlayer > enemy.AttackRange)

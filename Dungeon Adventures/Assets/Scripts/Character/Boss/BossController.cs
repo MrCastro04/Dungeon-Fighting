@@ -9,8 +9,9 @@ namespace Character.Boss
 
     public class BossController : EnemyController
     {
-        private AIBossSecondPhase _aiBossSecondPhase = new();
+        [SerializeField, Range(0.5f, 1f)] private float _healthPercentageForSecondPhase;
 
+        private AIBossSecondPhase _aiBossSecondPhase = new();
         private BossCombat _bossCombatCmp;
         private BossAbility _bossAbilityCmp;
         private bool _hasSecondPhase = false;
@@ -41,6 +42,16 @@ namespace Character.Boss
             base.OnDisable();
 
             EventManager.OnBossEnterSecondPhase -= HandlerBossEnterSecondPhase;
+        }
+
+        public void CheckBossHealthToSwitchInSecondPhase()
+        {
+            if (HealthCmp.IsHealthLesserRequiredPercentage(this, _healthPercentageForSecondPhase))
+            {
+                BossCombatCmp.CancelAttack();
+
+                EventManager.RaiseOnBossEnterSecondPhase();
+            }
         }
 
         private void HandlerBossEnterSecondPhase()

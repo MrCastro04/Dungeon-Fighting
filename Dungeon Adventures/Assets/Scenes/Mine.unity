@@ -10595,6 +10595,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6037446067799908981, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
+      propertyPath: PotionCount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6950866285948992951, guid: 6c17fdeefc09414498318e75cf0c93ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.62
@@ -15077,12 +15081,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3400565436268796854, guid: 6a42a2b4d06d51a41a4ecf330d9701d8, type: 3}
+      propertyPath: m_VoxelSize
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3400565436268796854, guid: 6a42a2b4d06d51a41a4ecf330d9701d8, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 183ce1df71aeb7048919e45f2489247b, type: 2}
+      objectReference: {fileID: 23800000, guid: ffb09ceaf704f2a4a8396634c9ef9680, type: 2}
     - target: {fileID: 7378653058382940438, guid: 6a42a2b4d06d51a41a4ecf330d9701d8, type: 3}
       propertyPath: m_Name
       value: NavMesh Surface
+      objectReference: {fileID: 0}
+    - target: {fileID: 7378653058382940438, guid: 6a42a2b4d06d51a41a4ecf330d9701d8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18450,6 +18462,10 @@ PrefabInstance:
     - target: {fileID: 3983710631210239370, guid: 2c36c40aefd75aa42aaff328f7db7688, type: 3}
       propertyPath: m_Name
       value: Scene Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 3983710631210239370, guid: 2c36c40aefd75aa42aaff328f7db7688, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7495016669374266092, guid: 2c36c40aefd75aa42aaff328f7db7688, type: 3}
       propertyPath: _clip
@@ -23005,9 +23021,13 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4745915563913885981, guid: 8a3003bf0024c97499352a6cd5f9e7ec, type: 3}
+      propertyPath: _hitRadius
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7986233071948134691, guid: 8a3003bf0024c97499352a6cd5f9e7ec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.74
+      value: -7.93
       objectReference: {fileID: 0}
     - target: {fileID: 7986233071948134691, guid: 8a3003bf0024c97499352a6cd5f9e7ec, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23015,7 +23035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7986233071948134691, guid: 8a3003bf0024c97499352a6cd5f9e7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 36.71
+      value: 34.28
       objectReference: {fileID: 0}
     - target: {fileID: 7986233071948134691, guid: 8a3003bf0024c97499352a6cd5f9e7ec, type: 3}
       propertyPath: m_LocalRotation.w

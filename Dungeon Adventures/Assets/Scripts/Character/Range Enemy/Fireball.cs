@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Character.Range_Enemy
 {
     [RequireComponent(typeof(Rigidbody))]
-    [RequireComponent(typeof(Collider))]
+    [RequireComponent(typeof(SphereCollider))]
 
     public class Fireball : MonoBehaviour
     {
@@ -22,10 +22,7 @@ namespace Character.Range_Enemy
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        public void Instantiate
-        (
-            float flyingSpeed , float damage , Vector3 direction,
-            FireballPool fireballPool , AudioClip hitSound)
+        public void Instantiate (float flyingSpeed , float damage , Vector3 direction, FireballPool fireballPool , AudioClip hitSound)
         {
             _flyingSpeed = flyingSpeed;
 

@@ -18,7 +18,6 @@ namespace Core
         public static event Action<SoundActionType, IControllerType> OnSoundDefeat;
         public static event Action<SoundActionType, IControllerType> OnSoundMissHit;
         public static event Action<SoundActionType, IControllerType> OnSoundAbilityWindCut;
-        public static event Action<SoundActionType, IControllerType> OnSoundCharacterRun;
         public static event Action OnAbilityButtonClick;
         public static event Action OnPlayerAbilityReady;
         public static event Action OnEnterLockDoor;

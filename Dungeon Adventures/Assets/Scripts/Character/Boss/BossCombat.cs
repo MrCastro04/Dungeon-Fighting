@@ -27,7 +27,7 @@ namespace Character.Boss
 
                 transform.position + transform.forward,
 
-                transform.forward / 2f,
+                (transform.forward / 2f) + new Vector3(0.1f, 0.1f, 0.1f) ,
 
                 transform.forward,
 
