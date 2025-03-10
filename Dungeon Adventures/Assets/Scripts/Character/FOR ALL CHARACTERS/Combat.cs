@@ -78,7 +78,7 @@ namespace Character.FOR_ALL_CHARACTERS
 
                 transform.position + transform.forward,
 
-                transform.forward / 2,
+                (transform.forward / 2) + Vector3.one,
 
                 transform.forward,
 
