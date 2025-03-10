@@ -27,7 +27,6 @@ namespace Utility
 
                 if (_currentTime >= _finalTime)
                     _currentTime = 0f;
-
             }
         }
 }
