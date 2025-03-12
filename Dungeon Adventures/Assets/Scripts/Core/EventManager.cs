@@ -2,6 +2,7 @@ using System;
 using Interfaces;
 using ScriptableObjects;
 using UnityEngine;
+using UnityEngine.Events;
 using Utility;
 
 namespace Core
@@ -12,7 +13,6 @@ namespace Core
         public static event Action<int> OnChangePlayerPotionCount;
         public static event Action<ItemSO> OnPlayerGetItem;
         public static event Action<Collider, int> OnPortalEnter;
-        public static event Action<bool> OnCutsceneUpdated;
         public static event Action<SoundActionType, IControllerType> OnSoundHit;
         public static event Action<SoundActionType, IControllerType> OnSoundUsePotion;
         public static event Action<SoundActionType, IControllerType> OnSoundDefeat;
@@ -47,11 +47,6 @@ namespace Core
         public static void RaisePortalEnter(Collider player, int sceneIndex)
         {
             OnPortalEnter?.Invoke(player, sceneIndex);
-        }
-
-        public static void RaiseOnCutsceneUpdated(bool isEnabled)
-        {
-            OnCutsceneUpdated?.Invoke(isEnabled);
         }
 
         public static void RaiseSoundOnHit(SoundActionType actionType, IControllerType controllerType)
