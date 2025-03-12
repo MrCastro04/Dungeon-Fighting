@@ -1,10 +1,7 @@
-using Core;
-using Interfaces;
 using Uitility;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
-using Utility;
 
 namespace Character.FOR_ALL_CHARACTERS
 {

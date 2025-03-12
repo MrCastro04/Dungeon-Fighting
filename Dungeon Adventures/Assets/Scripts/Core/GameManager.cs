@@ -9,11 +9,20 @@ namespace Core
 
     public class GameManager : MonoBehaviour
     {
+        private PlayerInput _playerInputCmp;
+
+        private void Awake()
+        {
+            _playerInputCmp = GetComponent<PlayerInput>();
+        }
+
         private void OnEnable()
         {
             EventManager.OnPortalEnter += HandlerPortalEnter;
 
             EventManager.OnStartButtonClick += HandlerOnStartButtonClick;
+
+            EventManager.OnCutsceneUpdated += HandlerOnCutsceneUpdated ;
         }
 
         private void OnDisable()
@@ -21,6 +30,8 @@ namespace Core
             EventManager.OnPortalEnter -= HandlerPortalEnter;
 
             EventManager.OnStartButtonClick += HandlerOnStartButtonClick;
+
+            EventManager.OnCutsceneUpdated -= HandlerOnCutsceneUpdated ;
         }
 
         private void HandlerPortalEnter(Collider player, int nextSceneIndex)
@@ -39,6 +50,11 @@ namespace Core
         private void HandlerOnStartButtonClick()
         {
             PlayerPrefs.DeleteAll();
+        }
+
+        private void HandlerOnCutsceneUpdated(bool isEnabled)
+        {
+            _playerInputCmp.enabled = isEnabled;
         }
     }
 }

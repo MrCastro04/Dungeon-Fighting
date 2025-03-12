@@ -30,17 +30,13 @@ namespace Character.Boss
             _bossAbilityCmp = GetComponent<BossAbility>();
         }
 
-        protected override void OnEnable()
+        protected void OnEnable()
         {
-            base.OnEnable();
-
             EventManager.OnBossEnterSecondPhase += HandlerBossEnterSecondPhase;
         }
 
-        protected override void OnDisable()
+        protected void OnDisable()
         {
-            base.OnDisable();
-
             EventManager.OnBossEnterSecondPhase -= HandlerBossEnterSecondPhase;
         }
 

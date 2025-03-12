@@ -43,6 +43,8 @@ namespace Character.Boss
 
         protected override void HandlerBubbleAbilityEnd()
         {
+            _isAbilityActive = false;
+
             _canCountHitCounters = true;
 
             _currentHitCounter = 0;
@@ -50,8 +52,6 @@ namespace Character.Boss
             _desiredHitCounter = 0;
 
             _desiredHitCounter = GetRandomHitCounter();
-
-            _isAbilityActive = false;
 
             _animatorCmp.SetBool(Constants.ANIMATOR_ABILITY_TOKEN, _isAbilityActive);
         }

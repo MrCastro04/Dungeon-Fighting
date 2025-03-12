@@ -21,7 +21,6 @@ namespace Character.BaseEnemy
         protected AIBaseState _currentState;
         protected AIChaseState _chaseState = new();
         protected AIAttackState _attackState = new();
-        protected AIDefeatState _defeatState = new();
 
         private CharacterSoundController _characterSoundControllerCmp;
 
@@ -38,10 +37,6 @@ namespace Character.BaseEnemy
 
         protected virtual void Awake()
         {
-            _characterSoundControllerCmp = GetComponent<CharacterSoundController>();
-
-            _currentState = _chaseState;
-
             OriginalPosition = transform.position;
 
             OriginalRotation = transform.forward;
@@ -52,40 +47,19 @@ namespace Character.BaseEnemy
 
             HealthCmp = GetComponent<Health>();
 
+            _characterSoundControllerCmp = GetComponent<CharacterSoundController>();
+
             if (this is not EnemyMageController || this is not BossController)
             {
                 CombatCmp = CombatCmp == null ? GetComponent<Combat>() : CombatCmp;
             }
-        }
 
-        protected virtual void OnEnable()
-        {
-            HealthCmp.OnStartEnemyDefeated += HandleStartEnemyDefeated;
-        }
-
-        protected virtual void OnDisable()
-        {
-            HealthCmp.OnStartEnemyDefeated -= HandleStartEnemyDefeated;
+            _currentState = _chaseState;
         }
 
         protected virtual void Start()
         {
-            HealthCmp.HealthPoints = _enemyStats.HealthPoints;
-
-            HealthCmp.OriginHealthPoints = HealthCmp.HealthPoints;
-
-            MovementCmp.NavMeshAgent.speed = _enemyStats.Speed;
-
-            AttackRange = _enemyStats.AttackRange;
-
-            HealthCmp.SliderCmp.maxValue = HealthCmp.HealthPoints;
-
-            HealthCmp.SliderCmp.value = HealthCmp.HealthPoints;
-
-            if (CombatCmp != null)
-            {
-                CombatCmp.Damage = _enemyStats.MeeleDamage;
-            }
+            InitializeEnemyStats();
 
             _currentState.EnterState(this);
         }
@@ -104,6 +78,11 @@ namespace Character.BaseEnemy
             _currentState.EnterState(this);
         }
 
+        public IControllerType GetSelfType()
+        {
+            return this;
+        }
+
         private void CalculateDistanceFromPlayer()
         {
             if(Player == null) return;
@@ -115,16 +94,24 @@ namespace Character.BaseEnemy
             DistanceFromPlayer = Vector3.Distance(enemyPosition, playerPosition);
         }
 
-        private void HandleStartEnemyDefeated()
+        private void InitializeEnemyStats()
         {
-           SwitchState(_defeatState);
+            HealthCmp.HealthPoints = _enemyStats.HealthPoints;
 
-           _currentState.EnterState(this);
-        }
+            HealthCmp.OriginHealthPoints = HealthCmp.HealthPoints;
 
-        public IControllerType GetSelfType()
-        {
-            return this;
+            MovementCmp.NavMeshAgent.speed = _enemyStats.Speed;
+
+            AttackRange = _enemyStats.AttackRange;
+
+            HealthCmp.SliderCmp.maxValue = HealthCmp.HealthPoints;
+
+            HealthCmp.SliderCmp.value = HealthCmp.HealthPoints;
+
+            if (CombatCmp != null)
+            {
+                CombatCmp.Damage = _enemyStats.MeeleDamage;
+            }
         }
     }
 }
