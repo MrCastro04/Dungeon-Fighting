@@ -21,7 +21,6 @@ namespace Character.BaseEnemy
         protected AIBaseState _currentState;
         protected AIChaseState _chaseState = new();
         protected AIAttackState _attackState = new();
-        protected AIDefeatState _defeatState = new();
 
         private CharacterSoundController _characterSoundControllerCmp;
 
@@ -117,9 +116,7 @@ namespace Character.BaseEnemy
 
         private void HandleStartEnemyDefeated()
         {
-           SwitchState(_defeatState);
 
-           _currentState.EnterState(this);
         }
 
         public IControllerType GetSelfType()
