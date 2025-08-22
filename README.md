@@ -9,10 +9,10 @@ A short PC mini-game about the main character's little adventure in the dungeon.
  Controls in the game:
  UI:
  W - up , S - down , E - Perform(should highligh yellow color).
- -------------------------------------------------------------------------------------------------------------------------------------------------------
+
  Character:
  WASD - move , SPACE - attack , E - Ability , Q - Use Heal Potion , R - Interact (should highlight a hand). 
--------------------------------------------------------------------------------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 What was implemented (in a short):
 Object movement, AI for enemies (chasing the player, attacking, second phase for the boss), animations,
