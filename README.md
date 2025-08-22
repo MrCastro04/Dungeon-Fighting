@@ -10,11 +10,9 @@ Link On Game : https://drive.google.com/drive/folders/10SZwIRBqEADvtRwE5JS9vtu4X
 -------------------------------------------------------------------------------------------------------------------------------------------------------
  Controls in the game:
 -------------------------------------------------------------------------------------------------------------------------------------------------------
- UI:
- W - up , S - down , E - Perform(should highligh yellow color).
+ UI : W - up , S - down , E - Perform(should highligh yellow color).
 
- Character:
- WASD - move , SPACE - attack , E - Ability , Q - Use Heal Potion , R - Interact (should highlight a hand). 
+ CHARACTER : WASD - move , SPACE - attack , E - Ability , Q - Use Heal Potion , R - Interact (should highlight a hand). 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 What was implemented (in a short):
