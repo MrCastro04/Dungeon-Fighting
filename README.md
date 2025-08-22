@@ -4,6 +4,7 @@ About the game:
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 A short PC mini-game about the main character's little adventure in the dungeon. 
  His task is to defeat the boss.
+
 (Average completion time - up to 10 minutes)
 
 Link On Game : https://drive.google.com/drive/folders/10SZwIRBqEADvtRwE5JS9vtu4XmLSXZUj?usp=drive_link
