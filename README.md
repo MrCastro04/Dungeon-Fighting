@@ -5,6 +5,7 @@ About the game:
 A short PC mini-game about the main character's little adventure in the dungeon.
  His task is to defeat the boss.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------
  Controls in the game:
  UI:
  W - up , S - down , E - Perform(should highligh yellow color).
